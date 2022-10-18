@@ -1,82 +1,42 @@
 package divcon;
-import java.awt.BorderLayout;
-import java.util.List;
 
-import javax.swing.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class DivCon {
-    private static final String VERSAO = "Versão 1.0\n";
 
-    private JFrame frame;
-    private JButton addParticipanteButton;
-    private JButton addSaldoButton;
-    private int saldoReal;
-    private int saldoDecimal;
-    private JLabel statusLabel;
-    private JLabel infoLabel;
-
+    private List<Conta> contas;
     private List<Participante> participantes;
 
     public DivCon() {
-        makeFrame();
+        contas = new ArrayList<>();
+        participantes = new ArrayList<>();
     }
 
-    // --- Funções da aplicação e da GUI ---
-    private void mostraAjuda() {
-        String mensagem_ajuda = "DivCon\n" + VERSAO + "DivCon é um app para facilitar a divisão de contas com quem você ama";
-        JOptionPane.showMessageDialog(frame, 
-                    mensagem_ajuda,
-                    "Sobre o DivCon",
-                    JOptionPane.INFORMATION_MESSAGE);
+    public void addConta(float valor, String nome, String descricao){
+        Conta novaConta = new Conta(valor, nome, descricao);
+        contas.add(novaConta);
     }
 
-    private void addParticipante() {};
+    public void addParticipante(Conta conta, Participante participante){
+        conta.addParticipante(participante);
+    }
 
-    private String getStatusFormatado() {
-        return "Particpantes: " + participantes.size() + "| Saldo total: " + getSaldoFormatado();
+    public void cadastrarParticipante(String nome, String saldoInicial ){
+        Participante part = new Participante(nome, saldoInicial);
+        participantes.add(part);
     }
-    private String getSaldoFormatado() {
-        return "R$ " + saldoReal + "," + saldoDecimal;
-    }
-    private void addSaldo() {};
+
+    private void addSaldo() {
+        return;
+    };
     // A aplicação vai vir com uns serviços básicos: Internet, água, luz, supermercado, etc
-    private void addServico() {};
+    private void addServico() {
+        return;
+    };
 
-    private void pagarServico() {};
+    private void pagarServico() {
+        return;
+    };
 
-    // --- GUI ---
-    private void makeFrame() {
-        frame = new JFrame("DivCon");
-        JPanel contentPane = (JPanel)frame.getContentPane();
-        
-        makeMenuBar(frame);
-
-        contentPane.setLayout(new BorderLayout(6, 6));
-        /**
-         * Cria um label na parte superior indicando a quantidade de participantes
-         * e o saldo disponível atualmente
-        */
-        statusLabel = new JLabel(getStatusFormatado());
-        contentPane.add(statusLabel);
-
-        // Cria um label na parte inferior para avisos e informações 
-        infoLabel = new JLabel(VERSAO);
-        contentPane.add(infoLabel);
-    }
-
-    private void makeMenuBar(JFrame frame) {
-        JMenuBar menubar = new JMenuBar();
-        frame.setJMenuBar(menubar);
-
-        JMenu menu;
-        JMenuItem item;
-        // Cria o menu de ajuda  
-        menu = new JMenu("Ajuda");
-        menubar.add(menu);
-
-        item = new JMenuItem("Sobre o DivCon...");
-        item.addActionListener(e -> mostraAjuda());
-        menu.add(item);
-        // 
-    }
 }
