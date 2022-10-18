@@ -11,6 +11,11 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
+/**
+ * A classe que reúne as características e comportamento da interface gráfica
+ * da aplicação. São os menuse painéis que possibilitam a criação/login de 
+ * participantes e contas, além de permitirem a divisão de gastos para serviços
+ */
 public class DivConGUI {
 
 	private JFrame frame;
