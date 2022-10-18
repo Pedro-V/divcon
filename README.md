@@ -2,16 +2,15 @@
 
 ### Objetivo
 
-Construir uma aplicação que permita aos usuários dividirem as contas com pessoas próximas no seu convívio.
+A DivCon é uma aplicação que permite que os usuários criem contas coletivas para compartilharem e dividirem os gastos da melhor forma possível, abraçando a transparência nos gastos e nas atribuições. 
 
 ### Diagrama de Classes
 
 ### Como funciona
 
-* Abra a DivCon e convide quem quiser, com quantas pessoas quiser, para compartilhar as despesas
-* Adicione saldo na DivCon, com algum método de transferência (Pix, boleto, cartão de crédito ou débito)
-* Cada participante de uma DivCon tem seu saldo e visibilidade das contribuições e gastos
-* Divida pagamentos de serviços na hora, na proporção que quiser: 50% - 50%, 60% - 40% e até 100% - 0%
+* A aplicação **DivCon** é responsável por administrar e verificar a entrada e ações dos usuários em relação às suas respectivas contas coletivas.
+* Um participante nada mais é que um usuário que pode participar de diferentes contas coletivas. Ele pode adicionar valores ao seu saldo individual. Além disso, a interface gráfica da DivCon permite que ele divida os gastos de um grupo com os membros da conta coletiva, especificando percentuais para os quais cada membro irá contribuir para o pagamento.
+* A conta coletiva é composta de um ou mais participantes que juntam seus saldos individuais para dividirem o pagamento das contas ao final do mês de maneira transparente e fácil.
 
 ### Membros
 
