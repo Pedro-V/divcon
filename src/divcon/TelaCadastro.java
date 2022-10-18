@@ -9,7 +9,7 @@ import javax.swing.JButton;
 
 public class TelaCadastro extends JInternalFrame {
 	private JTextField txtFieldNome;
-	private JTextField txtFieldValor;
+	private JTextField txtFieldParticipante;
 	private JTextField txtFieldDescricao;
 
 	/**
@@ -31,14 +31,14 @@ public class TelaCadastro extends JInternalFrame {
 		getContentPane().add(txtFieldNome);
 		txtFieldNome.setColumns(10);
 		
-		JLabel lblValor = new JLabel("Digite o valor da conta: ");
-		lblValor.setBounds(10, 36, 156, 14);
-		getContentPane().add(lblValor);
+		JLabel lblParticipante = new JLabel("Digite o nome do primeiro participante da conta: ");
+		lblParticipante.setBounds(10, 36, 156, 14);
+		getContentPane().add(lblParticipante);
 		
-		txtFieldValor = new JTextField();
-		txtFieldValor.setBounds(188, 33, 280, 20);
-		getContentPane().add(txtFieldValor);
-		txtFieldValor.setColumns(10);
+		txtFieldParticipante = new JTextField();
+		txtFieldParticipante.setBounds(188, 33, 280, 20);
+		getContentPane().add(txtFieldParticipante);
+		txtFieldParticipante.setColumns(10);
 		
 		JLabel lblDescricao = new JLabel("Digite a descrição da conta: ");
 		lblDescricao.setBounds(10, 61, 168, 14);
