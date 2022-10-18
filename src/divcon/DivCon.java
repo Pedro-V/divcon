@@ -13,8 +13,8 @@ public class DivCon {
         participantes = new ArrayList<>();
     }
 
-    public void addConta(float valor, String nome, String descricao){
-        Conta novaConta = new Conta(valor, nome, descricao);
+    public void addConta(String nome, String descricao){
+        Conta novaConta = new Conta(nome, descricao);
         contas.add(novaConta);
     }
 

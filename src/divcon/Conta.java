@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Conta {
-	private float valor;
     private String nome;
     private String descricao;
-    private int saldoReal = 0;
-    private int saldoDecimal = 0;
+    private Float saldoTotal;
     private List<Participante> participantes;
 
-    public Conta(float valor, String nome, String descricao){
-        this.valor = valor;
+    public Conta(String nome, String descricao){
+        // o saldoTotal da conta sempre começa zerado, e vai enchendo conforme participantes adicionam saldo individual
+        this.saldoTotal = Float.valueOf(0f);
         this.nome = nome;
         this.descricao = descricao;
         participantes = new ArrayList<>();
@@ -22,11 +21,17 @@ public class Conta {
         participantes.add(participante);
     }
 
-    private String getStatusFormatado() {
-        return "Particpantes: " + participantes.size() +" | Saldo total: " + getSaldoFormatado();
+    public String getStatusFormatado() {
+        return "Quantidade de participantes: " + participantes.size() +" | Saldo total: " + getSaldoFormatado();
+    }
+
+    public void listParticipantes() {
+        for (Participante participante : participantes) {
+            System.out.println(participante.getNome() + "\n");
+        }
     }
 
     private String getSaldoFormatado() {
-        return "R$ " + saldoReal + "," + saldoDecimal;
+        return "R$ " + saldoTotal.toString();
     }
 }
