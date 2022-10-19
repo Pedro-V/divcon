@@ -12,6 +12,9 @@ public class DivConGUI2 {
     private JButton addParticipanteButton;
     private JButton addContaButton;
     private DivCon appDivCon;
+    private JTextField txtTeste;
+    private JLabel logoImgLabel;
+    private ImageIcon imgLogo;
 
     public static void main(String[] args) {
         DivConGUI2 window = new DivConGUI2();
@@ -45,6 +48,7 @@ public class DivConGUI2 {
     }
 
     private void makeFrame() {
+    	imgLogo = new ImageIcon(getClass().getResource("logo.png"));
         frame = new JFrame("DivCon");
         // Obtemos o contentPane
         JPanel contentPane = (JPanel)frame.getContentPane();
@@ -53,7 +57,43 @@ public class DivConGUI2 {
         makeMenuBar(frame);
         // Colocamos um JLabel para mostrar o status da aplicação pro usuário
         infoLabel = new JLabel(VERSAO);
-        contentPane.add(infoLabel, BorderLayout.SOUTH);
+        JPanel baixo = new JPanel();
+ 
+        contentPane.add(baixo, BorderLayout.SOUTH);
+        GridBagLayout gbl_baixo = new GridBagLayout();
+        gbl_baixo.columnWidths = new int[]{0, 0, 0, 0, 0};
+        gbl_baixo.rowHeights = new int[]{0, 0};
+        gbl_baixo.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_baixo.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+        baixo.setLayout(gbl_baixo);
+        
+        GridBagLayout gridBagLayout = new GridBagLayout();
+        gridBagLayout.columnWidths = new int[]{0, 0};
+        gridBagLayout.rowHeights = new int[]{0, 0};
+        gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+        gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+        
+        
+        GridBagConstraints gbc_infoLabel = new GridBagConstraints();
+        gbc_infoLabel.fill = GridBagConstraints.BOTH;
+        gbc_infoLabel.gridwidth = 3;
+        gbc_infoLabel.insets = new Insets(0, 0, 0, 5);
+        gbc_infoLabel.gridx = 0;
+        gbc_infoLabel.gridy = 0;
+        baixo.add(infoLabel, gbc_infoLabel);
+        
+        //Redimensionar a logo (resolução bugada)
+        Image image = imgLogo.getImage();  
+        Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+        imgLogo = new ImageIcon(newimg);
+        
+        logoImgLabel = new JLabel(imgLogo);
+        GridBagConstraints gbc_logoImgPanel = new GridBagConstraints();
+        gbc_logoImgPanel.anchor = GridBagConstraints.EAST;
+        gbc_logoImgPanel.fill = GridBagConstraints.VERTICAL;
+        gbc_logoImgPanel.gridx = 3;
+        gbc_logoImgPanel.gridy = 0;
+        baixo.add(logoImgLabel, gbc_logoImgPanel);
         // Uma toolbar lateral com botões para executar diferentes funções
         JPanel toolbar = new JPanel();
         toolbar.setLayout(new GridLayout(0, 2));
