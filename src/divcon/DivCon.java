@@ -1,7 +1,6 @@
 package divcon;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 /**
  * A classe {@code DivCon} é responsável por administrar uma lista dos participantes,
  * das contas, e também do participante e da conta logados no momento na aplicação.
@@ -9,22 +8,23 @@ import java.util.List;
  * pertençam a uma dada {@code Conta} não possam entrar nela.
  */
 public class DivCon {
-    
+    private HashMap<String, Conta> contas;
+    // Esse HashMap tem como chave o nome dos participantes já criados nessa sessão
+    private HashMap<String, Participante> participantes;
     // Essa é a conta atual que está logada/ativa na aplicação
     private Participante participanteLogado;
-    // Lista das contas
-    private List<Conta> contas;
     private Conta contaLogada;
 
     public DivCon() {
-        contas = new ArrayList<>();
+        contas = new HashMap<>();
+        participantes = new HashMap<>();
     }
 
     public void addConta(String nome, String descricao) {
         Conta novaConta = new Conta(nome, descricao);
         // Se o participante logado cria uma conta, ele automaticamente está dentro dela
         novaConta.addParticipante(participanteLogado);
-        contas.add(novaConta);
+        contas.put(nome, novaConta);
     }
 
     public void addParticipante(Conta conta, Participante participante) {
