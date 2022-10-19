@@ -59,6 +59,7 @@ public class DivConGUI2 {
         infoLabel = new JLabel(VERSAO);
         JPanel baixo = new JPanel();
  
+        //O border south foi dividido em um gridbag layout, armazenando a logo png e o infolabel
         contentPane.add(baixo, BorderLayout.SOUTH);
         GridBagLayout gbl_baixo = new GridBagLayout();
         gbl_baixo.columnWidths = new int[]{0, 0, 0, 0, 0};
@@ -66,13 +67,6 @@ public class DivConGUI2 {
         gbl_baixo.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_baixo.rowWeights = new double[]{0.0, Double.MIN_VALUE};
         baixo.setLayout(gbl_baixo);
-        
-        GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{0, 0};
-        gridBagLayout.rowHeights = new int[]{0, 0};
-        gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-        gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
-        
         
         GridBagConstraints gbc_infoLabel = new GridBagConstraints();
         gbc_infoLabel.fill = GridBagConstraints.BOTH;
