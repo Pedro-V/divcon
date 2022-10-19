@@ -1,7 +1,6 @@
 package divcon;
 
 import java.awt.*;
-
 import javax.swing.*;
 
 public class DivConGUI2 {
@@ -13,8 +12,9 @@ public class DivConGUI2 {
     private JButton addContaButton;
     private DivCon appDivCon;
     private JTextField txtTeste;
-    private JLabel logoImgLabel;
-    private ImageIcon imgLogo;
+    private JLabel lblImgLogo;
+    private JPanel baixo;
+    
 
     public static void main(String[] args) {
         DivConGUI2 window = new DivConGUI2();
@@ -48,7 +48,7 @@ public class DivConGUI2 {
     }
 
     private void makeFrame() {
-    	imgLogo = new ImageIcon(getClass().getResource("logo.png"));
+    	
         frame = new JFrame("DivCon");
         // Obtemos o contentPane
         JPanel contentPane = (JPanel)frame.getContentPane();
@@ -57,14 +57,14 @@ public class DivConGUI2 {
         makeMenuBar(frame);
         // Colocamos um JLabel para mostrar o status da aplicação pro usuário
         infoLabel = new JLabel(VERSAO);
-        JPanel baixo = new JPanel();
+        baixo = new JPanel();
  
         //O border south foi dividido em um gridbag layout, armazenando a logo png e o infolabel
         contentPane.add(baixo, BorderLayout.SOUTH);
         GridBagLayout gbl_baixo = new GridBagLayout();
-        gbl_baixo.columnWidths = new int[]{0, 0, 0, 0, 0};
+        gbl_baixo.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
         gbl_baixo.rowHeights = new int[]{0, 0};
-        gbl_baixo.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_baixo.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_baixo.rowWeights = new double[]{0.0, Double.MIN_VALUE};
         baixo.setLayout(gbl_baixo);
         
@@ -76,18 +76,6 @@ public class DivConGUI2 {
         gbc_infoLabel.gridy = 0;
         baixo.add(infoLabel, gbc_infoLabel);
         
-        //Redimensionar a logo (resolução bugada)
-        Image image = imgLogo.getImage();  
-        Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
-        imgLogo = new ImageIcon(newimg);
-        
-        logoImgLabel = new JLabel(imgLogo);
-        GridBagConstraints gbc_logoImgPanel = new GridBagConstraints();
-        gbc_logoImgPanel.anchor = GridBagConstraints.EAST;
-        gbc_logoImgPanel.fill = GridBagConstraints.VERTICAL;
-        gbc_logoImgPanel.gridx = 3;
-        gbc_logoImgPanel.gridy = 0;
-        baixo.add(logoImgLabel, gbc_logoImgPanel);
         // Uma toolbar lateral com botões para executar diferentes funções
         JPanel toolbar = new JPanel();
         toolbar.setLayout(new GridLayout(0, 2));
@@ -105,10 +93,28 @@ public class DivConGUI2 {
 
         addParticipanteButton.setEnabled(true);
         frame.pack();
-
+        
+        addImgLogo();
         /* Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(d.width/2 - frame.getWidth()/2, d.height/2 - frame.getHeight()/2);
         frame.setVisible(true); */
+    }
+    
+    private void addImgLogo() {
+        //BufferedImage dimg = img.getScaledInstance(label.width, label.height, Image.SCALE_SMOOTH);
+        
+        ImageIcon logoImg = new ImageIcon(getClass().getResource("logo.png"));
+        
+        Image image = logoImg.getImage();  
+        Image newimg = image.getScaledInstance(100, 24,  java.awt.Image.SCALE_SMOOTH);
+        logoImg = new ImageIcon(newimg);
+        
+        lblImgLogo = new JLabel(logoImg);
+        GridBagConstraints gbc_lblImgLogo = new GridBagConstraints();
+        gbc_lblImgLogo.anchor = GridBagConstraints.EAST;
+        gbc_lblImgLogo.gridx = 4;
+        gbc_lblImgLogo.gridy = 0;
+        baixo.add(lblImgLogo, gbc_lblImgLogo);
     }
 
     private void makeMenuBar(JFrame frame) {};
