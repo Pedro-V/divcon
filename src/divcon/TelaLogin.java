@@ -26,11 +26,13 @@ public class TelaLogin extends JDialog {
 	private JTextField txtFieldSaldo;
 	private JLabel lblInfo;
 	private JComboBox cadastradosBox;
+	private DivCon appDivCon;
 
 	/**
 	 * Create the dialog.
 	 */
-	public TelaLogin() {
+	public TelaLogin(DivCon appDivCon) {
+		this.appDivCon = appDivCon;
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
@@ -147,17 +149,23 @@ public class TelaLogin extends JDialog {
 		txtFieldSaldo.setText("");
 	}
 	
-	public String entrarSistema() {
+	public void entrarSistema() {
 		String itemSelecionado = cadastradosBox.getSelectedItem().toString();
 		if(itemSelecionado  != "-") {
-			return itemSelecionado;
+			//ele vai pegar a string selecionada do box e pegar do hashmap transformando o usuario atual
+			appDivCon.mudarParticipante(itemSelecionado);
 		} else {
 			if(!getNomeDigitado().equals("")) {
-				setVisible(false);
-				return getNomeDigitado();
+				try {
+					appDivCon.cadastrarParticipante(getNomeDigitado(), getSaldoDigitado());
+					cadastradosBox.addItem(getNomeDigitado());
+					setVisible(false);
+				} catch (Exception e) {
+					lblInfo.setText("Usuário ou saldo inválidos");
+				}
 			} else {
 				lblInfo.setText("Usuário ou saldo inválidos");
-				return null;
+				
 			}
 		}
 	}

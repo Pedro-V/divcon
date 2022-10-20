@@ -13,6 +13,8 @@ public class Conta {
     private Float saldoTotal;
     // Cada chave é o nome, o valor é o objeto participante
     private HashMap<String, Participante> participantes;
+    // A lista de serviços dessa conta
+    private HashMap<Servico, Float> servicos_e_precos;
 
 
     /**
@@ -52,14 +54,14 @@ public class Conta {
     }
 
     public String getInfoConta() {
-        return nome + "\n" + descricao;
+        return nome + "-" + descricao;
     }
 
     public String getSaldoFormatado() {
         return "R$ " + saldoTotal.toString();
     }
 
-    public void pagaServico() {
-
+    public void pagaServico(Pagamento formaPagamento, Servico servico) {
+        servicos_e_precos.
     }
 }

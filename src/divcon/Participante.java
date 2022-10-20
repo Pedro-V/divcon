@@ -1,4 +1,8 @@
 package divcon;
+
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * A classe {@code Participante} representa o conceito de um membro
  * de uma conta coletiva. Ele possui saldo individual, que é somado
@@ -7,6 +11,7 @@ package divcon;
 public class Participante {
     private String nome;
     private Float saldoIndividual;
+    private HashMap<String, Conta> contas; 
 
     /**
      * Constrói um novo {@Participante}
@@ -29,7 +34,16 @@ public class Participante {
         return;
     }
 
+    public String listaContas() {
+        String resultado = "";
+        for (Conta conta : contas.values()) {
+            resultado += conta.getInfoConta();
+        }
+        return resultado;
+    }
+
     public Float getSaldoIndividual() {
         return saldoIndividual;
     }
+
 }

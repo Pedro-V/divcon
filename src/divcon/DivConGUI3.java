@@ -28,7 +28,6 @@ public class DivConGUI3 {
 
     public DivConGUI3() { 
         appDivCon = new DivCon();
-        telaLogin = new TelaLogin();
         makeFrame();
     }
 
@@ -37,7 +36,6 @@ public class DivConGUI3 {
     }
 
     private void makeFrame() {
-    	telaLogin.setVisible(true);
         frame = new JFrame("DivCon");
         // Obtemos o contentPane
         JPanel contentPane = (JPanel)frame.getContentPane();
@@ -72,19 +70,22 @@ public class DivConGUI3 {
         // A toolbar é adicionado a um flow com layout para espaçamento
         JPanel flow = new JPanel();
         flow.add(toolbar);
-
-        contentPane.add(flow, BorderLayout.WEST);
-
-        frame.pack();
         
+        contentPane.add(flow, BorderLayout.WEST);
+        telaLogin = new TelaLogin(appDivCon);
+    	telaLogin.setVisible(true);
+        frame.pack();
+        JButton sair = new JButton("Sair");
+        contentPane.add(sair, BorderLayout.CENTER);
+        sair.addActionListener(e->voltar());
         addImgLogo();
+
         /* Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(d.width/2 - frame.getWidth()/2, d.height/2 - frame.getHeight()/2);
         frame.setVisible(true); */
     }
     
     private void addImgLogo() {
-        //BufferedImage dimg = img.getScaledInstance(label.width, label.height, Image.SCALE_SMOOTH);
         
         ImageIcon logoImg = new ImageIcon(getClass().getResource("logo.png"));
         
@@ -98,6 +99,11 @@ public class DivConGUI3 {
         gbc_lblImgLogo.gridx = 4;
         gbc_lblImgLogo.gridy = 0;
         baixo.add(lblImgLogo, gbc_lblImgLogo);
+    }
+
+    private void voltar(){
+        telaLogin.limparCampos();
+        telaLogin.setVisible(true);
     }
 
     private void makeMenuBar(JFrame frame) {};
