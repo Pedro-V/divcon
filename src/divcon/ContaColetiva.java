@@ -34,6 +34,8 @@ public class ContaColetiva {
 
     public void addParticipante(Participante participante){
         participantes.put(participante.getNome(), participante);
+        // Adicionamos o saldo do novo participante ao saldo total da conta
+        saldoTotal += participante.getSaldoIndividual();
     }
 
     public String getStatusFormatado() {
@@ -60,6 +62,10 @@ public class ContaColetiva {
 
     public String getSaldoFormatado() {
         return "R$ " + saldoTotal.toString();
+    }
+
+    public void adicionaServico(Servico novoServico) {
+        servicos.put(novoServico.getNome(), novoServico);
     }
 
     public void pagaServico(Pagamento pagamento, String nomeServico) {
