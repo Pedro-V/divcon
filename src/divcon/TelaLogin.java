@@ -1,23 +1,9 @@
 package divcon;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Font;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.Dialog.ModalityType;
 
 public class TelaLogin extends JDialog {
 
@@ -25,7 +11,7 @@ public class TelaLogin extends JDialog {
 	private JTextField txtFieldNome;
 	private JTextField txtFieldSaldo;
 	private JLabel lblInfo;
-	private JComboBox cadastradosBox;
+	private JComboBox<String> cadastradosBox;
 	private DivCon appDivCon;
 
 	/**
@@ -96,9 +82,9 @@ public class TelaLogin extends JDialog {
 			contentPanel.add(lblUsrCadastrados, gbc_lblUsrCadastrados);
 		}
 		{
-			cadastradosBox = new JComboBox();
+			cadastradosBox = new JComboBox<>();
 			cadastradosBox.setMaximumRowCount(20);
-			cadastradosBox.setModel(new DefaultComboBoxModel(new String[] {"-"}));
+			cadastradosBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-"}));
 			cadastradosBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			GridBagConstraints gbc_cadastradosBox = new GridBagConstraints();
 			gbc_cadastradosBox.insets = new Insets(0, 0, 5, 5);
