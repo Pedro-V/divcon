@@ -7,7 +7,7 @@ import java.util.*;
  * O {@code saldoTotal} da conta é a soma dos saldos individuais de seus
  * participantes
  */
-public class Conta {
+public class ContaColetiva {
     private String nome;
     private String descricao;
     private Float saldoTotal;
@@ -23,7 +23,7 @@ public class Conta {
      * entre as diferentes contas da aplicação
      * @param descricao A descrição da conta, que pode informar o seu propósito
      */
-    public Conta(String nome, String descricao){
+    public ContaColetiva(String nome, String descricao){
         // o saldoTotal da conta sempre começa zerado, e vai enchendo conforme participantes adicionam saldo individual
         this.saldoTotal = Float.valueOf(0f);
         this.nome = nome;

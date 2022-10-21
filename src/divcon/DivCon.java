@@ -8,12 +8,12 @@ import java.util.*;
  * pertençam a uma dada {@code Conta} não possam entrar nela.
  */
 public class DivCon {
-    private HashMap<String, Conta> contas;
+    private HashMap<String, ContaColetiva> contas;
     // Esse HashMap tem como chave o nome dos participantes já criados nessa sessão
     private HashMap<String, Participante> participantes;
     // Essa é a conta atual que está logada/ativa na aplicação
     private Participante participanteLogado;
-    private Conta contaLogada;
+    private ContaColetiva contaLogada;
 
     public DivCon() {
         contas = new HashMap<>();
@@ -21,13 +21,13 @@ public class DivCon {
     }
 
     public void addConta(String nome, String descricao) {
-        Conta novaConta = new Conta(nome, descricao);
+        ContaColetiva novaConta = new ContaColetiva(nome, descricao);
         // Se o participante logado cria uma conta, ele automaticamente está dentro dela
         novaConta.addParticipante(participanteLogado);
         contas.put(nome, novaConta);
     }
 
-    public void addParticipante(Conta conta, Participante participante) {
+    public void addParticipante(ContaColetiva conta, Participante participante) {
         contaLogada.addParticipante(participante);
     }
 

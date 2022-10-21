@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Participante {
     private String nome;
     private Float saldoIndividual;
-    private HashMap<String, Conta> contas; 
+    private HashMap<String, ContaColetiva> contas; 
 
     /**
      * Constrói um novo {@Participante}
@@ -35,7 +35,7 @@ public class Participante {
 
     public String listaContas() {
         String resultado = "";
-        for (Conta conta : contas.values()) {
+        for (ContaColetiva conta : contas.values()) {
             resultado += conta.getInfoConta();
         }
         return resultado;

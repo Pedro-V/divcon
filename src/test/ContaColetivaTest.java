@@ -2,7 +2,7 @@ package test;
 
 import org.junit.Test;
 
-public class ContaTest {
+public class ContaColetivaTest {
     @Test
     public void testAddParticipante() {
 
