@@ -146,6 +146,8 @@ public class TelaLogin extends JDialog {
 		if(nomeParticipanteSelecionado  != "-") {
 			//ele vai pegar a string selecionada do box e pegar do hashmap transformando o usuario atual
 			appDivCon.logarParticipante(nomeParticipanteSelecionado);
+			lblNomeUsuario.setText(nomeParticipanteSelecionado);
+			setVisible(false);
 		} else {
 			if(!getNomeDigitado().equals("")) {
 				try {

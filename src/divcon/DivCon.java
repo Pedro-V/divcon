@@ -44,7 +44,7 @@ public class DivCon {
     }
 
     public void logarParticipante(String nome) {
-        
+        participanteLogado = participantes.get(nome);
     }
 
     /**
