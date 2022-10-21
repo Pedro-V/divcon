@@ -1,24 +1,8 @@
 package divcon;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.FlowLayout;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import javax.swing.JMenuItem;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
+import javax.swing.*;
 
 public class DivConGUI {
 
