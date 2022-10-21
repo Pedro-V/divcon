@@ -18,7 +18,7 @@ public class TelaLogin extends JDialog {
 	/**
 	 * Cria a janela de tela de login (JDialog)
 	 * @param appDivCon : a parte funcional do aplicativo
-	 * @param lblNomeUsuario : uma label que mostra o nome do usuário logado
+	 * @param lblNomeUsuario : uma label da tela principal que mostra o nome do usuário logado
 	 */
 	public TelaLogin(DivCon appDivCon, JLabel lblNomeUsuario) {
 		this.lblNomeUsuario = lblNomeUsuario;

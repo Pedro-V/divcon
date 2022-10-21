@@ -20,7 +20,7 @@ public class DivConGUI {
     private TelaLogin telaLogin;
 
 	/**
-	 * Launch the application.
+	 * Inicia o aplicativo.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -36,7 +36,7 @@ public class DivConGUI {
 	}
 
 	/**
-	 * Create the application.
+	 * Cria a aplicação.
 	 */
 	public DivConGUI() {
         appDivCon = new DivCon();
@@ -56,6 +56,7 @@ public class DivConGUI {
 		//Criação de um painel secundário no centro da janela
 		contentPanel = new JPanel();
 		frame.getContentPane().add(contentPanel, BorderLayout.CENTER);
+
 		//Definição do GridBagLayout do painel secundario(painel de conteudo)
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{60, 60, 60, 60, 60, 60, 60, 60, 60};
@@ -121,7 +122,7 @@ public class DivConGUI {
      * posicionando-a no local correto
      */
 	private void addImgLogo() {
-			//A imagem foi criada com base no logo.png
+			//A imagem foi criada com base no logoApp.png
 	        ImageIcon logoImg = new ImageIcon(getClass().getResource("logoApp.png"));
 	        
 	        Image image = logoImg.getImage();  
