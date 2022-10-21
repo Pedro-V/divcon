@@ -16,7 +16,9 @@ public class TelaLogin extends JDialog {
 	private JLabel lblNomeUsuario;
 
 	/**
-	 * Create the dialog.
+	 * Cria a janela de tela de login (JDialog)
+	 * @param appDivCon : a parte funcional do aplicativo
+	 * @param lblNomeUsuario : uma label que mostra o nome do usuário logado
 	 */
 	public TelaLogin(DivCon appDivCon, JLabel lblNomeUsuario) {
 		this.lblNomeUsuario = lblNomeUsuario;
@@ -124,10 +126,16 @@ public class TelaLogin extends JDialog {
 		
 	}
 	
+	/**
+     * @return String digitada no campo nome da tela de login
+     */
 	public String getNomeDigitado() {
 		return txtFieldNome.getText();
 	}
 	
+	/**
+     * @return String digitada no campo saldo da tela de login
+     */
 	public String getSaldoDigitado() {
 		return txtFieldSaldo.getText();
 	}
@@ -141,10 +149,14 @@ public class TelaLogin extends JDialog {
 		lblInfo.setText("");
 	}
 	
+	/**
+     * Para entrar no sistema, cria um novo cadastro
+	 * ou entra em um cadastro já existente no sistema
+     */
 	public void entrarSistema() {
 		String nomeParticipanteSelecionado = cadastradosBox.getSelectedItem().toString();
 		if(nomeParticipanteSelecionado  != "-") {
-			//ele vai pegar a string selecionada do box e pegar do hashmap transformando o usuario atual
+			//Pega o usuário selecionado e puxa-o do hashmap
 			appDivCon.logarParticipante(nomeParticipanteSelecionado);
 			lblNomeUsuario.setText(nomeParticipanteSelecionado);
 			setVisible(false);
@@ -156,9 +168,11 @@ public class TelaLogin extends JDialog {
 					lblNomeUsuario.setText(getNomeDigitado());
 					setVisible(false);
 				} catch (Exception e) {
+					//Caso seja digitado algo errado no campo saldo
 					lblInfo.setText("Usuário ou saldo inválidos");
 				}
 			} else {
+				//Caso o campo de nome esteja vazio
 				lblInfo.setText("Usuário ou saldo inválidos");
 				
 			}
