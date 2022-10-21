@@ -18,6 +18,7 @@ public class Participante {
      * @param saldoInicial o saldo com o qual ele começa inicialmente
      */
     public Participante(String nome, String saldoInicial) {
+        contas = new HashMap<>();
         this.nome = nome;
         // Formatamos de 10,9,9 para 10.99, por ex
         String saldoInicialFormatado = saldoInicial.replaceFirst(",", ".").replace(",", "");
@@ -48,13 +49,17 @@ public class Participante {
     public String listaContas() {
         String resultado = "";
         for (ContaColetiva conta : contas.values()) {
-            resultado += conta.getInfoConta();
+            resultado += conta.getInfoConta() + "\n";
         }
         return resultado;
     }
 
     public Float getSaldoIndividual() {
         return saldoIndividual;
+    }
+
+    public HashMap<String, ContaColetiva> getContas() {
+        return contas;
     }
 
     /**
