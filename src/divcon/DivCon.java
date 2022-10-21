@@ -70,9 +70,5 @@ public class DivCon {
     public void pagarServico() {
         return;
     };
-    
-    public Participante getParticipante(String nome) {
-    	return participantes.get(nome);
-    }
 
 }
