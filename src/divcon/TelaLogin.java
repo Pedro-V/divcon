@@ -13,11 +13,13 @@ public class TelaLogin extends JDialog {
 	private JLabel lblInfo;
 	private JComboBox<String> cadastradosBox;
 	private DivCon appDivCon;
+	private JLabel lblNomeUsuario;
 
 	/**
 	 * Create the dialog.
 	 */
-	public TelaLogin(DivCon appDivCon) {
+	public TelaLogin(DivCon appDivCon, JLabel lblNomeUsuario) {
+		this.lblNomeUsuario = lblNomeUsuario;
 		this.appDivCon = appDivCon;
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -130,9 +132,13 @@ public class TelaLogin extends JDialog {
 		return txtFieldSaldo.getText();
 	}
 	
+	/**
+     * Limpa os campos de texto da tela de login
+     */
 	public void limparCampos() {
 		txtFieldNome.setText("");
 		txtFieldSaldo.setText("");
+		lblInfo.setText("");
 	}
 	
 	public void entrarSistema() {
@@ -145,6 +151,7 @@ public class TelaLogin extends JDialog {
 				try {
 					appDivCon.cadastrarParticipante(getNomeDigitado(), getSaldoDigitado());
 					cadastradosBox.addItem(getNomeDigitado());
+					lblNomeUsuario.setText(getNomeDigitado());
 					setVisible(false);
 				} catch (Exception e) {
 					lblInfo.setText("Usuário ou saldo inválidos");

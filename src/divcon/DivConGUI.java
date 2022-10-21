@@ -108,7 +108,7 @@ public class DivConGUI {
 		panelUser.add(lblImgUsuario);
 		
 		//Label com o nome do usuário que está logado
-		lblNomeUsuario = new JLabel("Joao Santos");
+		lblNomeUsuario = new JLabel("");
 		panelUser.add(lblNomeUsuario);
 		
 		//Criação do menu bar
@@ -128,7 +128,7 @@ public class DivConGUI {
 		lblImgLogo = new JLabel();
 		addImgLogo();
 
-        telaLogin = new TelaLogin(appDivCon);
+        telaLogin = new TelaLogin(appDivCon, lblNomeUsuario);
         telaLogin.setVisible(true);
 	}
 	
