@@ -43,12 +43,16 @@ public class DivCon {
         contaLogada = resultado;
     }
 
+    /**
+     * Loga na aplicação como um participante
+     * @param nome Nome do participante a logar
+     */
     public void logarParticipante(String nome) {
         participanteLogado = participantes.get(nome);
     }
 
     /**
-     * O usuário logado irá adicionar saldo no seu perfil da conta logada no momento
+     * Adiciona valores ao saldo individual do participante logado no momento
      * @param quantia: Uma string representando a quantia a ser depositada
      */
     public void addSaldo(String quantia) {
@@ -60,7 +64,9 @@ public class DivCon {
     /**
      * Adiciona um serviço na {@code ContaColetiva contaLogada} atual
      */
-    public void addServico() {
+    public void addServico(String nome, Float custo) {
+        Servico novoServico = new Servico(nome, custo);
+        contaLogada.adicionaServico(novoServico);
         return;
     };
 
