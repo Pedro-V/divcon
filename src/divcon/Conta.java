@@ -1,6 +1,6 @@
 package divcon;
 
-import java.util.HashMap;
+import java.util.*;
 /**
  * A classe {@code Conta} representa uma conta coletiva na aplicação, que
  * reúne um ou mais participantes para compartilharem despesas.
@@ -14,7 +14,7 @@ public class Conta {
     // Cada chave é o nome, o valor é o objeto participante
     private HashMap<String, Participante> participantes;
     // A lista de serviços dessa conta
-    private HashMap<Servico, Float> servicos_e_precos;
+    private HashMap<String, Servico> servicos;
 
 
     /**
@@ -28,6 +28,7 @@ public class Conta {
         this.saldoTotal = Float.valueOf(0f);
         this.nome = nome;
         this.descricao = descricao;
+        servicos = new HashMap<>();
         participantes = new HashMap<>();
     }
 
@@ -61,7 +62,8 @@ public class Conta {
         return "R$ " + saldoTotal.toString();
     }
 
-    public void pagaServico(Pagamento formaPagamento, Servico servico) {
-        servicos_e_precos.
+    public void pagaServico(Pagamento pagamento, String nomeServico) {
+        Servico servicoAPagar = servicos.get(nomeServico);
+        servicoAPagar.recebePagamento(pagamento);
     }
 }

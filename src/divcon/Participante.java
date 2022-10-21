@@ -1,7 +1,6 @@
 package divcon;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * A classe {@code Participante} representa o conceito de um membro
@@ -45,5 +44,4 @@ public class Participante {
     public Float getSaldoIndividual() {
         return saldoIndividual;
     }
-
 }
