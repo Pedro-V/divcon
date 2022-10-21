@@ -142,10 +142,10 @@ public class TelaLogin extends JDialog {
 	}
 	
 	public void entrarSistema() {
-		String itemSelecionado = cadastradosBox.getSelectedItem().toString();
-		if(itemSelecionado  != "-") {
+		String nomeParticipanteSelecionado = cadastradosBox.getSelectedItem().toString();
+		if(nomeParticipanteSelecionado  != "-") {
 			//ele vai pegar a string selecionada do box e pegar do hashmap transformando o usuario atual
-			appDivCon.mudarParticipante(itemSelecionado);
+			appDivCon.logarParticipante(nomeParticipanteSelecionado);
 		} else {
 			if(!getNomeDigitado().equals("")) {
 				try {

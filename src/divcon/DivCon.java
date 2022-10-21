@@ -34,7 +34,16 @@ public class DivCon {
         participanteLogado = novoParticipante;
     }
 
-    public void mudarParticipante(String nome) {
+    /**
+     * Escolhe uma conta para ser a utiliza ou logada no momento.
+     * @param nome o nome da conta a ser logada
+     */
+    public void logaConta(String nome) {
+        ContaColetiva resultado = contas.get(nome);
+        contaLogada = resultado;
+    }
+
+    public void logarParticipante(String nome) {
         
     }
 
