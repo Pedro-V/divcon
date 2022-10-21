@@ -46,7 +46,7 @@ public class ContaColetiva {
      * 
      * @return uma {@code String} listando os participantes
      */
-    public String listParticipantes() {
+    public String listaParticipantes() {
         String resultado = "";
         for (Participante participante : participantes.values()) {
             resultado += participante.getNome() + "\n";

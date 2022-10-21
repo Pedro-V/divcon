@@ -27,14 +27,11 @@ public class DivCon {
         contas.put(nome, novaConta);
     }
 
-    public void addParticipante(ContaColetiva conta, Participante participante) {
-        contaLogada.addParticipante(participante);
-    }
-
     public void cadastrarParticipante(String nome, String saldoInicial) {
-        Participante part = new Participante(nome, saldoInicial);
+        Participante novoParticipante = new Participante(nome, saldoInicial);
+        participantes.put(nome, novoParticipante);
         // automaticamente esse participante vira o logado
-        participanteLogado = part;
+        participanteLogado = novoParticipante;
     }
 
     public void mudarParticipante(String nome) {
@@ -50,12 +47,18 @@ public class DivCon {
         participanteLogado.addSaldoIndividual(quantiaFloat);
         return;
     };
-    // A aplicação vai vir com uns serviços básicos: Internet, água, luz, supermercado, etc
-    private void addServico() {
+
+    /**
+     * Adiciona um serviço na {@code ContaColetiva contaLogada} atual
+     */
+    public void addServico() {
         return;
     };
 
-    private void pagarServico() {
+    /**
+     * 
+     */
+    public void pagarServico() {
         return;
     };
 

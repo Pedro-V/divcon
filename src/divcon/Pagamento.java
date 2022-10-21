@@ -1,16 +1,27 @@
 package divcon;
 
 import java.util.HashMap;
-
+/**
+ * A classe {@code Pagamento} é uma classe pai para os diferentes tipos
+ * de pagamento: {@code Pix}, {@code CartaoCredito}, {@code CartaoDebito}.
+ * Ela encapsula informações e comportamentos do ato de pagar uma conta
+ * e também de adicionar dinheiro no saldo individual de um {@code 
+ * Participante}.
+ */
 public class Pagamento {
     protected boolean formaPagamento;
     protected Float valor_atual;
     protected Float valor_pago;
-    protected HashMap<Participante, Float> tre;
+    protected HashMap<Participante, Float> tabelaPagantes;
 
+    public Pagamento(Float valor_atual, Float valor_pago, HashMap<Participante, Float> tabelaPagantes) {
+        this.valor_atual = valor_atual;
+        this.valor_pago = valor_pago;
+        this.tabelaPagantes = tabelaPagantes;
+    }
     
     public Float pegarPagamento(Participante participante){
-        return tre.get(participante);
+        return tabelaPagantes.get(participante);
     }
 
 
@@ -33,44 +44,21 @@ public class Pagamento {
     }
 
     public void atualizaSaldo(){
-        getSaldoIndividual();
+        return;
     }
     
     public void realizaPagamento(){
-        
-    }
-    public void setForma_pagamento(Bool forma_pagamento) {
-        this.forma_pagamento = forma_pagamento;
+        return;
     }
 
     public Float getValor_atual() {
         return valor_atual;
     }
 
-    public void setValor_atual(Float valor_atual) {
-        this.valor_atual = valor_atual;
-    }
-
     public Float getValor_pago() {
         return valor_pago;
     }
 
-    public void setValor_pago(Float valor_pago) {
-        this.valor_pago = valor_pago;
-    }
-
-    public Participante getParticipante() {
-        return participante;
-    }
-
-    public void setParticipante(Participante participante) {
-        this.participante = participante;
-    }
-
-    public Pagamento(Float valor_atual, Float valor_pago, HashMap<Participante, Float> tre) {
-        this.valor_atual = valor_atual;
-        this.valor_pago = valor_pago;
-        this.tre = tre;
-    }
+    
 
 }
