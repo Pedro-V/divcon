@@ -10,8 +10,6 @@ public class DivConGUI3 {
     // private  PainelConta contaPainel;
     private JLabel infoLabel;
     private DivCon appDivCon;
-    private JTextField txtTeste;
-    private JLabel logoImgLabel;
     private JLabel lblImgLogo;
     private JPanel baixo;
     private TelaLogin telaLogin;
