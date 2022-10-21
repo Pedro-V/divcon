@@ -55,4 +55,12 @@ public class Servico {
         }
         return troco;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Float getCusto() {
+        return custo;
+    }
 }
