@@ -9,15 +9,30 @@ public class Servico {
     private String nome;
     private Float custo;
 
+    /**
+     * Aloca um novo objeto {@code Servico}, com um nome e custo inicial
+     * @param nome O nome do {@code Servico}. Ex: "Supermercado"
+     * @param custo O custo inicial do {@code Servico}. Ex: 109.99
+     */
     public Servico(String nome, Float custo) {
         this.nome = nome;
         this.custo = custo;
     }
 
+    /**
+     * Verifica se esse serviço já foi pago.
+     * @return {@code boolean}, que se for {@code true} é porque o serviço
+     * foi pago, caso contrário {@code false}.
+     */
     public boolean estaPago() {
         return custo == 0f;
     }
 
+    /**
+     * Traz uma string contendo um pequeno sumário da serviço, 
+     * como nome e o valor ainda a pagarf
+     * @return
+     */
     public String infoSummary() {
         return nome + ". Valor ainda a pagar: R$ " + custo.toString();
     }
