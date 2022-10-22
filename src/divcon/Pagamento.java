@@ -9,54 +9,48 @@ import java.util.HashMap;
  * Participante}.
  */
 public class Pagamento {
-    protected boolean formaPagamento;
-    protected Float valor_atual;
-    protected Float valor_pago;
-    protected HashMap<Participante, Float> tabelaPagantes;
+    private Float valorPago;
+    private HashMap<Participante, valorPago> tabelaPagantes;
+    private HashMap<Servico, Float> tabelaServicos;
+    private Servico servico;
 
     public Pagamento(Float valor_atual, Float valor_pago, HashMap<Participante, Float> tabelaPagantes) {
-        this.valor_atual = valor_atual;
         this.valor_pago = valor_pago;
         this.tabelaPagantes = tabelaPagantes;
+        this.tabelaServicos = tabelaServicos;
     }
     
-    public Float pegarPagamento(Participante participante){
-        return tabelaPagantes.get(participante);
+    public Float retornaCusto(Servico servico){
+        return tabelaServicos.get(servico)
+    }
+    
+    
+    public void adicionaPagamento(Participante participante, Float valor){
+        valor = 450.0;
+        tabelaPagantes.put(participante.getNome(), valor);
     }
 
-
-    public void informaPagamento(){
-        if (formaPagamento) {
-            System.out.println("Pagamento em débito");
-        } else {
-            System.out.println("Pagamento em crédito");
-        }
+    public void atualizarServico(Participante participante, Servico servico){
+        preco = atualizarPagamento(participante);
+        custo = tabelaServicos.get(servico);
+        valorFinal = custo - preco;
+        tabelaServicos.put(servico.getNome(), valorFinal)
     }
 
-    public Float atualizarPagamento(Participante participante){
-        valor_pago = valor_pago + pegarPagamento(participante);
-        return valor_pago;
-    }
-
-    public void atualizarConta(Participante participante, Float valor_atual, Float valor_pago){
-        valor_pago = atualizarPagamento(participante);
-        this.valor_atual = valor_atual - valor_pago;
-    }
-
+    /**
     public void atualizaSaldo(){
         return;
     }
+    */
     
+    /**
     public void realizaPagamento(){
         return;
     }
+    */
 
-    public Float getValor_atual() {
-        return valor_atual;
-    }
-
-    public Float getValor_pago() {
-        return valor_pago;
+    public Float getValorPago() {
+        return valorPago;
     }
 
     
