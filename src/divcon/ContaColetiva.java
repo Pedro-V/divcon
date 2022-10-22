@@ -76,4 +76,8 @@ public class ContaColetiva {
     public Participante getParticipante(String nome) {
         return participantes.get(nome);
     }
+    
+    public Servico getServico(String nome){
+        return servicos.get(nome);
+    }
 }
