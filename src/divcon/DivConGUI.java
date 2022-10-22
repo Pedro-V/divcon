@@ -15,9 +15,11 @@ public class DivConGUI {
 	private JLabel lblNomeUsuario;
 	private JMenuBar menuBar;
 	private JMenu mnOpcoes;
-	private JMenuItem mItemSair;
+	private JMenuItem mItemMudarParticipante;
     private DivCon appDivCon;
     private TelaLogin telaLogin;
+    private JScrollPane scrollPaneContas;
+    private JPanel painelContas;
 
 	/**
 	 * Inicia o aplicativo.
@@ -61,8 +63,8 @@ public class DivConGUI {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{60, 60, 60, 60, 60, 60, 60, 60, 60};
 		gridBagLayout.rowHeights = new int[]{0, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40};
-		gridBagLayout.columnWeights = new double[]{Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0};
+		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gridBagLayout);
 		
 		//Criação de um painel para ficar no norte da janela
@@ -103,11 +105,25 @@ public class DivConGUI {
 		mnOpcoes = new JMenu("Opções");
 		menuBar.add(mnOpcoes);
 		
-		mItemSair = new JMenuItem("Sair");
-		mnOpcoes.add(mItemSair);
+		mItemMudarParticipante = new JMenuItem("Mudar Participante");
+		mnOpcoes.add(mItemMudarParticipante);
 		
+		scrollPaneContas = new JScrollPane();
+        GridBagConstraints gbc_scrollPaneContas = new GridBagConstraints();
+        gbc_scrollPaneContas.gridwidth = 7;
+        gbc_scrollPaneContas.gridheight = 8;
+        gbc_scrollPaneContas.insets = new Insets(0, 0, 5, 5);
+        gbc_scrollPaneContas.fill = GridBagConstraints.BOTH;
+        gbc_scrollPaneContas.gridx = 1;
+        gbc_scrollPaneContas.gridy = 1;
+        contentPanel.add(scrollPaneContas, gbc_scrollPaneContas);
+		
+        painelContas = new JPanel();
+        scrollPaneContas.setViewportView(painelContas);
+        painelContas.setLayout(new BoxLayout(painelContas, BoxLayout.Y_AXIS));
+        
 		//Ações de cada item do menubar
-		mItemSair.addActionListener(e -> deslogarUsuario());
+		mItemMudarParticipante.addActionListener(e -> deslogarUsuario());
 		
 		//Criação da imagem de logo do aplicativo
 		lblImgLogo = new JLabel();
