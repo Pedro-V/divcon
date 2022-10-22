@@ -11,7 +11,7 @@ A DivCon é uma aplicação que permite que os usuários criem contas coletivas 
 * A aplicação **DivCon** é responsável por administrar e verificar a entrada e ações dos usuários em relação às suas respectivas contas coletivas.
 * Um participante nada mais é que um usuário que pode participar de diferentes contas coletivas. Ele pode adicionar valores ao seu saldo individual.
 * A conta coletiva é composta de um ou mais participantes que juntam seus saldos individuais para dividirem o pagamento das contas ao final do mês de maneira transparente e fácil.
-* A interface gráfica da DivCon permite que se divida os gastos de um serviço (como água, luz, etc) com os membros da conta coletiva, especificando percentuais para os quais cada membro irá contribuir para o pagamento.
+* A interface gráfica da DivCon permite que se divida os gastos de um serviço (como água, luz, etc) com os membros da conta coletiva, cada membro contribui com a quantia que desejar, sendo esta posteriormente subtraída do custo total do serrviço.
 
 ### To-Do list
 
@@ -27,6 +27,8 @@ A DivCon é uma aplicação que permite que os usuários criem contas coletivas 
 * Garantir que a integração da GUI com as funcionalidades do modelo (`DivCon.java`) esteja funcionando como esperado
 * Escrever testes
 * Escrever documentação, comentários úteis e nomes de variáveis/métodos/classes que sejam claros.
+* Criar/Definir interação mouse e teclado para escolha do tipo de serviço que se deseja pagar.
+* Criar/Definir interação mouse e teclado para escolha da quantia total que cada participante deseja pagar.
 
 ### Desenvolvedores
 
