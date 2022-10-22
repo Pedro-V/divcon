@@ -43,7 +43,7 @@ public class Servico {
      * @return o troco da operação de pagamento
      */
     public Float recebePagamento(Pagamento pagamento) {
-        Float valorPago = pagamento.getValor_pago();
+        Float valorPago = pagamento.getValorPago();
         Float troco = Float.valueOf(0);
         // Se tiver troco
         if (valorPago >= custo) {
