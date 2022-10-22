@@ -13,7 +13,7 @@ public class Participante {
     private HashMap<String, ContaColetiva> contas; 
 
     /**
-     * Constrói um novo {@Participante}
+     * Constrói um novo {@code Participante}
      * @param nome o nome do novo participante
      * @param saldoInicial o saldo com o qual ele começa inicialmente
      */

@@ -72,4 +72,8 @@ public class ContaColetiva {
         Servico servicoAPagar = servicos.get(nomeServico);
         servicoAPagar.recebePagamento(pagamento);
     }
+
+    public Participante getParticipante(String nome) {
+        return participantes.get(nome);
+    }
 }
