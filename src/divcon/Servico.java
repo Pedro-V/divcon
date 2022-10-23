@@ -14,9 +14,9 @@ public class Servico {
      * @param nome O nome do {@code Servico}. Ex: "Supermercado"
      * @param custo O custo inicial do {@code Servico}. Ex: 109.99
      */
-    public Servico(String nome, String custo) {
+    public Servico(String nome, Float custo) {
         this.nome = nome;
-        this.custo = Float.valueOf(custo);
+        this.custo = custo;
     }
 
     /**

@@ -6,8 +6,8 @@ import divcon.Servico;;
 public class ServicoTest {
     @Test
     public void testEstaPago() {
-        Servico servicoTeste = new Servico("!azx/_S123Z", "1002,22");
-        servicoTeste.recebePagamento(null);
+        Servico servicoTeste = new Servico("!azx/_S123Z", 1000.22f);
+        //servicoTeste.recebePagamento(null);
     }
 
     @Test
