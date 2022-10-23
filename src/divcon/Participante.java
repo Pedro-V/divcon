@@ -20,9 +20,7 @@ public class Participante {
     public Participante(String nome, String saldoInicial) {
         contas = new HashMap<>();
         this.nome = nome;
-        // Formatamos de 10,9,9 para 10.99, por ex
-        String saldoInicialFormatado = saldoInicial.replaceFirst(",", ".").replace(",", "");
-        saldoIndividual = Float.parseFloat(saldoInicialFormatado);
+        this.saldoIndividual = Float.valueOf(saldoInicial);
     }
 
     /**

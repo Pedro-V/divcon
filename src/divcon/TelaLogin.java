@@ -1,6 +1,8 @@
 package divcon;
 
 import java.awt.*;
+import java.text.CharacterIterator;
+import java.text.StringCharacterIterator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -148,7 +150,55 @@ public class TelaLogin extends JDialog {
 		txtFieldSaldo.setText("");
 		lblInfo.setText("");
 	}
+
+	/**
+	 * Checa se uma string não contêm nenhum elemento como substring
+	 * @param s string original a testar
+	 * @param substrings string que lista os chars para testarmos
+	 * @return
+	 */
+	private boolean stringNaoContemChars(String s, String substrings) {
+		CharacterIterator it = new StringCharacterIterator(s);
+		while (it.current() != CharacterIterator.DONE)
+        {
+			String atual = String.valueOf(it.current());
+            if (substrings.contains(atual)) {
+				return false;
+			}
+        }
+		return true;
+	}
 	
+	/**
+	 * Checa se o texto é uma representação válida do tipo
+	 * @param textoInput string de entrada
+	 * @param tipo tipo que desejamos testar
+	 * @return um {@code boolean} indicando {@code true} se é representação
+	 * válida, {@code false} caso contrário
+	 */
+	private boolean checaConformes(String textoInput, String tipo) {
+		boolean resultado = true;;
+		switch (tipo) {
+			case "String":
+				String charsIlegais = "0123456789!@#$%¨&*()-=+";
+				resultado = stringNaoContemChars(textoInput, charsIlegais) || !textoInput.equals("");
+				break;
+			case "Float":
+				try {
+					// Formatamos de 10,9,9 para 10.99, por ex
+					String saldoInicialFormatado = textoInput.replaceFirst(",", ".").replace(",", "");
+					Float.parseFloat(saldoInicialFormatado);
+					resultado = true;
+				} catch (Exception e) {
+					resultado = false;
+				}
+				break;
+			default:
+				break;
+		}
+		return resultado;
+	}
+
 	/**
      * Para entrar no sistema, cria um novo cadastro
 	 * ou entra em um cadastro já existente no sistema
@@ -156,25 +206,19 @@ public class TelaLogin extends JDialog {
 	public void entrarSistema() {
 		String nomeParticipanteSelecionado = cadastradosBox.getSelectedItem().toString();
 		if(nomeParticipanteSelecionado  != "-") {
-			//Pega o usuário selecionado e puxa-o do hashmap
+			// Pega o usuário selecionado e puxa-o do hashmap
 			appDivCon.logarParticipante(nomeParticipanteSelecionado);
 			lblNomeUsuario.setText(nomeParticipanteSelecionado);
 			setVisible(false);
 		} else {
-			if(!getNomeDigitado().equals("")) {
-				try {
-					appDivCon.cadastrarParticipante(getNomeDigitado(), getSaldoDigitado());
-					cadastradosBox.addItem(getNomeDigitado());
-					lblNomeUsuario.setText(getNomeDigitado());
-					setVisible(false);
-				} catch (Exception e) {
-					//Caso seja digitado algo errado no campo saldo
-					lblInfo.setText("Usuário ou saldo inválidos");
-				}
+			String nomeDigitado = getNomeDigitado();
+			String saldoDigitado = getSaldoDigitado();
+			if (checaConformes(saldoDigitado, "Float") && checaConformes(nomeDigitado, "String")) {
+				appDivCon.cadastrarParticipante(nomeDigitado, saldoDigitado);
+				cadastradosBox.addItem(nomeDigitado);
+				lblNomeUsuario.setText(nomeDigitado);
 			} else {
-				//Caso o campo de nome esteja vazio
 				lblInfo.setText("Usuário ou saldo inválidos");
-				
 			}
 		}
 	}
