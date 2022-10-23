@@ -68,13 +68,33 @@ public class ContaColetiva {
         return "R$ " + saldoTotal.toString();
     }
 
+    /**
+     * Adiciona um novo {@code Servico} na conta
+     * @param novoServico o novo objeto serviço a ser inserido na conta
+     */
     public void adicionaServico(Servico novoServico) {
         servicos.put(novoServico.getNome(), novoServico);
     }
 
-    public void pagaServico(Pagamento pagamento, String nomeServico) {
+    
+    /**
+     * Processa o {@code Pagamento} de um dado {@code Servico}
+     * @param pagamento objeto que representa o pagamento a ser feito
+     * @param nomeServico o nome do serviço que será pago
+     * @return um {@code boolean} representando se a operação foi um
+     * sucesso ({@code true}) ou não ({@code false})
+     */
+    public boolean pagaServico(Pagamento pagamento, String nomeServico) {
+        boolean resultadoOperacao;
         Servico servicoAPagar = servicos.get(nomeServico);
-        servicoAPagar.recebePagamento(pagamento);
+        if (servicoAPagar == null) {
+            resultadoOperacao = false;
+        }
+        else {
+            servicoAPagar.recebePagamento(pagamento);
+            resultadoOperacao = true;    
+        }
+        return resultadoOperacao;   
     }
 
     public Participante getParticipante(String nome) {

@@ -4,8 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import divcon.ContaColetiva;
-import divcon.Participante;
+import divcon.*;
 
 public class ContaColetivaTest {
     String nomeConta = "Apê";
@@ -24,16 +23,6 @@ public class ContaColetivaTest {
         ContaColetiva contaTeste = new ContaColetiva(nomeConta, descricaoConta);
         String info = contaTeste.getInfoConta();
         assertEquals(infoEsperada, info);
-    }
-
-    @Test
-    public void testGetSaldoFormatado() {
-
-    }
-
-    @Test
-    public void testGetStatusFormatado() {
-
     }
 
     @Test
@@ -56,6 +45,12 @@ public class ContaColetivaTest {
 
     @Test
     public void testPagaServico() {
-
+        String nomeServicoTeste = "supermercado";
+        ContaColetiva contaTeste = new ContaColetiva(nomeConta, descricaoConta);
+        Servico servicoTeste = new Servico(nomeServicoTeste, "100");;
+        contaTeste.adicionaServico(servicoTeste);
+        // Mudar
+        Pagamento pagamentoParcial = new Pagamento(null, null, null);
+        contaTeste.pagaServico(pagamentoParcial, nomeServicoTeste);
     }
 }
