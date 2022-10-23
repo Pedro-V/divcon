@@ -56,8 +56,12 @@ public class ContaColetiva {
         return resultado;
     }
 
-    public String getInfoConta() {
-        return nome + " - " + descricao;
+    public String getNomeConta() {
+        return nome;
+    }
+
+    public String getDescricaoConta() {
+        return descricao;
     }
 
     public String getSaldoFormatado() {
