@@ -152,10 +152,11 @@ public class TelaLogin extends JDialog {
 	}
 
 	/**
-	 * Checa se uma string não contêm nenhum elemento como substring
+	 * Checa se uma string não contêm nenhum caractere ilegal 
+	 * como substring
 	 * @param s string original a testar
-	 * @param substrings string que lista os chars para testarmos
-	 * @return
+	 * @return um booleano indicando {@code true} se não contém
+	 * nenhum caractere ilegal, caso contrário {@code false}
 	 */
 	private boolean stringNaoContemChars(String s) {
 		CharacterIterator it = new StringCharacterIterator(s);
