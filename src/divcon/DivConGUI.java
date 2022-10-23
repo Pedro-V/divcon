@@ -164,10 +164,18 @@ public class DivConGUI {
     
     /**
      * Desloga o usuário atual, mostrando a tela de login novamente,
-     * para ser possível entrar em outra conta
+     * para ser possível entrar em outra conta,
+     * ao deslogar as contas da tela são apagadas
      */
     private void deslogarUsuario(){
         telaLogin.limparCampos();
+        
+        //Apaga todas as contas da tela
+        painelContas.removeAll();
+        //Redesenha o painel de contas
+        painelContas.repaint();
+        painelContas.revalidate();
+        
         telaLogin.setVisible(true);
     }
   
