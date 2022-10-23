@@ -104,7 +104,7 @@ public class DivConGUI {
         frame.getContentPane().add(scrollContas, BorderLayout.CENTER);
         
         painelContas = new JPanel();
-        scrollContas.setViewportView(painelContas);
+        scrollContas.setColumnHeaderView(painelContas);
         painelContas.setLayout(new BoxLayout(painelContas, BoxLayout.Y_AXIS));
         
 		//Criação do menu bar

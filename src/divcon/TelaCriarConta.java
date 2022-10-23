@@ -110,7 +110,7 @@ public class TelaCriarConta extends JDialog {
 	private void criarConta() {
 		appDivCon.addConta(getNomeConta(), getDescricaoConta());
 
-		PainelConta pnlNovaConta = new PainelConta(getNomeConta(), getDescricaoConta());
+		PainelConta pnlNovaConta = new PainelConta(getNomeConta() + "  ", getDescricaoConta());
 		painelContas.add(pnlNovaConta);
 
         //Redesenha a janela principal, "atualiza"
