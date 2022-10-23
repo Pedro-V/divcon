@@ -64,7 +64,7 @@ public class DivCon {
     /**
      * Adiciona um serviço na {@code ContaColetiva contaLogada} atual
      */
-    public void addServico(String nome, Float custo) {
+    public void addServico(String nome, String custo) {
         Servico novoServico = new Servico(nome, custo);
         contaLogada.adicionaServico(novoServico);
         return;
