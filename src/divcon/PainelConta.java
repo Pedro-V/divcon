@@ -8,9 +8,9 @@ import java.awt.*;
 public class PainelConta extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Um painel para mostrar as informações da conta.
 	 */
-	public PainelConta(ContaColetiva conta) {
+	public PainelConta(String nome, String descricao) {
 		setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {80, 310, 80};
@@ -19,7 +19,7 @@ public class PainelConta extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0};
 		setLayout(gridBagLayout);
 		
-		JLabel lblNomeConta = new JLabel(conta.getNomeConta());
+		JLabel lblNomeConta = new JLabel(nome);
 		lblNomeConta.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNomeConta = new GridBagConstraints();
 		gbc_lblNomeConta.fill = GridBagConstraints.VERTICAL;
@@ -28,7 +28,7 @@ public class PainelConta extends JPanel {
 		gbc_lblNomeConta.gridy = 0;
 		add(lblNomeConta, gbc_lblNomeConta);
 		
-		JLabel lblDescricao = new JLabel(conta.getDescricaoConta());
+		JLabel lblDescricao = new JLabel(descricao);
 		lblDescricao.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblDescricao = new GridBagConstraints();
 		gbc_lblDescricao.fill = GridBagConstraints.VERTICAL;

@@ -19,9 +19,11 @@ public class DivConGUI {
 	private JMenuItem mItemMudarParticipante;
     private DivCon appDivCon;
     private TelaLogin telaLogin;
+    private TelaCriarConta telaCriarConta;
     private JPanel panelSouth;
     private JScrollPane scrollContas;
     private JPanel painelContas;
+    private JButton btnAddConta;
 
 	/**
 	 * Inicia o aplicativo.
@@ -92,14 +94,11 @@ public class DivConGUI {
 		panelSouth = new JPanel();
         frame.getContentPane().add(panelSouth, BorderLayout.SOUTH);
         GridBagLayout gbl_panelSouth = new GridBagLayout();
-        gbl_panelSouth.columnWidths = new int[] {30, 60, 60, 60, 60, 60, 60, 60, 50, 60};
+        gbl_panelSouth.columnWidths = new int[] {30, 60, 30, 30, 60, 60, 60, 60, 50, 60};
         gbl_panelSouth.rowHeights = new int[] {30};
         gbl_panelSouth.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
         gbl_panelSouth.rowWeights = new double[]{1.0};
         panelSouth.setLayout(gbl_panelSouth);
-        
-        telaLogin = new TelaLogin(appDivCon, lblNomeUsuario);
-        telaLogin.setVisible(true);
         
         scrollContas = new JScrollPane();
         frame.getContentPane().add(scrollContas, BorderLayout.CENTER);
@@ -123,9 +122,15 @@ public class DivConGUI {
 		
 		//Criação da imagem de logo do aplicativo
 		addImgLogo();
-
+		
+		frame.setVisible(true);
+		telaLogin = new TelaLogin(appDivCon, lblNomeUsuario);
+        telaLogin.setVisible(true);
         
-       
+        telaCriarConta = new TelaCriarConta(appDivCon, painelContas, frame);
+        telaCriarConta.setVisible(false);
+		
+		btnAddConta.addActionListener(e -> telaCriarConta.setVisible(true));
 	}
 	
     /**
@@ -139,6 +144,14 @@ public class DivConGUI {
 	        Image image = logoImg.getImage();  
 	        Image newimg = image.getScaledInstance(100, 24,  java.awt.Image.SCALE_SMOOTH);
 	        logoImg = new ImageIcon(newimg);
+	        
+	        btnAddConta = new JButton("Adicionar conta");
+	        btnAddConta.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	        GridBagConstraints gbc_btnAddConta = new GridBagConstraints();
+	        gbc_btnAddConta.insets = new Insets(0, 0, 0, 5);
+	        gbc_btnAddConta.gridx = 1;
+	        gbc_btnAddConta.gridy = 0;
+	        panelSouth.add(btnAddConta, gbc_btnAddConta);
 	        
 	        lblImgLogo = new JLabel(logoImg);
 	        GridBagConstraints gbc_lblImgLogo = new GridBagConstraints();
@@ -157,5 +170,5 @@ public class DivConGUI {
         telaLogin.limparCampos();
         telaLogin.setVisible(true);
     }
-	
+  
 }

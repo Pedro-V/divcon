@@ -10,11 +10,21 @@ public class TelaCriarConta extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtFieldNome;
 	private JTextField txtFieldDescricao;
+	private DivCon appDivCon;
+	private JPanel painelContas;
+	private JFrame janelaPrincipal;
 
 	/**
-	 * Create the dialog.
+	 * Cria a janela
+     * @param appDivCon acesso as funções do aplicativo
+     * @param painelContas painel da janela principal que mostra infos das contas
+     * @param janelaPrincipal janela principal do app
 	 */
-	public TelaCriarConta() {
+	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal) {
+		this.appDivCon = appDivCon;
+		this.painelContas = painelContas;
+		this.janelaPrincipal = janelaPrincipal;
+		
 		setBounds(100, 100, 400, 350);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,8 +80,9 @@ public class TelaCriarConta extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnNewButton = new JButton("Criar");
-				buttonPane.add(btnNewButton);
+				JButton btnCriarConta = new JButton("Criar");
+				btnCriarConta.addActionListener(e -> criarConta());
+				buttonPane.add(btnCriarConta);
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
@@ -79,6 +90,42 @@ public class TelaCriarConta extends JDialog {
 				buttonPane.add(btnCancelar);
 			}
 		}
+	}
+	
+    //Get string digitada no campo nome
+	private String getNomeConta() {
+		return txtFieldNome.getText();
+	}
+	
+    //Get string digitada no campo descrição
+	private String getDescricaoConta() {
+		return txtFieldDescricao.getText();
+	}
+	
+    /**
+	 * Cria a conta,
+     * passa o que foi digitado nos campos para o aplicativo,
+     * cria o painel com as informações da conta
+	 */
+	private void criarConta() {
+		appDivCon.addConta(getNomeConta(), getDescricaoConta());
+
+		PainelConta pnlNovaConta = new PainelConta(getNomeConta(), getDescricaoConta());
+		painelContas.add(pnlNovaConta);
+
+        //Redesenha a janela principal, "atualiza"
+		janelaPrincipal.revalidate();
+
+		limparCampos();
+
+        //Torna esta janela invisivel após a criação da conta
+		this.setVisible(false); 
+	}
+	
+    //Limpa os campos digitados
+	private void limparCampos() {
+		txtFieldNome.setText("");
+		txtFieldDescricao.setText("");
 	}
 
 }
