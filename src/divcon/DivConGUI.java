@@ -3,12 +3,13 @@ package divcon;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class DivConGUI {
 
 	private JFrame frame;
 	private JLabel lblImgLogo;
-	private JPanel contentPanel;
 	private JPanel panelNorth;
 	private JPanel panelUser;
 	private JLabel lblImgUsuario;
@@ -18,7 +19,8 @@ public class DivConGUI {
 	private JMenuItem mItemMudarParticipante;
     private DivCon appDivCon;
     private TelaLogin telaLogin;
-    private JScrollPane scrollPaneContas;
+    private JPanel panelSouth;
+    private JScrollPane scrollContas;
     private JPanel painelContas;
 
 	/**
@@ -55,18 +57,6 @@ public class DivConGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout());
 		
-		//Criação de um painel secundário no centro da janela
-		contentPanel = new JPanel();
-		frame.getContentPane().add(contentPanel, BorderLayout.CENTER);
-
-		//Definição do GridBagLayout do painel secundario(painel de conteudo)
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{60, 60, 60, 60, 60, 60, 60, 60, 60};
-		gridBagLayout.rowHeights = new int[]{0, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40};
-		gridBagLayout.columnWeights = new double[]{1.0};
-		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
-		contentPanel.setLayout(gridBagLayout);
-		
 		//Criação de um painel para ficar no norte da janela
 		panelNorth = new JPanel();
 		frame.getContentPane().add(panelNorth, BorderLayout.NORTH);
@@ -79,6 +69,7 @@ public class DivConGUI {
 		
 		//Criação de um painel que armazena o nome e a foto do usuário
 		panelUser = new JPanel();
+		panelUser.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		FlowLayout flowLayout = (FlowLayout) panelUser.getLayout();
 		flowLayout.setVgap(1);
 		flowLayout.setHgap(2);
@@ -98,6 +89,25 @@ public class DivConGUI {
 		lblNomeUsuario = new JLabel("");
 		panelUser.add(lblNomeUsuario);
 		
+		panelSouth = new JPanel();
+        frame.getContentPane().add(panelSouth, BorderLayout.SOUTH);
+        GridBagLayout gbl_panelSouth = new GridBagLayout();
+        gbl_panelSouth.columnWidths = new int[] {30, 60, 60, 60, 60, 60, 60, 60, 50, 60};
+        gbl_panelSouth.rowHeights = new int[] {30};
+        gbl_panelSouth.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
+        gbl_panelSouth.rowWeights = new double[]{1.0};
+        panelSouth.setLayout(gbl_panelSouth);
+        
+        telaLogin = new TelaLogin(appDivCon, lblNomeUsuario);
+        telaLogin.setVisible(true);
+        
+        scrollContas = new JScrollPane();
+        frame.getContentPane().add(scrollContas, BorderLayout.CENTER);
+        
+        painelContas = new JPanel();
+        scrollContas.setViewportView(painelContas);
+        painelContas.setLayout(new BoxLayout(painelContas, BoxLayout.Y_AXIS));
+        
 		//Criação do menu bar
 		menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -107,30 +117,15 @@ public class DivConGUI {
 		
 		mItemMudarParticipante = new JMenuItem("Mudar Participante");
 		mnOpcoes.add(mItemMudarParticipante);
-		
-		scrollPaneContas = new JScrollPane();
-        GridBagConstraints gbc_scrollPaneContas = new GridBagConstraints();
-        gbc_scrollPaneContas.gridwidth = 7;
-        gbc_scrollPaneContas.gridheight = 8;
-        gbc_scrollPaneContas.insets = new Insets(0, 0, 5, 5);
-        gbc_scrollPaneContas.fill = GridBagConstraints.BOTH;
-        gbc_scrollPaneContas.gridx = 1;
-        gbc_scrollPaneContas.gridy = 1;
-        contentPanel.add(scrollPaneContas, gbc_scrollPaneContas);
-		
-        painelContas = new JPanel();
-        scrollPaneContas.setViewportView(painelContas);
-        painelContas.setLayout(new BoxLayout(painelContas, BoxLayout.Y_AXIS));
         
 		//Ações de cada item do menubar
 		mItemMudarParticipante.addActionListener(e -> deslogarUsuario());
 		
 		//Criação da imagem de logo do aplicativo
-		lblImgLogo = new JLabel();
 		addImgLogo();
 
-        telaLogin = new TelaLogin(appDivCon, lblNomeUsuario);
-        telaLogin.setVisible(true);
+        
+       
 	}
 	
     /**
@@ -146,13 +141,11 @@ public class DivConGUI {
 	        logoImg = new ImageIcon(newimg);
 	        
 	        lblImgLogo = new JLabel(logoImg);
-	        
-	        //Foi posicionada no canto inferior direito do painel de conteúdo
 	        GridBagConstraints gbc_lblImgLogo = new GridBagConstraints();
 	        gbc_lblImgLogo.anchor = GridBagConstraints.EAST;
-			gbc_lblImgLogo.gridx = 8;
-			gbc_lblImgLogo.gridy = 10;
-			contentPanel.add(lblImgLogo, gbc_lblImgLogo);
+	        gbc_lblImgLogo.gridx = 9;
+	        gbc_lblImgLogo.gridy = 0;
+	        panelSouth.add(lblImgLogo, gbc_lblImgLogo);
 	        
 	    }
     
