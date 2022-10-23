@@ -19,9 +19,9 @@ public class ContaColetivaTest {
     }
 
     @Test
-    public void testGetInfoConta() {
+    public void testgetInfoFormatada() {
         ContaColetiva contaTeste = new ContaColetiva(nomeConta, descricaoConta);
-        String info = contaTeste.getInfoConta();
+        String info = contaTeste.getInfoFormatada();
         assertEquals(infoEsperada, info);
     }
 

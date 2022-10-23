@@ -1,7 +1,6 @@
 package test;
 
 import org.junit.Test;
-import divcon.Pagamento;
 
 public class PagamentoTest {
     @Test

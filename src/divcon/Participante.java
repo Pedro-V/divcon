@@ -49,7 +49,7 @@ public class Participante {
     public String listaContas() {
         String resultado = "";
         for (ContaColetiva conta : contas.values()) {
-            resultado += conta.getInfoConta() + "\n";
+            resultado += conta.getInfoFormatada() + "\n";
         }
         return resultado;
     }
