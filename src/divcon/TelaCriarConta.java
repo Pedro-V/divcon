@@ -108,9 +108,9 @@ public class TelaCriarConta extends JDialog {
      * cria o painel com as informações da conta
 	 */
 	private void criarConta() {
-		appDivCon.addConta(getNomeConta(), getDescricaoConta());
+		ContaColetiva novaConta = appDivCon.addConta(getNomeConta(), getDescricaoConta());
 
-		PainelConta pnlNovaConta = new PainelConta(getNomeConta() + "  ", getDescricaoConta());
+		PainelConta pnlNovaConta = new PainelConta(novaConta);
 		painelContas.add(pnlNovaConta);
 
         //Redesenha a janela principal, "atualiza"
