@@ -30,7 +30,7 @@ public class ContaColetivaTest {
         // caso teste 1: Lista vazia
         ContaColetiva contaTeste = new ContaColetiva(nomeConta, descricaoConta);
         String listagemEsperada = "";
-        assertEquals(listagemEsperada, contaTeste.listaParticipantes());
+        assertEquals(listagemEsperada, contaTeste.listaParticipantesESaldo());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ContaColetivaTest {
         String listagemEsperada = "José\n";
         Participante novoParticipante = new Participante("José", "0.00");
         contaTeste.addParticipante(novoParticipante);
-        assertEquals(listagemEsperada, contaTeste.listaParticipantes());
+        assertEquals(listagemEsperada, contaTeste.listaParticipantesESaldo());
     }
 
     @Test
