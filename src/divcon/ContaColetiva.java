@@ -15,6 +15,7 @@ public class ContaColetiva {
     private HashMap<String, Participante> participantes;
     // A lista de serviços dessa conta
     private HashMap<String, Servico> servicos;
+    private final int LIMITECHARS = 40;
 
 
     /**
@@ -109,7 +110,8 @@ public class ContaColetiva {
      * saldo total da conta. 
      */
     private String getSaldoFormatado() {
-        return "Saldo total da conta:" + "\t" + "R$ " + calculaSaldoTotal();
+        String strInfo = "Saldo total:";
+        return String.format("%" + -LIMITECHARS + "s", strInfo) + "R$" + calculaSaldoTotal();
     }
 
     /**

@@ -8,6 +8,7 @@ package divcon;
 public class Servico {
     private String nome;
     private Float custo;
+    private final int LIMITECHARS = 40;
 
     /**
      * Aloca um novo objeto {@code Servico}, com um nome e custo inicial
@@ -34,7 +35,7 @@ public class Servico {
      * @return
      */
     public String getInfoFormatada() {
-        return nome + "\t\tR$ " + custo.toString();
+        return String.format("%" + -LIMITECHARS + "s", nome) + "R$" + getCusto();
     }
 
     /**

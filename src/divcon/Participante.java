@@ -11,6 +11,7 @@ public class Participante {
     private String nome;
     private Float saldoIndividual;
     private HashMap<String, ContaColetiva> contas; 
+    private final int LIMITECHARS = 40;
 
     /**
      * Constrói um novo {@code Participante}
@@ -57,7 +58,7 @@ public class Participante {
     }
 
     public String getInfoFormatada() {
-        return nome + "\t\t" + "R$ " + saldoIndividual;
+        return String.format("%" + -LIMITECHARS + "s", nome) + "R$" + saldoIndividual;
     }
 
     public HashMap<String, ContaColetiva> getContas() {

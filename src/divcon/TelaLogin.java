@@ -190,7 +190,7 @@ public class TelaLogin extends JDialog {
 				try {
 					appDivCon.cadastrarParticipante(nomeDigitado, saldoDigitado);
 					cadastradosBox.addItem(nomeDigitado);
-					lblNomeUsuario.setText(nomeDigitado);
+					lblNomeUsuario.setText(appDivCon.getNomeParticipanteLogado());
 					setVisible(false);
 				} catch (Exception e) {
 					//Caso seja digitado algo errado no campo saldo

@@ -44,6 +44,10 @@ public class DivCon {
         contaLogada = resultado;
     }
 
+    public String getNomeParticipanteLogado() {
+        return participanteLogado.getNome();
+    }
+
     /**
      * Loga na aplicação como um participante
      * @param nome Nome do participante a logar
