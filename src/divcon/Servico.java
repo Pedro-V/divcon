@@ -33,8 +33,8 @@ public class Servico {
      * como nome e o valor ainda a pagarf
      * @return
      */
-    public String infoSummary() {
-        return nome + ". Valor ainda a pagar: R$ " + custo.toString();
+    public String getInfoFormatada() {
+        return nome + "\t\tR$ " + custo.toString();
     }
 
     /**

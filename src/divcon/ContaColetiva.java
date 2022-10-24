@@ -1,6 +1,6 @@
 package divcon;
 
-import java.util.*;
+import java.util.HashMap;
 /**
  * A classe {@code Conta} representa uma conta coletiva na aplicação, que
  * reúne um ou mais participantes para compartilharem despesas.
@@ -30,6 +30,27 @@ public class ContaColetiva {
         this.descricao = descricao;
         servicos = new HashMap<>();
         participantes = new HashMap<>();
+        criaExemplosServicos();
+    }
+
+    /**
+     * Cria 5 novos serviços na ContaColetiva, exemplificando a usabilidade
+     * dela.
+     */
+    public void criaExemplosServicos() {
+        Servico agua, luz, supermercado, internet, combustivel;
+        agua = new Servico("Água e Esgoto", 100.2f);
+        luz = new Servico("Luz e Energia", 120f);
+        supermercado = new Servico("Supermercado Melba Roy Mouton", 1969.11f);
+        internet = new Servico("VivoFibra", 13.13f);
+        combustivel = new Servico("Gasolina - Posto Vargas Llosa", 59f);
+
+        servicos.put(agua.getNome(), agua);
+        servicos.put(luz.getNome(), luz);
+        servicos.put(supermercado.getNome(), supermercado);
+        servicos.put(internet.getNome(), internet);
+        servicos.put(combustivel.getNome(), combustivel);
+        return;
     }
 
     public void addParticipante(Participante participante){
@@ -38,20 +59,33 @@ public class ContaColetiva {
         saldoTotal += participante.getSaldoIndividual();
     }
 
-    public String getStatusFormatado() {
-        return "Quantidade de participantes: " + participantes.size() +" | Saldo total: " + getSaldoFormatado();
+    /**
+     * Lista os participantes dessa {@code Conta} juntamente com seus respectivos saldo,
+     * linha a linha. Ao final, informa o saldo total da conta
+     * 
+     * @return uma {@code String} listando os participantes, seus saldos e o saldo
+     * total da conta
+     */
+    public String listaParticipantesESaldo() {
+        String resultado = "";
+        for (Participante participante : participantes.values()) {
+            resultado += participante.getInfoFormatada() + "\n";
+        }
+        // Colocamos uma ultima linha listando o saldo total
+        resultado += "\n" + getSaldoFormatado();
+        return resultado;
     }
 
     /**
-     * Lista os participantes dessa {@code Conta} e retorna uma string listando
-     * eles.
-     * 
-     * @return uma {@code String} listando os participantes
+     * Lista os serviços ainda não pagos por essa conta, juntamento com
+     * o preço ainda a pagar por eles
+     * @return uma string cujas linhas são os serviços junto aos seus 
+     * valores ainda a pagar
      */
-    public String listaParticipantes() {
+    public String listaServicosECusto() {
         String resultado = "";
-        for (Participante participante : participantes.values()) {
-            resultado += participante.getNome() + "\n";
+        for (Servico servico : servicos.values()) {
+            resultado += servico.getInfoFormatada() + "\n";
         }
         return resultado;
     }
@@ -68,8 +102,27 @@ public class ContaColetiva {
         return descricao;
     }
 
-    public String getSaldoFormatado() {
-        return "R$ " + saldoTotal.toString();
+    /**
+     * Formata e retorna informações sobre a conta. Esse método automaticamente
+     * recalcula o saldo individual
+     * @return Uma string formatada, representando informações quanto ao
+     * saldo total da conta. 
+     */
+    private String getSaldoFormatado() {
+        return "Saldo total da conta:" + "\t" + "R$ " + calculaSaldoTotal();
+    }
+
+    /**
+     * Soma os saldos individuais de cada usuário ao saldo total
+     * @return um {@code Float} representando o valor atual do saldo
+     * total após ele ser calculado
+     */
+    private Float calculaSaldoTotal() {
+        saldoTotal = 0f;
+        for (Participante participante : participantes.values()) {
+            saldoTotal += participante.getSaldoIndividual();
+        }
+        return saldoTotal;
     }
 
     /**

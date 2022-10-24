@@ -1,9 +1,10 @@
 package divcon;
 
+import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
-import java.awt.*;
 
 
 public class PainelConta extends JPanel {
@@ -148,16 +149,16 @@ public class PainelConta extends JPanel {
 		JPanel panelNorth = new JPanel();
 		telaDetalhes.getContentPane().add(panelNorth, BorderLayout.NORTH);
 			
-		JLabel lblConta = new JLabel(conta.getNomeConta());
+		JLabel lblConta = new JLabel(conta.getInfoFormatada());
 		lblConta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelNorth.add(lblConta);
 		
-		JLabel lblDescricao = new JLabel(conta.getDescricaoConta());
+		/* JLabel lblDescricao = new JLabel(conta.getInfoFormatada());
 		lblDescricao.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelNorth.add(lblDescricao);
+		panelNorth.add(lblDescricao); */
 		
-		txtAreaParticipantes.setText(conta.listaParticipantes());
-		//txtAreaServicos.setText(conta.listaServicos());
+		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
+		txtAreaServicos.setText(conta.listaServicosECusto());
 		telaDetalhes.setVisible(true);
 
 	}

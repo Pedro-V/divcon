@@ -56,6 +56,10 @@ public class Participante {
         return saldoIndividual;
     }
 
+    public String getInfoFormatada() {
+        return nome + "\t\t" + "R$ " + saldoIndividual;
+    }
+
     public HashMap<String, ContaColetiva> getContas() {
         return contas;
     }
