@@ -20,11 +20,12 @@ public class DivCon {
         participantes = new HashMap<>();
     }
 
-    public void addConta(String nome, String descricao) {
+    public ContaColetiva addConta(String nome, String descricao) {
         ContaColetiva novaConta = new ContaColetiva(nome, descricao);
         // Se o participante logado cria uma conta, ele automaticamente está dentro dela
         novaConta.addParticipante(participanteLogado);
         contas.put(nome, novaConta);
+        return novaConta;
     }
 
     public void cadastrarParticipante(String nome, String saldoInicial) {
