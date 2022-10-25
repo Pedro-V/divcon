@@ -1,8 +1,6 @@
 package divcon;
 
 import java.awt.*;
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
