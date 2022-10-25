@@ -38,25 +38,6 @@ public class Servico {
         return String.format("%" + -LIMITECHARS + "s", nome) + "R$" + getCusto();
     }
 
-    /**
-     * Esse método subtrai uma dada quantia do custo do serviço
-     * @param pagamento é o objeto pagamento que contêm as informações do tipo e da quantia a pagar
-     * @return o troco da operação de pagamento
-     */
-    public Float recebePagamento(Pagamento pagamento) {
-        Float valorPago = pagamento.getValorPago();
-        Float troco = Float.valueOf(0);
-        // Se tiver troco
-        if (valorPago >= custo) {
-            troco = valorPago - custo;
-            custo = 0f;
-        } else { // se não tiver
-            custo -= valorPago;
-            troco = 0f;
-        }
-        return troco;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -65,7 +46,7 @@ public class Servico {
         return custo;
     }
     
-    public void setCusto(custo){
+    public void setCusto(Float custo){
         this.custo = custo;
     }
 }

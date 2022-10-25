@@ -124,8 +124,6 @@ public class TelaLogin extends JDialog {
 				btnCancelar.addActionListener(e -> limparCampos());
 			}
 		}
-		
-		
 	}
 	
 	/**
@@ -151,26 +149,6 @@ public class TelaLogin extends JDialog {
 		lblInfo.setText("");
 	}
 
-	/**
-	 * Checa se uma string não contêm nenhum caractere ilegal 
-	 * como substring
-	 * @param s string original a testar
-	 * @return um booleano indicando {@code true} se não contém
-	 * nenhum caractere ilegal, caso contrário {@code false}
-	 */
-	private boolean stringNaoContemChars(String s) {
-		CharacterIterator it = new StringCharacterIterator(s);
-		String charsIlegais = "0123456789!@#$%¨&*()-=+";
-		while (it.current() != CharacterIterator.DONE)
-        {
-			String atual = String.valueOf(it.current());
-            if (charsIlegais.contains(atual)) {
-				return false;
-			}
-			it.next();
-        }
-		return true;
-	}
 	
 	/**
      * Para entrar no sistema, cria um novo cadastro
@@ -186,20 +164,14 @@ public class TelaLogin extends JDialog {
 		} else {
 			String nomeDigitado = getNomeDigitado();
 			String saldoDigitado = getSaldoDigitado();
-			if(!nomeDigitado.equals("") && stringNaoContemChars(nomeDigitado)) {
-				try {
+			if (Checadora.checaPar(nomeDigitado, saldoDigitado)) {
 					appDivCon.cadastrarParticipante(nomeDigitado, saldoDigitado);
 					cadastradosBox.addItem(nomeDigitado);
 					lblNomeUsuario.setText(appDivCon.getNomeParticipanteLogado());
 					setVisible(false);
-				} catch (Exception e) {
-					//Caso seja digitado algo errado no campo saldo
-					lblInfo.setText("Usuário ou saldo inválidos");
-				}
 			} else {
 				//Caso o campo de nome esteja vazio
 				lblInfo.setText("Usuário ou saldo inválidos");
-				
 			}
 		}
 	}

@@ -10,7 +10,7 @@ public class ParticipanteTest {
     public void testAddContaColetiva() {
         Participante novoParticipante = new Participante("João", "10.99");
         novoParticipante.addContaColetiva("Apê", "Conta dos amigos do apê");
-        int quantidadeContas = novoParticipante.getContas().size();
+        int quantidadeContas = novoParticipante.getQuantContas();
         assertEquals(quantidadeContas, 1);
     }
 

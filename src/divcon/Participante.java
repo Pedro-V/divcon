@@ -53,16 +53,37 @@ public class Participante {
         return resultado;
     }
 
+    /**
+     * Subtrai uma dada quantia do saldoIndividual, mas não permite
+     * que ele vá abaixo de zero
+     * @param quant quantia a subtrair do saldoIndividual
+     */
+    public void subtraiSaldoIndividual(Float quant) {
+        if (saldoIndividual - quant >= 0f) {
+            saldoIndividual -= quant;
+        } else {
+            saldoIndividual = 0f;
+        }
+    }
+    
+    /**
+     * Retorna a quantidade de contas ao qual o participante pertence
+     * @return {@code int} indicando a quantidade de contas
+     */
+    public int getQuantContas() {
+        return contas.size();
+    }
+
     public Float getSaldoIndividual() {
         return saldoIndividual;
     }
 
+    /**
+     * Retorna uma string formatada que tem o nome do participante e seu saldo individual
+     * @return a string formatada contendo as informações
+     */
     public String getInfoFormatada() {
         return String.format("%" + -LIMITECHARS + "s", nome) + "R$" + saldoIndividual;
-    }
-
-    public HashMap<String, ContaColetiva> getContas() {
-        return contas;
     }
 
     /**

@@ -60,6 +60,10 @@ public class ContaColetiva {
         saldoTotal += participante.getSaldoIndividual();
     }
 
+    public void removeServico(String nomeServico) {
+        servicos.remove(nomeServico);
+    }
+
     /**
      * Lista os participantes dessa {@code Conta} juntamente com seus respectivos saldo,
      * linha a linha. Ao final, informa o saldo total da conta
@@ -133,27 +137,6 @@ public class ContaColetiva {
      */
     public void adicionaServico(Servico novoServico) {
         servicos.put(novoServico.getNome(), novoServico);
-    }
-
-    
-    /**
-     * Processa o {@code Pagamento} de um dado {@code Servico}
-     * @param pagamento objeto que representa o pagamento a ser feito
-     * @param nomeServico o nome do serviço que será pago
-     * @return um {@code boolean} representando se a operação foi um
-     * sucesso ({@code true}) ou não ({@code false})
-     */
-    public boolean pagaServico(Pagamento pagamento, String nomeServico) {
-        boolean resultadoOperacao;
-        Servico servicoAPagar = servicos.get(nomeServico);
-        if (servicoAPagar == null) {
-            resultadoOperacao = false;
-        }
-        else {
-            servicoAPagar.recebePagamento(pagamento);
-            resultadoOperacao = true;    
-        }
-        return resultadoOperacao;   
     }
 
     public Participante getParticipante(String nome) {

@@ -75,11 +75,19 @@ public class DivCon {
         return;
     };
 
+
     /**
-     * 
+     * Paga o Serviço com o nome especificado do participante e da conta 
+     * logada atuais.
+     * @param valorPago a quantidade do pagamento
+     * @param nomeServico o nome do serviço a ser pago
+     * @return um {@code boolean} indicando o sucesso (true) ou não (false) 
+     * da operação
      */
-    public void pagarServico() {
-        return;
+    public boolean pagarServico(Float valorPago, String nomeServico) {
+        Servico servicoAPagar = contaLogada.getServico(nomeServico);
+        Pagamento pagamento = new Pagamento(valorPago, contaLogada, participanteLogado, servicoAPagar);
+        return pagamento.pagaServico();
     };
 
 }

@@ -42,15 +42,4 @@ public class ContaColetivaTest {
         contaTeste.addParticipante(novoParticipante);
         assertEquals(listagemEsperada, contaTeste.listaParticipantesESaldo());
     }
-
-    @Test
-    public void testPagaServico() {
-        String nomeServicoTeste = "supermercado";
-        ContaColetiva contaTeste = new ContaColetiva(nomeConta, descricaoConta);
-        Servico servicoTeste = new Servico(nomeServicoTeste, 100f);;
-        contaTeste.adicionaServico(servicoTeste);
-        // Mudar
-        Pagamento pagamentoParcial = new Pagamento(null, null, null);
-        //contaTeste.pagaServico(pagamentoParcial, nomeServicoTeste);
-    }
 }
