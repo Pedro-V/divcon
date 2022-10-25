@@ -25,21 +25,4 @@ public class ContaColetivaTest {
         assertEquals(infoEsperada, info);
     }
 
-    @Test
-    public void testListParticipantesCaso1() {
-        // caso teste 1: Lista vazia
-        ContaColetiva contaTeste = new ContaColetiva(nomeConta, descricaoConta);
-        String listagemEsperada = "";
-        assertEquals(listagemEsperada, contaTeste.listaParticipantesESaldo());
-    }
-
-    @Test
-    public void testListParticipantesCaso2() {
-        // caso teste 2: Lista preenchida
-        ContaColetiva contaTeste = new ContaColetiva(nomeConta, descricaoConta);
-        String listagemEsperada = "José\n";
-        Participante novoParticipante = new Participante("José", "0.00");
-        contaTeste.addParticipante(novoParticipante);
-        assertEquals(listagemEsperada, contaTeste.listaParticipantesESaldo());
-    }
 }
