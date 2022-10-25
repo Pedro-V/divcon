@@ -64,4 +64,8 @@ public class Servico {
     public Float getCusto() {
         return custo;
     }
+    
+    public void setCusto(custo){
+        this.custo = custo;
+    }
 }
