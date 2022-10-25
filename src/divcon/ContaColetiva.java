@@ -146,4 +146,8 @@ public class ContaColetiva {
     public Servico getServico(String nome){
         return servicos.get(nome);
     }
+
+    public HashMap<String, Servico> getServicos(){
+        return servicos;
+    }
 }
