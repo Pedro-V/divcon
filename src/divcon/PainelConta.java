@@ -56,6 +56,8 @@ public class PainelConta extends JPanel {
 		 
         // set the border of this component
         lblNomeConta.setBorder(border);
+		Dimension d = new Dimension((int)getMaximumSize().getWidth(), 50);
+        this.setMaximumSize(d);
 	}
 	
 	private void criarTelaDetalhes() {
@@ -99,7 +101,7 @@ public class PainelConta extends JPanel {
 			
 		JTextArea txtAreaParticipantes = new JTextArea();
 		txtAreaParticipantes.setEditable(false);
-		scrollPaneParticipantes.setColumnHeaderView(txtAreaParticipantes);
+		scrollPaneParticipantes.setViewportView(txtAreaParticipantes);
 			
 		JScrollPane scrollPaneServicos = new JScrollPane();
 		GridBagConstraints gbc_scrollPaneServicos = new GridBagConstraints();
@@ -111,7 +113,7 @@ public class PainelConta extends JPanel {
 			
 		JTextArea txtAreaServicos = new JTextArea();
 		txtAreaServicos.setEditable(false);
-		scrollPaneServicos.setColumnHeaderView(txtAreaServicos);
+		scrollPaneServicos.setViewportView(txtAreaServicos);
 		
 		JButton btnAddParticipante = new JButton("Adicionar participante");
 		btnAddParticipante.setFont(new Font("Tahoma", Font.PLAIN, 12));
