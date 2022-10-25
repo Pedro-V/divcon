@@ -15,23 +15,31 @@ public class Pagamento {
 
     public Pagamento(Float valorPago) {
         this.valorPago = valorPago;
-        servico = new Servico;
+        servico = new Servico();
         participante = new Participante();
     }
     
-    public Bool checaSaldo(Float pagar, Servico servico){
-        Float custo = servico.getCusto;
+    public boolean checaSaldo(Float pagar, Participante participante){
+        Float saldo = participante.getSaldoIndividual();
+        boolean x = (pagar > saldo);
+        if (x == true) {
+            System.out.println("Saldo insuficiente para realizar pagamento");
+        } else {
+            System.out.println("O pagamento pode ser realizado");
+        }
         
+        return x;
     }
     
-    public void atualizaSaldo(Servico servico, Pagamento pagamento){
+    public void atualizaCusto(Servico servico, Pagamento pagamento){
         Float resto = servico.getCusto();
-        Float troco = pagamento.recebePagamento();
+        Float troco = pagamento.recebePagamento(servico);
         Float total = resto - troco;
         servico.setCusto(total);
     }
     
-    public Float recebePagamento(Float pagar, Servico servico) {
+    public Float recebePagamento(Servico servico) {
+        Float pagar = getvalorPago();
         Float custo = servico.getCusto();
         Float troco = Float.valueOf(0);
         // Se tiver troco
@@ -44,15 +52,6 @@ public class Pagamento {
         }
         return troco;
     }
-
-    /**
-    public void atualizarServico(Participante participante, Servico servico){
-        preco = atualizarPagamento(participante);
-        custo = tabelaServicos.get(servico);
-        valorFinal = custo - preco;
-        tabelaServicos.put(servico.getNome(), valorFinal);
-    }
-    */
 
     public Float getValorPago() {
         return valorPago;
