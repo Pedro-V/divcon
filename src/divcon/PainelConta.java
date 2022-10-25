@@ -10,6 +10,7 @@ import javax.swing.border.MatteBorder;
 public class PainelConta extends JPanel {
 	
 	private ContaColetiva conta;
+	private JTextField txtFieldValor;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 */
@@ -68,9 +69,9 @@ public class PainelConta extends JPanel {
 		telaDetalhes.getContentPane().add(panelCenter, BorderLayout.CENTER);
 		GridBagLayout gbl_panelCenter = new GridBagLayout();
 		gbl_panelCenter.columnWidths = new int[] {30, 200, 200, 30};
-		gbl_panelCenter.rowHeights = new int[] {40, 40, 40};
+		gbl_panelCenter.rowHeights = new int[] {40, 40, 30, 40};
 		gbl_panelCenter.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0};
-		gbl_panelCenter.rowWeights = new double[]{0.0, 1.0, 0.0};
+		gbl_panelCenter.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0};
 		panelCenter.setLayout(gbl_panelCenter);
 			
 		JLabel lblParticipantes = new JLabel("Participantes:");
@@ -93,6 +94,7 @@ public class PainelConta extends JPanel {
 			
 		JScrollPane scrollPaneParticipantes = new JScrollPane();
 		GridBagConstraints gbc_scrollPaneParticipantes = new GridBagConstraints();
+		gbc_scrollPaneParticipantes.gridheight = 2;
 		gbc_scrollPaneParticipantes.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPaneParticipantes.fill = GridBagConstraints.BOTH;
 		gbc_scrollPaneParticipantes.gridx = 1;
@@ -110,17 +112,31 @@ public class PainelConta extends JPanel {
 		gbc_scrollPaneServicos.gridx = 2;
 		gbc_scrollPaneServicos.gridy = 1;
 		panelCenter.add(scrollPaneServicos, gbc_scrollPaneServicos);
-			
-		JTextArea txtAreaServicos = new JTextArea();
-		txtAreaServicos.setEditable(false);
-		scrollPaneServicos.setViewportView(txtAreaServicos);
+		
+		DefaultListModel<String> demoList = new DefaultListModel<>();
+		JList<String> listaServicos = new JList<>(demoList);
+		listaServicos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPaneServicos.setViewportView(listaServicos);
+		
+		txtFieldValor = new JTextField();
+		txtFieldValor.setText("Valor: ");
+		txtFieldValor.setEditable(false);
+		txtFieldValor.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		GridBagConstraints gbc_txtFieldValor = new GridBagConstraints();
+		gbc_txtFieldValor.insets = new Insets(0, 0, 5, 5);
+		gbc_txtFieldValor.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtFieldValor.gridx = 2;
+		gbc_txtFieldValor.gridy = 2;
+		panelCenter.add(txtFieldValor, gbc_txtFieldValor);
+		txtFieldValor.setColumns(10);
 		
 		JButton btnAddParticipante = new JButton("Adicionar participante");
 		btnAddParticipante.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_btnAddParticipante = new GridBagConstraints();
 		gbc_btnAddParticipante.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAddParticipante.gridx = 1;
-		gbc_btnAddParticipante.gridy = 2;
+		gbc_btnAddParticipante.gridy = 3;
 		panelCenter.add(btnAddParticipante, gbc_btnAddParticipante);
 		
 		JButton btnAddServico = new JButton("Adicionar serviço");
@@ -128,7 +144,7 @@ public class PainelConta extends JPanel {
 		GridBagConstraints gbc_btnAddServico = new GridBagConstraints();
 		gbc_btnAddServico.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAddServico.gridx = 2;
-		gbc_btnAddServico.gridy = 2;
+		gbc_btnAddServico.gridy = 3;
 		panelCenter.add(btnAddServico, gbc_btnAddServico);
 		
 		JPanel panelSouth = new JPanel();
@@ -150,7 +166,7 @@ public class PainelConta extends JPanel {
 		
 		JPanel panelNorth = new JPanel();
 		telaDetalhes.getContentPane().add(panelNorth, BorderLayout.NORTH);
-			
+		
 		JLabel lblConta = new JLabel(conta.getInfoFormatada());
 		lblConta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelNorth.add(lblConta);
@@ -160,8 +176,17 @@ public class PainelConta extends JPanel {
 		panelNorth.add(lblDescricao); */
 		
 		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
-		txtAreaServicos.setText(conta.listaServicosECusto());
+	
+		for(Servico servico : conta.getServicos().values()) {
+			demoList.addElement(servico.getNome());
+		}
+		System.out.println(listaServicos.getSelectedValue());
+		listaServicos.addListSelectionListener(e -> mudarValor(listaServicos.getSelectedValue()));
 		telaDetalhes.setVisible(true);
+	}
 
+	private void mudarValor(String servicoSelecionado) {
+		Float custo = conta.getServicos().get(servicoSelecionado).getCusto();
+		txtFieldValor.setText("Valor: R$ " + custo.toString());
 	}
 }
