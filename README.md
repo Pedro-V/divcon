@@ -13,6 +13,19 @@ A DivCon é uma aplicação que permite que os usuários criem contas coletivas 
 * A conta coletiva é composta de um ou mais participantes que juntam seus saldos individuais para dividirem o pagamento das contas ao final do mês de maneira transparente e fácil.
 * A interface gráfica da DivCon permite que se divida os gastos de um serviço (como água, luz, etc) com os membros da conta coletiva, cada membro contribui com a quantia que desejar, sendo esta posteriormente subtraída do custo total do serrviço.
 
+### COMO RODAR A APLICAÇÃO
+
+```bash
+# primeiro, clone esse repositório na sua máquina
+git clone https://github.com/Pedro-V/proj-final-poo
+# vá para o diretório dele
+cd proj-final-poo
+# rode a aplicação
+java -cp bin/ divcon.DivConGUI
+# rode os testes 
+javac -cp lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:bin/ test.ParticipanteTest test.PagamentoTest test.ContaColetivaTest
+```
+
 ### To-Do list
 
 * ~~Implementação da classe `Pagamento`~~
