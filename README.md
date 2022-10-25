@@ -15,11 +15,12 @@ A DivCon é uma aplicação que permite que os usuários criem contas coletivas 
 
 ### To-Do list
 
-* Implementação da classe `Pagamento`
+* ~~Implementação da classe `Pagamento`~~
 * Criação de botões ou itens de menu para as seguintes ações/funcionalidades:
   * ~~Criar conta~~
   * Adicionar participante numa conta (Isso automaticamente deve criar um participante novo na memória da aplicação)
-  * Pagar serviços (Isso inclui a definição de percentuais para membros do grupo)
+  * Adicionar saldo individual num participante
+  * Pagar serviços
   * Adicionar serviços
 * ~~Permitir que a GUI mostre algumas informações ao usuário sobre qual Participante e qual ContaColetiva está logada~~
 * ~~Definir algum label ou outro método de indicação de erros para o usuário~~
