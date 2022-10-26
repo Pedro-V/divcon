@@ -52,9 +52,8 @@ public class DivCon {
      * Loga na aplicação como um participante
      * @param nome Nome do participante a logar
      */
-    public Participante logarParticipante(String nome) {
+    public void logarParticipante(String nome) {
         participanteLogado = participantes.get(nome);
-        return participanteLogado;
     }
 
     /**
@@ -90,5 +89,9 @@ public class DivCon {
         Pagamento pagamento = new Pagamento(valorPago, contaLogada, participanteLogado, servicoAPagar);
         return pagamento.pagaServico();
     };
+    
+    public Participante getParticipanteLogado() {
+    	return participanteLogado;
+    }
 
 }
