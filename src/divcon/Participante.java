@@ -100,4 +100,8 @@ public class Participante {
         contas.put(nome, novaContaColetiva);
         return;
     }
+    
+    public HashMap<String, ContaColetiva> getContas(){
+    	return contas;
+    }
 }
