@@ -13,6 +13,7 @@ public class PainelConta extends JPanel {
 	private JTextField txtFieldValor;
 	/**
 	 * Um painel para mostrar as informações da conta.
+	 * @param conta, a conta atual que vai ser criado o painel de detalhes
 	 */
 	public PainelConta(ContaColetiva conta) {
 		this.conta = conta;
@@ -61,6 +62,10 @@ public class PainelConta extends JPanel {
         this.setMaximumSize(d);
 	}
 	
+	/**
+	 * Criação do JDialog (por meio da ação do botão "ver detalhes"),
+	 * que mostra os detalhes da conta (usuários, serviços, saldo, etc.) 
+	 */
 	private void criarTelaDetalhes() {
 		JDialog telaDetalhes = new JDialog();
 		telaDetalhes.setBounds(100, 100, 460, 300);
@@ -113,11 +118,13 @@ public class PainelConta extends JPanel {
 		gbc_scrollPaneServicos.gridy = 1;
 		panelCenter.add(scrollPaneServicos, gbc_scrollPaneServicos);
 		
+		//Criação de uma JList que armazena os serviços podendo ser selecionados por um simples clique
 		DefaultListModel<String> demoList = new DefaultListModel<>();
 		JList<String> listaServicos = new JList<>(demoList);
 		listaServicos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPaneServicos.setViewportView(listaServicos);
 		
+		//TextField que mostra o valor do serviço selecionado pela JList
 		txtFieldValor = new JTextField();
 		txtFieldValor.setText("Valor: ");
 		txtFieldValor.setEditable(false);
@@ -131,6 +138,7 @@ public class PainelConta extends JPanel {
 		panelCenter.add(txtFieldValor, gbc_txtFieldValor);
 		txtFieldValor.setColumns(10);
 		
+		//Botão para adicionar participante
 		JButton btnAddParticipante = new JButton("Adicionar participante");
 		btnAddParticipante.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_btnAddParticipante = new GridBagConstraints();
@@ -139,6 +147,7 @@ public class PainelConta extends JPanel {
 		gbc_btnAddParticipante.gridy = 3;
 		panelCenter.add(btnAddParticipante, gbc_btnAddParticipante);
 		
+		//Botão para adicionar serviço
 		JButton btnAddServico = new JButton("Adicionar serviço");
 		btnAddServico.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_btnAddServico = new GridBagConstraints();
@@ -156,6 +165,7 @@ public class PainelConta extends JPanel {
 		gbl_panelSouth.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panelSouth.setLayout(gbl_panelSouth);
 		
+		//Botão para pagar serviço
 		JButton btnPagarServico = new JButton("Pagar serviço");
 		btnPagarServico.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GridBagConstraints gbc_btnPagarServico = new GridBagConstraints();
@@ -167,6 +177,7 @@ public class PainelConta extends JPanel {
 		JPanel panelNorth = new JPanel();
 		telaDetalhes.getContentPane().add(panelNorth, BorderLayout.NORTH);
 		
+		//Label que exibe informação da conta(nome e descrição)
 		JLabel lblConta = new JLabel(conta.getInfoFormatada());
 		lblConta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelNorth.add(lblConta);
@@ -177,14 +188,25 @@ public class PainelConta extends JPanel {
 		
 		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 	
+		/**
+		 * Para cada serviço na lista de serviços da conta é adicionado
+		 * na JList, fazendo com que a lista mostre todos os serviços dessa conta
+		 */
 		for(Servico servico : conta.getServicos().values()) {
 			demoList.addElement(servico.getNome());
 		}
-		System.out.println(listaServicos.getSelectedValue());
+		
+		//Ação a ser realizada com o serviço selecionado
 		listaServicos.addListSelectionListener(e -> mudarValor(listaServicos.getSelectedValue()));
+
 		telaDetalhes.setVisible(true);
 	}
 
+	/**
+	 * Método que mostra o valor do serviço selecionado na JList
+	 * @param servicoSelecionado o serviço selecionado na JList,
+	 * esse método seta o texto da textfield com o custo do serviço
+	 */
 	private void mudarValor(String servicoSelecionado) {
 		Float custo = conta.getServicos().get(servicoSelecionado).getCusto();
 		txtFieldValor.setText("Valor: R$ " + custo.toString());
