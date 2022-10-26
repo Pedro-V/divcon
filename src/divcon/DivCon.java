@@ -1,6 +1,6 @@
 package divcon;
 
-import java.util.*;
+import java.util.HashMap;
 /**
  * A classe {@code DivCon} é responsável por administrar uma lista dos participantes,
  * das contas, e também do participante e da conta logados no momento na aplicação.
@@ -28,7 +28,7 @@ public class DivCon {
         return novaConta;
     }
 
-    public void cadastrarParticipante(String nome, String saldoInicial) {
+    public void cadastrarParticipante(String nome, Float saldoInicial) {
         Participante novoParticipante = new Participante(nome, saldoInicial);
         participantes.put(nome, novoParticipante);
         // automaticamente esse participante vira o logado
@@ -71,7 +71,7 @@ public class DivCon {
      */
     public void addServico(String nome, Float custo) {
         Servico novoServico = new Servico(nome, custo);
-        contaLogada.adicionaServico(novoServico);
+        contaLogada.addServico(novoServico);
         return;
     };
 

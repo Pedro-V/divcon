@@ -135,7 +135,7 @@ public class ContaColetiva {
      * Adiciona um novo {@code Servico} na conta
      * @param novoServico o novo objeto serviço a ser inserido na conta
      */
-    public void adicionaServico(Servico novoServico) {
+    public void addServico(Servico novoServico) {
         servicos.put(novoServico.getNome(), novoServico);
     }
 

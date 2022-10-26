@@ -13,7 +13,7 @@ public class ContaColetivaTest {
     @Test
     public void testAddParticipante() {
         ContaColetiva contaTeste = new ContaColetiva("Apê", "Apê dos cria");
-        Participante novoParticipante = new Participante("José", "0.00");
+        Participante novoParticipante = new Participante("José", 0f);
         contaTeste.addParticipante(novoParticipante);
         assertEquals(novoParticipante, contaTeste.getParticipante("José"));
     }

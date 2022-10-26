@@ -54,6 +54,8 @@ public class Pagamento {
         servico.setCusto(custo);
         // e atualizamos o troco no saldo do participante.
         atualizaSaldoParticipante(troco);
+        // Caso o serviço tenha sido totalmente pago:
+        retiraServicoPago();
         return true;
     }
     

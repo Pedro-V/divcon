@@ -163,7 +163,7 @@ public class TelaLogin extends JDialog {
 			String nomeDigitado = getNomeDigitado();
 			String saldoDigitado = getSaldoDigitado();
 			if (Checadora.checaPar(nomeDigitado, saldoDigitado)) {
-					appDivCon.cadastrarParticipante(nomeDigitado, saldoDigitado);
+					appDivCon.cadastrarParticipante(nomeDigitado, Float.valueOf(saldoDigitado));
 					cadastradosBox.addItem(nomeDigitado);
 					lblNomeUsuario.setText(appDivCon.getNomeParticipanteLogado());
 					setVisible(false);
