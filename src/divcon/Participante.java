@@ -18,10 +18,10 @@ public class Participante {
      * @param nome o nome do novo participante
      * @param saldoInicial o saldo com o qual ele começa inicialmente
      */
-    public Participante(String nome, String saldoInicial) {
+    public Participante(String nome, Float saldoInicial) {
         contas = new HashMap<>();
         this.nome = nome;
-        this.saldoIndividual = Float.valueOf(saldoInicial);
+        this.saldoIndividual = saldoInicial;
     }
 
     /**
