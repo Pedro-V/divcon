@@ -23,7 +23,7 @@ cd proj-final-poo
 # rode a aplicação
 java -cp bin/ divcon.DivConGUI
 # rode os testes 
-java -cp lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:bin/ test.ParticipanteTest test.PagamentoTest test.ContaColetivaTest
+java -cp lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:bin/ org.junit.runner.JUnitCore test.ParticipanteTest test.PagamentoTest test.ContaColetivaTest
 ```
 
 ### To-Do list
