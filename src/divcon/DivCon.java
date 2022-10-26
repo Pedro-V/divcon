@@ -52,8 +52,9 @@ public class DivCon {
      * Loga na aplicação como um participante
      * @param nome Nome do participante a logar
      */
-    public void logarParticipante(String nome) {
+    public Participante logarParticipante(String nome) {
         participanteLogado = participantes.get(nome);
+        return participanteLogado;
     }
 
     /**
