@@ -14,15 +14,16 @@ public class TelaLogin extends JDialog {
 	private JComboBox<String> cadastradosBox;
 	private DivCon appDivCon;
 	private JLabel lblNomeUsuario;
-
+	private JPanel painelContas;
 	/**
 	 * Cria a janela de tela de login (JDialog)
 	 * @param appDivCon : a parte funcional do aplicativo
 	 * @param lblNomeUsuario : uma label da tela principal que mostra o nome do usuário logado
 	 */
-	public TelaLogin(DivCon appDivCon, JLabel lblNomeUsuario) {
+	public TelaLogin(DivCon appDivCon, JLabel lblNomeUsuario, JPanel painelContas) {
 		this.lblNomeUsuario = lblNomeUsuario;
 		this.appDivCon = appDivCon;
+		this.painelContas = painelContas;
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
@@ -158,6 +159,13 @@ public class TelaLogin extends JDialog {
 			//Pega o usuário selecionado e puxa-o do hashmap
 			appDivCon.logarParticipante(nomeParticipanteSelecionado);
 			lblNomeUsuario.setText(nomeParticipanteSelecionado);
+			Participante participanteLogado = appDivCon.getParticipanteLogado();
+			
+			for(ContaColetiva conta : participanteLogado.getContas().values()) {
+				painelContas.add(new PainelConta(conta));
+			}
+			painelContas.repaint();
+			painelContas.revalidate();
 			setVisible(false);
 		} else {
 			String nomeDigitado = getNomeDigitado();

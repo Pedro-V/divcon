@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.FlowLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
+import java.util.HashMap;
 public class TelaCriarConta extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -112,7 +112,11 @@ public class TelaCriarConta extends JDialog {
 
 		PainelConta pnlNovaConta = new PainelConta(novaConta);
 		painelContas.add(pnlNovaConta);
-
+		
+		//A nova conta é salva dentro do hashmap do usuario logado
+		appDivCon.getParticipanteLogado().getContas().put(novaConta.getNomeConta(), novaConta);
+		
+		
         //Redesenha a janela principal, "atualiza"
 		janelaPrincipal.revalidate();
 

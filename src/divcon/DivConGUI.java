@@ -123,7 +123,7 @@ public class DivConGUI {
 		addImgLogo();
 		
 		frame.setVisible(true);
-		telaLogin = new TelaLogin(appDivCon, lblNomeUsuario);
+		telaLogin = new TelaLogin(appDivCon, lblNomeUsuario, painelContas);
         telaLogin.setVisible(true);
         
         telaCriarConta = new TelaCriarConta(appDivCon, painelContas, frame);
