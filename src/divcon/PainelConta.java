@@ -220,6 +220,7 @@ public class PainelConta extends JPanel {
 	private void adicionarParticipanteNaConta(){
 		telaAddParticipante.setContaAtual(conta);
 		telaAddParticipante.attComboBox();
+		telaAddParticipante.limparCampos();
 		telaAddParticipante.setVisible(true);
 		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 	}
