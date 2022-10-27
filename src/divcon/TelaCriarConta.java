@@ -1,10 +1,8 @@
 package divcon;
 
 import java.awt.*;
-import java.awt.FlowLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.util.HashMap;
 public class TelaCriarConta extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -16,10 +14,11 @@ public class TelaCriarConta extends JDialog {
 	private TelaAddParticipante telaAddParticipante;
 
 	/**
-	 * Cria a janela
-     * @param appDivCon acesso as funções do aplicativo
-     * @param painelContas painel da janela principal que mostra infos das contas
-     * @param janelaPrincipal janela principal do app
+	 * Cria a janela de criar novas contas
+     * @param appDivCon : acesso as funções do aplicativo
+     * @param painelContas : painel da janela principal que mostra infos das contas
+     * @param janelaPrincipal : janela principal do app
+	 * @param telaAddParticipante : a janela de adicionar um novo participante na conta
 	 */
 	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal, TelaAddParticipante telaAddParticipante) {
 		this.appDivCon = appDivCon;
@@ -106,26 +105,29 @@ public class TelaCriarConta extends JDialog {
 	
     /**
 	 * Cria a conta,
-     * passa o que foi digitado nos campos para o aplicativo,
-     * cria o painel com as informações da conta
+     * passa o que foi digitado nos campos para o aplicativo.
+     * Cria o painel com as informações da conta
 	 */
 	private void criarConta() {
-		ContaColetiva novaConta = appDivCon.addConta(getNomeConta(), getDescricaoConta());
+		if(Checadora.stringOk(getNomeConta())){
+			ContaColetiva novaConta = appDivCon.addConta(getNomeConta(), getDescricaoConta());
 
-		PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante);
-		painelContas.add(pnlNovaConta);
+			PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante);
+			painelContas.add(pnlNovaConta);
 		
-		//A nova conta é salva dentro do hashmap do usuario logado
-		appDivCon.getParticipanteLogado().getContas().put(novaConta.getNomeConta(), novaConta);
+			//A nova conta é salva dentro do hashmap do usuario logado
+			appDivCon.getParticipanteLogado().getContas().put(novaConta.getNomeConta(), novaConta);
 		
-		
-        //Redesenha a janela principal, "atualiza"
-		janelaPrincipal.revalidate();
+        	//Redesenha a janela principal, "atualiza"
+			janelaPrincipal.revalidate();
 
-		limparCampos();
+			limparCampos();
 
-        //Torna esta janela invisivel após a criação da conta
-		this.setVisible(false); 
+        	//Torna esta janela invisivel após a criação da conta
+			this.setVisible(false); 
+		} else {
+			//Fazer um label de erro
+		}
 	}
 	
     //Limpa os campos digitados

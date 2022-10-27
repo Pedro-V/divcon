@@ -150,4 +150,8 @@ public class ContaColetiva {
     public HashMap<String, Servico> getServicos(){
         return servicos;
     }
+
+    public boolean participanteEstaNaConta(String nomeParticipante){
+        return participantes.get(nomeParticipante) != null;
+    }
 }

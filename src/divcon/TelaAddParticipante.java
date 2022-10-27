@@ -157,22 +157,30 @@ public class TelaAddParticipante extends JDialog {
         
 		if(nomeParticipanteSelecionado  != "-") {
 			//Pega o usuário selecionado e puxa-o do hashmap
-			Participante participanteSelecionado = appDivCon.getParticipante(nomeParticipanteSelecionado);
-			contaAtual.addParticipante(participanteSelecionado);
-            participanteSelecionado.addConta(contaAtual);
-			setVisible(false);
+			if(contaAtual.participanteEstaNaConta(nomeParticipanteSelecionado)){
+				lblInfo.setText("Participante já existe nessa conta!");
+			} else {
+				Participante participanteSelecionado = appDivCon.getParticipante(nomeParticipanteSelecionado);
+				contaAtual.addParticipante(participanteSelecionado);
+				participanteSelecionado.addConta(contaAtual);
+				setVisible(false);
+			}
 		} else {
 			String nomeDigitado = getNomeDigitado();
 			String saldoDigitado = getSaldoDigitado();
-			if (Checadora.checaPar(nomeDigitado, saldoDigitado)) {
+			if(appDivCon.getParticipante(nomeDigitado) != null){
+				lblInfo.setText("Participante já cadastrado!");
+
+			} else if (Checadora.checaPar(nomeDigitado, saldoDigitado)){
 				appDivCon.cadastrarParticipante(nomeDigitado, Float.valueOf(saldoDigitado), false);
 				Participante participanteSelecionado = appDivCon.getParticipante(nomeDigitado);
                 contaAtual.addParticipante(participanteSelecionado);
                 participanteSelecionado.addConta(contaAtual);
 				setVisible(false);
+
 			} else {
 				//Caso o campo de nome esteja vazio
-				lblInfo.setText("Usuário ou saldo inválidos");
+				lblInfo.setText("Usuário ou saldo inválidos!");
 			}
 		}
         
