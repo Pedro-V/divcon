@@ -1,10 +1,8 @@
 package divcon;
 
 import java.awt.*;
-import java.awt.FlowLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.util.HashMap;
 public class TelaCriarConta extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
