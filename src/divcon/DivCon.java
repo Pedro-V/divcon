@@ -28,11 +28,11 @@ public class DivCon {
         return novaConta;
     }
 
-    public void cadastrarParticipante(String nome, Float saldoInicial) {
+    public void cadastrarParticipante(String nome, Float saldoInicial, boolean logar) {
         Participante novoParticipante = new Participante(nome, saldoInicial);
         participantes.put(nome, novoParticipante);
-        // automaticamente esse participante vira o logado
-        participanteLogado = novoParticipante;
+        // Para o participante virar o logado, é necessário o booleano ser true
+        if(logar) participanteLogado = novoParticipante;
     }
 
     /**
