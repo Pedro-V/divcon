@@ -19,6 +19,7 @@ public class DivConGUI {
     private DivCon appDivCon;
     private TelaLogin telaLogin;
     private TelaCriarConta telaCriarConta;
+	private TelaAddParticipante telaAddParticipante;
     private JPanel panelSouth;
     private JScrollPane scrollContas;
     private JPanel painelContas;
@@ -123,11 +124,17 @@ public class DivConGUI {
 		addImgLogo();
 		
 		frame.setVisible(true);
-		telaLogin = new TelaLogin(appDivCon, lblNomeUsuario, painelContas);
+		
+		telaAddParticipante = new TelaAddParticipante(appDivCon);
+		telaAddParticipante.setVisible(false);
+
+		telaLogin = new TelaLogin(appDivCon, lblNomeUsuario, painelContas, telaAddParticipante);
         telaLogin.setVisible(true);
         
-        telaCriarConta = new TelaCriarConta(appDivCon, painelContas, frame);
+        telaCriarConta = new TelaCriarConta(appDivCon, painelContas, frame, telaAddParticipante);
         telaCriarConta.setVisible(false);
+
+		
 		
 		btnAddConta.addActionListener(e -> telaCriarConta.setVisible(true));
 	}
@@ -174,7 +181,7 @@ public class DivConGUI {
         //Redesenha o painel de contas
         painelContas.repaint();
         painelContas.revalidate();
-        
+        telaLogin.attComboBox();
         telaLogin.setVisible(true);
     }
   

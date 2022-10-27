@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class TelaLogin extends JDialog {
+public class TelaAddParticipante extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtFieldNome;
@@ -13,19 +13,15 @@ public class TelaLogin extends JDialog {
 	private JLabel lblInfo;
 	private JComboBox<String> cadastradosBox;
 	private DivCon appDivCon;
-	private JLabel lblNomeUsuario;
-	private JPanel painelContas;
-	private TelaAddParticipante telaAddParticipante;
+	private ContaColetiva contaAtual;
 	/**
 	 * Cria a janela de tela de login (JDialog)
 	 * @param appDivCon : a parte funcional do aplicativo
 	 * @param lblNomeUsuario : uma label da tela principal que mostra o nome do usuário logado
 	 */
-	public TelaLogin(DivCon appDivCon, JLabel lblNomeUsuario, JPanel painelContas, TelaAddParticipante telaAddParticipante) {
-		this.lblNomeUsuario = lblNomeUsuario;
+	public TelaAddParticipante(DivCon appDivCon) {
 		this.appDivCon = appDivCon;
-		this.painelContas = painelContas;
-		this.telaAddParticipante = telaAddParticipante;
+		
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
@@ -89,18 +85,6 @@ public class TelaLogin extends JDialog {
 			contentPanel.add(lblUsrCadastrados, gbc_lblUsrCadastrados);
 		}
 		{
-			cadastradosBox = new JComboBox<>();
-			cadastradosBox.setMaximumRowCount(20);
-			cadastradosBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-"}));
-			cadastradosBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-			GridBagConstraints gbc_cadastradosBox = new GridBagConstraints();
-			gbc_cadastradosBox.insets = new Insets(0, 0, 5, 5);
-			gbc_cadastradosBox.fill = GridBagConstraints.HORIZONTAL;
-			gbc_cadastradosBox.gridx = 2;
-			gbc_cadastradosBox.gridy = 6;
-			contentPanel.add(cadastradosBox, gbc_cadastradosBox);
-		}
-		{
 			lblInfo = new JLabel("");
 			lblInfo.setForeground(Color.RED);
 			lblInfo.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -115,7 +99,7 @@ public class TelaLogin extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnEntrar = new JButton("Entrar");
+				JButton btnEntrar = new JButton("Adicionar");
 				buttonPane.add(btnEntrar);
 				btnEntrar.addActionListener(e -> entrarSistema());
 			}
@@ -125,6 +109,19 @@ public class TelaLogin extends JDialog {
 				btnCancelar.addActionListener(e -> limparCampos());
 			}
 		}
+        {
+            cadastradosBox = new JComboBox<>();
+			cadastradosBox.setMaximumRowCount(20);
+			cadastradosBox.setModel(new DefaultComboBoxModel<String>(new String[] {"-"}));
+			cadastradosBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			GridBagConstraints gbc_cadastradosBox = new GridBagConstraints();
+			gbc_cadastradosBox.insets = new Insets(0, 0, 5, 5);
+			gbc_cadastradosBox.fill = GridBagConstraints.HORIZONTAL;
+			gbc_cadastradosBox.gridx = 2;
+			gbc_cadastradosBox.gridy = 6;
+			contentPanel.add(cadastradosBox, gbc_cadastradosBox);
+        }
+        attComboBox();
 	}
 	
 	/**
@@ -157,40 +154,39 @@ public class TelaLogin extends JDialog {
      */
 	public void entrarSistema() {
 		String nomeParticipanteSelecionado = cadastradosBox.getSelectedItem().toString();
+        
 		if(nomeParticipanteSelecionado  != "-") {
 			//Pega o usuário selecionado e puxa-o do hashmap
-			appDivCon.logarParticipante(nomeParticipanteSelecionado);
-			lblNomeUsuario.setText(nomeParticipanteSelecionado);
-			Participante participanteLogado = appDivCon.getParticipanteLogado();
-			
-			for(ContaColetiva conta : participanteLogado.getContas().values()) {
-				painelContas.add(new PainelConta(conta, telaAddParticipante));
-			}
-			painelContas.repaint();
-			painelContas.revalidate();
+			Participante participanteSelecionado = appDivCon.getParticipante(nomeParticipanteSelecionado);
+			contaAtual.addParticipante(participanteSelecionado);
+            participanteSelecionado.addConta(contaAtual);
 			setVisible(false);
 		} else {
 			String nomeDigitado = getNomeDigitado();
 			String saldoDigitado = getSaldoDigitado();
 			if (Checadora.checaPar(nomeDigitado, saldoDigitado)) {
-					appDivCon.cadastrarParticipante(nomeDigitado, Float.valueOf(saldoDigitado), true);
-					//cadastradosBox.addItem(nomeDigitado);
-					lblNomeUsuario.setText(appDivCon.getNomeParticipanteLogado());
-					setVisible(false);
+				appDivCon.cadastrarParticipante(nomeDigitado, Float.valueOf(saldoDigitado), false);
+				Participante participanteSelecionado = appDivCon.getParticipante(nomeDigitado);
+                contaAtual.addParticipante(participanteSelecionado);
+                participanteSelecionado.addConta(contaAtual);
+				setVisible(false);
 			} else {
 				//Caso o campo de nome esteja vazio
 				lblInfo.setText("Usuário ou saldo inválidos");
 			}
 		}
-
+        
 	}
 
-	public void attComboBox(){
+    public void setContaAtual(ContaColetiva contaAtual){
+        this.contaAtual = contaAtual;
+    }
+
+    public void attComboBox(){
 		cadastradosBox.removeAllItems();
 		cadastradosBox.addItem("-");
         for(Participante participante : appDivCon.getParticipantes().values()){
             cadastradosBox.addItem(participante.getNome());
         }
     }
-
 }

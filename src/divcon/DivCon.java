@@ -98,4 +98,8 @@ public class DivCon {
     	return participantes.get(nome);
     }
 
+    public HashMap<String, Participante> getParticipantes(){
+        return participantes;
+    }
+
 }

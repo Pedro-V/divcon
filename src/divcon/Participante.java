@@ -104,4 +104,8 @@ public class Participante {
     public HashMap<String, ContaColetiva> getContas(){
     	return contas;
     }
+
+    public void addConta(ContaColetiva conta){
+        contas.put(conta.getNomeConta(), conta);
+    }
 }

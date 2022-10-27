@@ -13,6 +13,7 @@ public class TelaCriarConta extends JDialog {
 	private DivCon appDivCon;
 	private JPanel painelContas;
 	private JFrame janelaPrincipal;
+	private TelaAddParticipante telaAddParticipante;
 
 	/**
 	 * Cria a janela
@@ -20,10 +21,11 @@ public class TelaCriarConta extends JDialog {
      * @param painelContas painel da janela principal que mostra infos das contas
      * @param janelaPrincipal janela principal do app
 	 */
-	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal) {
+	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal, TelaAddParticipante telaAddParticipante) {
 		this.appDivCon = appDivCon;
 		this.painelContas = painelContas;
 		this.janelaPrincipal = janelaPrincipal;
+		this.telaAddParticipante = telaAddParticipante;
 		
 		setBounds(100, 100, 400, 350);
 		getContentPane().setLayout(new BorderLayout());
@@ -110,7 +112,7 @@ public class TelaCriarConta extends JDialog {
 	private void criarConta() {
 		ContaColetiva novaConta = appDivCon.addConta(getNomeConta(), getDescricaoConta());
 
-		PainelConta pnlNovaConta = new PainelConta(novaConta);
+		PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante);
 		painelContas.add(pnlNovaConta);
 		
 		//A nova conta é salva dentro do hashmap do usuario logado

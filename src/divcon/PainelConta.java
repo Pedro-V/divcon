@@ -11,12 +11,15 @@ public class PainelConta extends JPanel {
 	
 	private ContaColetiva conta;
 	private JTextField txtFieldValor;
+	private TelaAddParticipante telaAddParticipante;
+	private JTextArea txtAreaParticipantes;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
 	 */
-	public PainelConta(ContaColetiva conta) {
+	public PainelConta(ContaColetiva conta, TelaAddParticipante telaAddParticipante) {
 		this.conta = conta;
+		this.telaAddParticipante = telaAddParticipante;
 		
 		setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -106,7 +109,7 @@ public class PainelConta extends JPanel {
 		gbc_scrollPaneParticipantes.gridy = 1;
 		panelCenter.add(scrollPaneParticipantes, gbc_scrollPaneParticipantes);
 			
-		JTextArea txtAreaParticipantes = new JTextArea();
+		txtAreaParticipantes = new JTextArea();
 		txtAreaParticipantes.setEditable(false);
 		scrollPaneParticipantes.setViewportView(txtAreaParticipantes);
 			
@@ -199,6 +202,8 @@ public class PainelConta extends JPanel {
 		//Ação a ser realizada com o serviço selecionado
 		listaServicos.addListSelectionListener(e -> mudarValor(listaServicos.getSelectedValue()));
 
+		btnAddParticipante.addActionListener(e -> adicionarParticipanteNaConta());
+
 		telaDetalhes.setVisible(true);
 	}
 
@@ -210,5 +215,12 @@ public class PainelConta extends JPanel {
 	private void mudarValor(String servicoSelecionado) {
 		Float custo = conta.getServicos().get(servicoSelecionado).getCusto();
 		txtFieldValor.setText("Valor: R$ " + custo.toString());
+	}
+
+	private void adicionarParticipanteNaConta(){
+		telaAddParticipante.setContaAtual(conta);
+		telaAddParticipante.attComboBox();
+		telaAddParticipante.setVisible(true);
+		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 	}
 }
