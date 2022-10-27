@@ -93,5 +93,9 @@ public class DivCon {
     public Participante getParticipanteLogado() {
     	return participanteLogado;
     }
+    
+    public Participante getParticipante(String nome) {
+    	return participantes.get(nome);
+    }
 
 }
