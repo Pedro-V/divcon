@@ -212,21 +212,10 @@ public class DivConGUI {
 	 * Cria uma janela para adicionar saldo no participante logado
 	 */
 	private void adicionarSaldo(){
-		JDialog janelaAddSaldo = new JDialog();
-		janelaAddSaldo.setBounds(100, 100, 400, 350);	
-		janelaAddSaldo.getContentPane().setLayout(new BorderLayout());
-		JTextField txtFieldSaldo = new JTextField();
-		JButton btnAddSaldo = new JButton("Adicionar");
-		janelaAddSaldo.getContentPane().add(txtFieldSaldo, BorderLayout.CENTER);
-		janelaAddSaldo.getContentPane().add(btnAddSaldo, BorderLayout.SOUTH);
-		janelaAddSaldo.setVisible(true);
-		btnAddSaldo.addActionListener(e -> {
-			Float saldo = Float.valueOf(txtFieldSaldo.getText());
-			appDivCon.getParticipanteLogado().addSaldoIndividual(saldo);
-			janelaAddSaldo.dispose();
-			attInfoSaldo();
-		});
-  }
+		TelaSaldoIndividual telaSaldoIndividual = new TelaSaldoIndividual(appDivCon, appDivCon.getParticipanteLogado());
+		telaSaldoIndividual.setVisible(true);
+		attInfoSaldo();
+	}
 	  
     /**
 	 * Atualiza o label com o valor do saldo atual 
