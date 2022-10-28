@@ -1,4 +1,4 @@
 # Ignore todos os arquivos binários
-*/bin/*
+bin/*
 # Ignore qualquer arquivo relacionado ao vscode
 *vscode*
