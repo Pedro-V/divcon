@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class TelaAddParticipante extends Tela {
+public class TelaAddParticipante extends TelaDoisCampos {
 	protected JComboBox<String> cadastradosBox;
 	protected ContaColetiva contaAtual;
 	/**

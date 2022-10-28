@@ -28,7 +28,7 @@ public class TelaLogin extends TelaAddParticipante {
 			
 			//Cria um painel de conta para todas as contas que o participante faz parte
 			for(ContaColetiva conta : participanteLogado.getContas().values()) {
-				painelContas.add(new PainelConta(conta, telaAddParticipante));
+				painelContas.add(new PainelConta(conta, telaAddParticipante, appDivCon));
 			}
 
 			//Ver se funciona sem essas linhas
