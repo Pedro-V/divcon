@@ -2,7 +2,7 @@ package divcon;
 
 import javax.swing.*;
 
-public class TelaCriarConta extends Tela {
+public class TelaCriarConta extends TelaDoisCampos {
 	private JPanel painelContas;
 	private JFrame janelaPrincipal;
 	private TelaAddParticipante telaAddParticipante;
@@ -30,7 +30,7 @@ public class TelaCriarConta extends Tela {
 		if (Checadora.stringOk(getFieldUm())){
 			ContaColetiva novaConta = new ContaColetiva(getFieldUm(), getFieldDois());
 
-			PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante);
+			PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante, appDivCon);
 			painelContas.add(pnlNovaConta);
 		
 			//A nova conta é salva dentro do hashmap do usuario logado
@@ -44,7 +44,6 @@ public class TelaCriarConta extends Tela {
 			this.setVisible(false); 
 		} else {
 			lblInfo.setText("O nome da conta está vazio ou contém caracteres ilegais.");
-			//Fazer um label de erro
 		}
 	}
 }
