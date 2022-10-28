@@ -14,6 +14,8 @@ public class PainelConta extends JPanel {
 	private TelaAddParticipante telaAddParticipante;
 	private JTextArea txtAreaParticipantes;
 	private DivCon appDivCon;
+	private JDialog telaDetalhes;
+	private DefaultListModel<String> demoList;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
@@ -72,7 +74,7 @@ public class PainelConta extends JPanel {
 	 * que mostra os detalhes da conta (usuários, serviços, saldo, etc.) 
 	 */
 	private void criarTelaDetalhes() {
-		JDialog telaDetalhes = new JDialog();
+		telaDetalhes = new JDialog();
 		telaDetalhes.setBounds(100, 100, 460, 300);
 		appDivCon.logaConta(conta.getNomeConta());
 			
@@ -125,7 +127,7 @@ public class PainelConta extends JPanel {
 		panelCenter.add(scrollPaneServicos, gbc_scrollPaneServicos);
 		
 		//Criação de uma JList que armazena os serviços podendo ser selecionados por um simples clique
-		DefaultListModel<String> demoList = new DefaultListModel<>();
+		demoList = new DefaultListModel<>();
 		JList<String> listaServicos = new JList<>(demoList);
 		listaServicos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPaneServicos.setViewportView(listaServicos);
@@ -226,6 +228,8 @@ public class PainelConta extends JPanel {
 	private void addServico() {
 		TelaAddServico telaAddServico = new TelaAddServico(appDivCon);
 		telaAddServico.setVisible(true);
+		String servico = telaAddServico.getNomeServicoCriado();
+		demoList.addElement(servico);
 	}
 
 	private void adicionarParticipanteNaConta(){
