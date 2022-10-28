@@ -108,4 +108,8 @@ public class Participante {
     public void addConta(ContaColetiva conta){
         contas.put(conta.getNomeConta(), conta);
     }
+
+    public ContaColetiva getConta(String nome) {
+        return contas.get(nome);
+    }
 }

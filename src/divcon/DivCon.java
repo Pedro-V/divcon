@@ -8,7 +8,6 @@ import java.util.HashMap;
  * pertençam a uma dada {@code Conta} não possam entrar nela.
  */
 public class DivCon {
-    private HashMap<String, ContaColetiva> contas;
     // Esse HashMap tem como chave o nome dos participantes já criados nessa sessão
     private HashMap<String, Participante> participantes;
     // Essa é a conta atual que está logada/ativa na aplicação
@@ -16,23 +15,7 @@ public class DivCon {
     private ContaColetiva contaLogada;
 
     public DivCon() {
-        contas = new HashMap<>();
         participantes = new HashMap<>();
-    }
-
-    public ContaColetiva cadastrarConta(String nome, String descricao) {
-        ContaColetiva novaConta = new ContaColetiva(nome, descricao);
-        // Se o participante logado cria uma conta, ele automaticamente está dentro dela
-        novaConta.addParticipante(participanteLogado);
-        contas.put(nome, novaConta);
-        return novaConta;
-    }
-
-    public ContaColetiva cadastrarConta(ContaColetiva novaConta) {
-        // Se o participante logado cria uma conta, ele automaticamente está dentro dela
-        novaConta.addParticipante(participanteLogado);
-        contas.put(novaConta.getNomeConta(), novaConta);
-        return novaConta;
     }
 
     public void cadastrarParticipante(String nome, Float saldoInicial, boolean logar) {
@@ -51,13 +34,17 @@ public class DivCon {
         }
     }
 
+    public void cadastrarConta(ContaColetiva novaConta) {
+        novaConta.addParticipante(participanteLogado);
+        participanteLogado.addConta(novaConta);
+    }
+
     /**
      * Escolhe uma conta para ser a utiliza ou logada no momento.
      * @param nome o nome da conta a ser logada
      */
     public void logaConta(String nome) {
-        ContaColetiva resultado = contas.get(nome);
-        contaLogada = resultado;
+        contaLogada = participanteLogado.getConta(nome);
     }
 
     public String getNomeParticipanteLogado() {
