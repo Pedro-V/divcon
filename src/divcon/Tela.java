@@ -17,10 +17,11 @@ public class Tela extends JDialog {
     protected String nomeBotao1;
     protected String nomeBotao2;
 	/**
-	 * Cria uma tela básica
+	 * Cria uma tela básica com 1 ou 2 campos de digitação
 	 * @param appDivCon : a parte funcional do aplicativo
-	 * @param nomeCampoUm: o titulo do primeiro campo da tela
-	 * @param nomeCampoDois: o titulo do segundo campo da tela
+	 * @param nomeCampoUm : o titulo do primeiro campo da tela
+	 * @param botao1 : a string que aparecerá impressa no botão 1
+	 * @param botao2 : a string que aparecerá impressa no botão 2
 	 */
 	public Tela(DivCon appDivCon, String nomeCampoUm, String botao1, String botao2) {
 		this.appDivCon = appDivCon;
@@ -30,6 +31,14 @@ public class Tela extends JDialog {
 		criaJanela();
 	}
 
+	/**
+	 * Cria uma tela básica com 1 ou 2 campos de digitação
+	 * @param appDivCon : a parte funcional do aplicativo
+	 * @param nomeCampoUm : o titulo do primeiro campo da tela
+	 * @param nomeCampoDois : o titulo do segundo campo da tela
+	 * @param botao1 : a string que aparecerá impressa no botão 1
+	 * @param botao2 : a string que aparecerá impressa no botão 2
+	 */
 	public Tela(DivCon appDivCon, String nomeCampoUm, String nomeCampoDois, String botao1, String botao2) {
 		this.appDivCon = appDivCon;
         this.nomeCampoUm = nomeCampoUm;
@@ -37,6 +46,8 @@ public class Tela extends JDialog {
         nomeBotao1 = botao1;
         nomeBotao2 = botao2;
 		criaJanela();
+		
+		// Cria o segundo campo de digitação da tela
 		{
 			JLabel lblDois = new JLabel(this.nomeCampoDois);
 			lblDois.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -59,6 +70,7 @@ public class Tela extends JDialog {
 		}
 	}
 
+	//Cria a janela
 	private void criaJanela(){
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -121,12 +133,15 @@ public class Tela extends JDialog {
 	}
 	
 	/**
-     * @return String digitada no campo nome da tela de login
+     * @return String digitada no campo um da tela
      */
 	public String getFieldUm() {
 		return txtFieldUm.getText();
 	}
 	
+	/**
+     * @return String digitada no campo dois da tela
+     */
 	public String getFieldDois() {
 		return txtFieldDois.getText();
 	}
