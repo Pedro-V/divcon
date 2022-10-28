@@ -103,7 +103,7 @@ public class Tela extends JDialog {
 
     /**
      * Uma função responsável por adicionar algum elemento da aplicação,
-	 * como conta, participante ou serviço.
+	 * como conta, participante, serviço ou saldo individual.
      */
     protected void adicionaElemento() {
         return;

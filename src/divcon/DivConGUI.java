@@ -164,8 +164,6 @@ public class DivConGUI {
 		btnAddConta.addActionListener(e -> telaCriarConta.setVisible(true));
 		btnAddSaldo.addActionListener(e -> adicionarSaldo());
 
-		attInfoSaldo();
-		attUsuarioLogado();
 	}
 	
     /**
