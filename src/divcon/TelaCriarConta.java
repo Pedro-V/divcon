@@ -35,6 +35,7 @@ public class TelaCriarConta extends Tela {
 		
 			//A nova conta é salva dentro do hashmap do usuario logado
 			appDivCon.cadastrarConta(novaConta);
+			appDivCon.getParticipanteLogado().addConta(novaConta);
 		
         	//Redesenha a janela principal, "atualiza"
 			janelaPrincipal.revalidate();
