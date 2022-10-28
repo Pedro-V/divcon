@@ -41,17 +41,15 @@ Basta clonar o repositório, mudar o diretório e executar os comandos java que 
 * ~~Implementação da classe `Pagamento`~~
 * Criação de botões ou itens de menu para as seguintes ações/funcionalidades:
   * ~~Criar conta~~
-  * Adicionar participante numa conta (Isso automaticamente deve criar um participante novo na memória da aplicação)
-  * Adicionar saldo individual num participante
-  * Pagar serviços
-  * Adicionar serviços
+  * ~~Adicionar participante numa conta (Isso automaticamente deve criar um participante novo na memória da aplicação)~~
+  * ~~Adicionar saldo individual num participante~~
+  * ~~Pagar serviços~~
+  * ~~Adicionar serviços~~
 * ~~Permitir que a GUI mostre algumas informações ao usuário sobre qual Participante e qual ContaColetiva está logada~~
 * ~~Definir algum label ou outro método de indicação de erros para o usuário~~
 * ~~Permitir que a GUI mostre informações como a listagem de serviços de uma ContaColetiva, seus membros, seu nome e saldo~~
-* Corrigir a formatação de informações nas listagens de participantes e de serviços
 * Garantir que a integração da GUI com as funcionalidades do modelo (`DivCon.java`) esteja funcionando como esperado
 * ~~Escrever testes~~
-* Escrever documentação, comentários úteis e nomes de variáveis/métodos/classes que sejam claros.
 
 ### Desenvolvedores
 
