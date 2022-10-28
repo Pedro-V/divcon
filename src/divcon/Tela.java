@@ -1,29 +1,30 @@
 package divcon;
 
-import java.awt.*;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import java.awt.*;
 
 public class Tela extends JDialog {
 
 	protected final JPanel contentPanel = new JPanel();
     protected String nomeCampoUm;
-    protected String nomeCampoDois;
 	protected JTextField txtFieldUm;
-	protected JTextField txtFieldDois;
 	protected JLabel lblInfo;
 	protected DivCon appDivCon;
+    protected String nomeBotao1;
+    protected String nomeBotao2;
 	/**
 	 * Cria uma tela básica
 	 * @param appDivCon : a parte funcional do aplicativo
 	 * @param nomeCampoUm: o titulo do primeiro campo da tela
 	 * @param nomeCampoDois: o titulo do segundo campo da tela
 	 */
-	public Tela(DivCon appDivCon, String nomeCampoUm, String nomeCampoDois) {
+	public Tela(DivCon appDivCon, String nomeCampoUm, String botao1, String botao2) {
 		this.appDivCon = appDivCon;
         this.nomeCampoUm = nomeCampoUm;
-        this.nomeCampoDois = nomeCampoDois;
+        nomeBotao1 = botao1;
+        nomeBotao2 = botao2;
 		
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -39,14 +40,14 @@ public class Tela extends JDialog {
 		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0};
 		contentPanel.setLayout(gbl_contentPanel);
 		{
-			JLabel lblDigiteNome = new JLabel(this.nomeCampoUm);
-			lblDigiteNome.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			GridBagConstraints gbc_lblDigiteNome = new GridBagConstraints();
-			gbc_lblDigiteNome.anchor = GridBagConstraints.SOUTH;
-			gbc_lblDigiteNome.insets = new Insets(0, 0, 5, 5);
-			gbc_lblDigiteNome.gridx = 2;
-			gbc_lblDigiteNome.gridy = 0;
-			contentPanel.add(lblDigiteNome, gbc_lblDigiteNome);
+			JLabel lblUm = new JLabel(this.nomeCampoUm);
+			lblUm.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			GridBagConstraints gbc_lblUm = new GridBagConstraints();
+			gbc_lblUm.anchor = GridBagConstraints.SOUTH;
+			gbc_lblUm.insets = new Insets(0, 0, 5, 5);
+			gbc_lblUm.gridx = 2;
+			gbc_lblUm.gridy = 0;
+			contentPanel.add(lblUm, gbc_lblUm);
 		}
 		{
 			txtFieldUm = new JTextField();
@@ -57,26 +58,6 @@ public class Tela extends JDialog {
 			gbc_textFieldNome.gridy = 1;
 			contentPanel.add(txtFieldUm, gbc_textFieldNome);
 			txtFieldUm.setColumns(10);
-		}
-		{
-			JLabel lblSaldo = new JLabel(this.nomeCampoDois);
-			lblSaldo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			GridBagConstraints gbc_lblSaldo = new GridBagConstraints();
-			gbc_lblSaldo.anchor = GridBagConstraints.SOUTH;
-			gbc_lblSaldo.insets = new Insets(0, 0, 5, 5);
-			gbc_lblSaldo.gridx = 2;
-			gbc_lblSaldo.gridy = 2;
-			contentPanel.add(lblSaldo, gbc_lblSaldo);
-		}
-		{
-			txtFieldDois = new JTextField();
-			GridBagConstraints gbc_textFieldSaldo = new GridBagConstraints();
-			gbc_textFieldSaldo.insets = new Insets(0, 0, 5, 5);
-			gbc_textFieldSaldo.fill = GridBagConstraints.HORIZONTAL;
-			gbc_textFieldSaldo.gridx = 2;
-			gbc_textFieldSaldo.gridy = 3;
-			contentPanel.add(txtFieldDois, gbc_textFieldSaldo);
-			txtFieldDois.setColumns(10);
 		}
 		{
 			lblInfo = new JLabel("");
@@ -93,14 +74,14 @@ public class Tela extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnEntrar = new JButton("Adicionar");
-				buttonPane.add(btnEntrar);
-				btnEntrar.addActionListener(e -> adicionaElemento());
+				JButton btnUm = new JButton(nomeBotao1);
+				buttonPane.add(btnUm);
+				btnUm.addActionListener(e -> adicionaElemento());
 			}
 			{
-				JButton btnCancelar = new JButton("Cancelar");
-				buttonPane.add(btnCancelar);
-				btnCancelar.addActionListener(e -> limparCampos());
+				JButton btnDois = new JButton(nomeBotao2);
+				buttonPane.add(btnDois);
+				btnDois.addActionListener(e -> limparCampos());
 			}
 		}
 	}
@@ -113,18 +94,10 @@ public class Tela extends JDialog {
 	}
 	
 	/**
-     * @return String digitada no campo saldo da tela de login
-     */
-	public String getFieldDois() {
-		return txtFieldDois.getText();
-	}
-	
-	/**
      * Limpa os campos de texto da tela de login
      */
 	protected void limparCampos() {
 		txtFieldUm.setText("");
-		txtFieldDois.setText("");
 		lblInfo.setText("");
 	}
 
