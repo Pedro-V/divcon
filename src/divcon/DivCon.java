@@ -20,7 +20,7 @@ public class DivCon {
         participantes = new HashMap<>();
     }
 
-    public ContaColetiva addConta(String nome, String descricao) {
+    public ContaColetiva cadastrarConta(String nome, String descricao) {
         ContaColetiva novaConta = new ContaColetiva(nome, descricao);
         // Se o participante logado cria uma conta, ele automaticamente está dentro dela
         novaConta.addParticipante(participanteLogado);
@@ -32,7 +32,20 @@ public class DivCon {
         Participante novoParticipante = new Participante(nome, saldoInicial);
         participantes.put(nome, novoParticipante);
         // Para o participante virar o logado, é necessário o booleano ser true
-        if(logar) participanteLogado = novoParticipante;
+        if (logar) {
+            participanteLogado = novoParticipante;
+        }
+    }
+
+    public void cadastrarParticipante(Participante novoParticipante, boolean logar) {
+        participantes.put(novoParticipante.getNome(), novoParticipante);
+        if (logar) {
+            participanteLogado = novoParticipante;
+        }
+    }
+
+    public void cadastarConta(ContaColetiva conta) {
+        contas.put(conta.getNomeConta(), conta);
     }
 
     /**
