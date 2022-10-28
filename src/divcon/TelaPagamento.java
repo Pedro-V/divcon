@@ -16,7 +16,6 @@ public class TelaPagamento extends Tela {
                 lblInfo.setText("A operação não foi concluída. Seu saldo individual é suficiente?");
             }
             else {
-                
                 this.setVisible(false);
                 limparCampos();
             }

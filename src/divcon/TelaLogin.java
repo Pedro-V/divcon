@@ -21,7 +21,7 @@ public class TelaLogin extends TelaAddParticipante {
 	public void adicionaElemento() {
 		String nomeParticipanteSelecionado = cadastradosBox.getSelectedItem().toString();
 		if (nomeParticipanteSelecionado  != "-") {
-			//Pega o usuário selecionado e puxa-o do hashmap
+			// Pega o usuário selecionado e puxa-o do hashmap
 			appDivCon.logarParticipante(nomeParticipanteSelecionado);
 			//lblNomeUsuario.setText(nomeParticipanteSelecionado);
 			Participante participanteLogado = appDivCon.getParticipanteLogado();
@@ -31,7 +31,7 @@ public class TelaLogin extends TelaAddParticipante {
 				painelContas.add(new PainelConta(conta, telaAddParticipante, appDivCon));
 			}
 
-			//Ver se funciona sem essas linhas
+			// Ver se funciona sem essas linhas
 			painelContas.repaint();
 			painelContas.revalidate();
 			setVisible(false);

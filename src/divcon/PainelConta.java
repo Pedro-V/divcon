@@ -201,7 +201,7 @@ public class PainelConta extends JPanel {
 		//Ação a ser realizada com o serviço selecionado
 		listaServicos.addListSelectionListener(e -> mudarValor(listaServicos.getSelectedValue()));
 		btnPagarServico.addActionListener(e -> pagaServico(listaServicos.getSelectedValue()));
-
+		btnAddServico.addActionListener(e -> addServico());
 		btnAddParticipante.addActionListener(e -> adicionarParticipanteNaConta());
 
 		telaDetalhes.setVisible(true);
@@ -221,6 +221,11 @@ public class PainelConta extends JPanel {
 		TelaPagamento telaPagamento = new TelaPagamento(appDivCon, servicoSelecionado);
 		telaPagamento.setVisible(true);
 		// TODO após pagamento tem que atualizar informações do serviço e dos saldos (individual e total) na GUI
+	}
+
+	private void addServico() {
+		TelaAddServico telaAddServico = new TelaAddServico(appDivCon);
+		telaAddServico.setVisible(true);
 	}
 
 	private void adicionarParticipanteNaConta(){

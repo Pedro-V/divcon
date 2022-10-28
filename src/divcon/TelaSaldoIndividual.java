@@ -13,6 +13,7 @@ public class TelaSaldoIndividual extends Tela {
         if (Checadora.floatOk(quantia)) {
             participante.addSaldoIndividual(Float.valueOf(quantia));
             this.setVisible(false);
+            limparCampos();
         }
         else {
             lblInfo.setText("A quantia informada não é um valor válido");
