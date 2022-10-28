@@ -13,12 +13,14 @@ public class PainelConta extends JPanel {
 	private JTextField txtFieldValor;
 	private TelaAddParticipante telaAddParticipante;
 	private JTextArea txtAreaParticipantes;
+	private DivCon appDivCon;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
 	 */
-	public PainelConta(ContaColetiva conta, TelaAddParticipante telaAddParticipante) {
+	public PainelConta(ContaColetiva conta, TelaAddParticipante telaAddParticipante, DivCon appDivCon) {
 		this.conta = conta;
+		this.appDivCon = appDivCon;
 		this.telaAddParticipante = telaAddParticipante;
 		
 		setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
@@ -72,6 +74,7 @@ public class PainelConta extends JPanel {
 	private void criarTelaDetalhes() {
 		JDialog telaDetalhes = new JDialog();
 		telaDetalhes.setBounds(100, 100, 460, 300);
+		appDivCon.logaConta(conta.getNomeConta());
 			
 		JPanel panelCenter = new JPanel();
 		telaDetalhes.getContentPane().add(panelCenter, BorderLayout.CENTER);
@@ -185,10 +188,6 @@ public class PainelConta extends JPanel {
 		lblConta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelNorth.add(lblConta);
 		
-		/* JLabel lblDescricao = new JLabel(conta.getInfoFormatada());
-		lblDescricao.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelNorth.add(lblDescricao); */
-		
 		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 	
 		/**
@@ -201,6 +200,7 @@ public class PainelConta extends JPanel {
 		
 		//Ação a ser realizada com o serviço selecionado
 		listaServicos.addListSelectionListener(e -> mudarValor(listaServicos.getSelectedValue()));
+		btnPagarServico.addActionListener(e -> pagaServico(listaServicos.getSelectedValue()));
 
 		btnAddParticipante.addActionListener(e -> adicionarParticipanteNaConta());
 
@@ -215,6 +215,12 @@ public class PainelConta extends JPanel {
 	private void mudarValor(String servicoSelecionado) {
 		Float custo = conta.getServicos().get(servicoSelecionado).getCusto();
 		txtFieldValor.setText("Valor: R$ " + custo.toString());
+	}
+
+	private void pagaServico(String servicoSelecionado) {
+		TelaPagamento telaPagamento = new TelaPagamento(appDivCon, servicoSelecionado);
+		telaPagamento.setVisible(true);
+		// TODO após pagamento tem que atualizar informações do serviço e dos saldos (individual e total) na GUI
 	}
 
 	private void adicionarParticipanteNaConta(){
