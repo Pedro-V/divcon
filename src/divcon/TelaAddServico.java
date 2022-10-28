@@ -1,8 +1,8 @@
 package divcon;
 
-public class TelaAddServico extends TelaDoisCampos {
+public class TelaAddServico extends Tela {
     public TelaAddServico(DivCon appDivCon) {
-        super(appDivCon, "Nome do novo serviço:", "Custo do novo serviço:");
+        super(appDivCon, "Nome do novo serviço:", "Custo do novo serviço:", "Adicionar", "Cancelar");
     }
 
     @Override

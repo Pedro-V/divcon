@@ -2,7 +2,7 @@ package divcon;
 
 import javax.swing.*;
 
-public class TelaCriarConta extends TelaDoisCampos {
+public class TelaCriarConta extends Tela {
 	private JPanel painelContas;
 	private JFrame janelaPrincipal;
 	private TelaAddParticipante telaAddParticipante;
@@ -15,7 +15,7 @@ public class TelaCriarConta extends TelaDoisCampos {
 	 * @param telaAddParticipante : a janela de adicionar um novo participante na conta
 	 */
 	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal, TelaAddParticipante telaAddParticipante) {
-		super(appDivCon, "Digite o nome da conta:", "Digite a descrição:");
+		super(appDivCon, "Digite o nome da conta:", "Digite a descrição:", "Adicionar", "Cancelar");
 		this.painelContas = painelContas;
 		this.janelaPrincipal = janelaPrincipal;
 		this.telaAddParticipante = telaAddParticipante;

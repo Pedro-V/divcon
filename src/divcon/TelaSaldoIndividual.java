@@ -3,7 +3,7 @@ package divcon;
 public class TelaSaldoIndividual extends Tela {
     private Participante participante;
     public TelaSaldoIndividual(DivCon appDivCon, Participante participante) {
-        super(appDivCon, "Quantia para adicionaro ao saldo:", "Transferir", "Cancelar");
+        super(appDivCon, "Quantia para adicionar ao saldo:", "Transferir", "Cancelar");
         this.participante = participante;
     }
 

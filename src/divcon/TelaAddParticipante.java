@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class TelaAddParticipante extends TelaDoisCampos {
+public class TelaAddParticipante extends Tela {
 	protected JComboBox<String> cadastradosBox;
 	protected ContaColetiva contaAtual;
 	/**
@@ -12,7 +12,7 @@ public class TelaAddParticipante extends TelaDoisCampos {
 	 * @param appDivCon : a parte funcional do aplicativo
 	 */
 	public TelaAddParticipante(DivCon appDivCon) {
-		super(appDivCon, "Digite o nome:", "Digite o saldo:");
+		super(appDivCon, "Digite o nome:", "Digite o saldo:", "Adicionar", "Cancelar");
 		{
 			JLabel lblUsrCadastrados = new JLabel("Usuários cadastrados");
 			lblUsrCadastrados.setFont(new Font("Tahoma", Font.PLAIN, 14));

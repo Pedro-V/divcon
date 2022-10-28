@@ -9,7 +9,9 @@ public class Tela extends JDialog {
 
 	protected final JPanel contentPanel = new JPanel();
     protected String nomeCampoUm;
+	protected String nomeCampoDois;
 	protected JTextField txtFieldUm;
+	protected JTextField txtFieldDois;
 	protected JLabel lblInfo;
 	protected DivCon appDivCon;
     protected String nomeBotao1;
@@ -25,7 +27,39 @@ public class Tela extends JDialog {
         this.nomeCampoUm = nomeCampoUm;
         nomeBotao1 = botao1;
         nomeBotao2 = botao2;
-		
+		criaJanela();
+	}
+
+	public Tela(DivCon appDivCon, String nomeCampoUm, String nomeCampoDois, String botao1, String botao2) {
+		this.appDivCon = appDivCon;
+        this.nomeCampoUm = nomeCampoUm;
+		this.nomeCampoDois = nomeCampoDois;
+        nomeBotao1 = botao1;
+        nomeBotao2 = botao2;
+		criaJanela();
+		{
+			JLabel lblDois = new JLabel(this.nomeCampoDois);
+			lblDois.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			GridBagConstraints gbc_lblDois = new GridBagConstraints();
+			gbc_lblDois.anchor = GridBagConstraints.SOUTH;
+			gbc_lblDois.insets = new Insets(0, 0, 5, 5);
+			gbc_lblDois.gridx = 2;
+			gbc_lblDois.gridy = 2;
+			contentPanel.add(lblDois, gbc_lblDois);
+		}
+		{
+			txtFieldDois = new JTextField();
+			GridBagConstraints gbc_textFieldSaldo = new GridBagConstraints();
+			gbc_textFieldSaldo.insets = new Insets(0, 0, 5, 5);
+			gbc_textFieldSaldo.fill = GridBagConstraints.HORIZONTAL;
+			gbc_textFieldSaldo.gridx = 2;
+			gbc_textFieldSaldo.gridy = 3;
+			contentPanel.add(txtFieldDois, gbc_textFieldSaldo);
+			txtFieldDois.setColumns(10);
+		}
+	}
+
+	private void criaJanela(){
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
@@ -93,6 +127,9 @@ public class Tela extends JDialog {
 		return txtFieldUm.getText();
 	}
 	
+	public String getFieldDois() {
+		return txtFieldDois.getText();
+	}
 	/**
      * Limpa os campos de texto da tela de login
      */
