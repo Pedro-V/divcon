@@ -28,6 +28,13 @@ public class DivCon {
         return novaConta;
     }
 
+    public ContaColetiva cadastrarConta(ContaColetiva novaConta) {
+        // Se o participante logado cria uma conta, ele automaticamente está dentro dela
+        novaConta.addParticipante(participanteLogado);
+        contas.put(novaConta.getNomeConta(), novaConta);
+        return novaConta;
+    }
+
     public void cadastrarParticipante(String nome, Float saldoInicial, boolean logar) {
         Participante novoParticipante = new Participante(nome, saldoInicial);
         participantes.put(nome, novoParticipante);
@@ -42,10 +49,6 @@ public class DivCon {
         if (logar) {
             participanteLogado = novoParticipante;
         }
-    }
-
-    public void cadastarConta(ContaColetiva conta) {
-        contas.put(conta.getNomeConta(), conta);
     }
 
     /**

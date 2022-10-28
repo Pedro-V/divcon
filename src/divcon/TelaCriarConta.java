@@ -34,7 +34,7 @@ public class TelaCriarConta extends Tela {
 			painelContas.add(pnlNovaConta);
 		
 			//A nova conta é salva dentro do hashmap do usuario logado
-			appDivCon.cadastarConta(novaConta);
+			appDivCon.cadastrarConta(novaConta);
 		
         	//Redesenha a janela principal, "atualiza"
 			janelaPrincipal.revalidate();
