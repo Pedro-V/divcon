@@ -15,16 +15,26 @@ A DivCon é uma aplicação que permite que os usuários criem contas coletivas 
 
 ### COMO RODAR A APLICAÇÃO
 
+* Linux/MacOS
+
 ```bash
 # primeiro, clone esse repositório na sua máquina
 git clone https://github.com/Pedro-V/proj-final-poo
 # vá para o diretório dele
 cd proj-final-poo
+# mude as permissões dos scripts
+sudo chmod +x *.sh
+# rode os testes
+./run-tests.sh
 # rode a aplicação
-java -cp bin/ divcon.DivConGUI
-# rode os testes 
-java -cp lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:bin/ org.junit.runner.JUnitCore test.ParticipanteTest test.PagamentoTest test.ContaColetivaTest
+./run-app.sh
 ```
+
+Para rodar sem os scripts, veja logo abaixo em **Windows**.
+
+* Windows
+
+Basta clonar o repositório, mudar o diretório e executar os comandos java que estão no `run-tests.sh` e no `run-app.sh`.
 
 ### To-Do list
 
