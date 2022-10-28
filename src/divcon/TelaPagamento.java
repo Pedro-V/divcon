@@ -13,7 +13,7 @@ public class TelaPagamento extends Tela {
         if (Checadora.floatOk(quantia)) {
             boolean resultado = appDivCon.pagarServico(Float.valueOf(quantia), nomeServico);
             if (!resultado) {
-                lblInfo.setText("A operação não foi concluída. Seu saldo individual é suficiente?");
+                lblInfo.setText("<html>A operação não foi concluída.<br/>Seu saldo individual é suficiente?<html/>");
             }
             else {
                 this.setVisible(false);

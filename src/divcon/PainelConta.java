@@ -16,6 +16,7 @@ public class PainelConta extends JPanel {
 	private DivCon appDivCon;
 	private JDialog telaDetalhes;
 	private DefaultListModel<String> demoList;
+	private JList<String> listaServicos;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
@@ -128,7 +129,7 @@ public class PainelConta extends JPanel {
 		
 		//Criação de uma JList que armazena os serviços podendo ser selecionados por um simples clique
 		demoList = new DefaultListModel<>();
-		JList<String> listaServicos = new JList<>(demoList);
+		listaServicos = new JList<>(demoList);
 		listaServicos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPaneServicos.setViewportView(listaServicos);
 		
@@ -215,14 +216,31 @@ public class PainelConta extends JPanel {
 	 * esse método seta o texto da textfield com o custo do serviço
 	 */
 	private void mudarValor(String servicoSelecionado) {
-		Float custo = conta.getServicos().get(servicoSelecionado).getCusto();
-		txtFieldValor.setText("Valor: R$ " + custo.toString());
+		try{
+			Float custo = conta.getServicos().get(servicoSelecionado).getCusto();
+			txtFieldValor.setText("Valor: R$ " + custo.toString());
+		} catch (Exception e){
+			txtFieldValor.setText("");
+		}
 	}
 
 	private void pagaServico(String servicoSelecionado) {
 		TelaPagamento telaPagamento = new TelaPagamento(appDivCon, servicoSelecionado);
 		telaPagamento.setVisible(true);
-		// TODO após pagamento tem que atualizar informações do serviço e dos saldos (individual e total) na GUI
+		//Se o serviço selecionar for nulo quer dizer que ele já foi pago totalmente
+		if(conta.getServico(servicoSelecionado) == null) {
+			//Remove o item que foi totalmente pago
+			int index = listaServicos.getSelectedIndex();
+			demoList.remove(index);
+		} else {
+			//Limpa a seleção da JList
+			listaServicos.clearSelection();
+		}
+		
+		telaPagamento.dispose();
+		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
+		
+		// falta atualizar o saldo na tela principal
 	}
 
 	private void addServico() {
