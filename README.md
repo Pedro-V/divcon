@@ -15,7 +15,7 @@ A DivCon é uma aplicação que permite que os usuários criem contas coletivas 
 
 ### COMO RODAR A APLICAÇÃO
 
-* Linux/MacOS
+#### Linux/MacOS
 
 ```bash
 # primeiro, clone esse repositório na sua máquina
@@ -32,7 +32,7 @@ sudo chmod +x *.sh
 
 Para rodar sem os scripts, veja logo abaixo em **Windows**.
 
-* Windows
+#### Windows
 
 Basta clonar o repositório, mudar o diretório e executar os comandos java que estão no `run-tests.sh` e no `run-app.sh`, porém sem usar o `&&`.
 
