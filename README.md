@@ -34,7 +34,7 @@ Para rodar sem os scripts, veja logo abaixo em **Windows**.
 
 * Windows
 
-Basta clonar o repositório, mudar o diretório e executar os comandos java que estão no `run-tests.sh` e no `run-app.sh`.
+Basta clonar o repositório, mudar o diretório e executar os comandos java que estão no `run-tests.sh` e no `run-app.sh`, porém sem usar o `&&`.
 
 ### To-Do list
 
