@@ -23,17 +23,15 @@ public class TelaLogin extends TelaAddParticipante {
 		if (nomeParticipanteSelecionado  != "-") {
 			// Pega o usuário selecionado e puxa-o do hashmap
 			appDivCon.logarParticipante(nomeParticipanteSelecionado);
-			//lblNomeUsuario.setText(nomeParticipanteSelecionado);
 			Participante participanteLogado = appDivCon.getParticipanteLogado();
 			
 			//Cria um painel de conta para todas as contas que o participante faz parte
 			for(ContaColetiva conta : participanteLogado.getContas().values()) {
 				painelContas.add(new PainelConta(conta, telaAddParticipante, appDivCon));
 			}
-
-			// Ver se funciona sem essas linhas
 			painelContas.repaint();
 			painelContas.revalidate();
+			limparCampos();
 			setVisible(false);
 		} else {
 			String nomeDigitado = getFieldUm();
