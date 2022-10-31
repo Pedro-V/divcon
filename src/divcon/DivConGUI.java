@@ -221,7 +221,9 @@ public class DivConGUI {
 	 * Atualiza o label com o valor do saldo atual 
 	 */
 	private void attInfoSaldo(){
-		lblInfoSaldo.setText("Saldo R$: " + appDivCon.getParticipanteLogado().getSaldoIndividual());
+		if (appDivCon.getParticipanteLogado() != null) {
+			lblInfoSaldo.setText("Saldo R$: " + appDivCon.getParticipanteLogado().getSaldoIndividual());	
+		}
   }
 	  
   	/**
