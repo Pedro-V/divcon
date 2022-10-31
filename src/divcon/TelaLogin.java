@@ -33,7 +33,6 @@ public class TelaLogin extends TelaAddParticipante {
 			}
 			painelContas.repaint();
 			painelContas.revalidate();
-			limparCampos();
 			setVisible(false);
 		} else {
 			String nomeDigitado = getFieldUm();

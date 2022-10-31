@@ -150,6 +150,9 @@ public class Tela extends JDialog {
      */
 	protected void limparCampos() {
 		txtFieldUm.setText("");
+		if (txtFieldDois != null) {
+			txtFieldDois.setText("");
+		}
 		lblInfo.setText("");
 	}
 
