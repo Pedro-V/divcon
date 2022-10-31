@@ -17,14 +17,16 @@ public class PainelConta extends JPanel {
 	private JDialog telaDetalhes;
 	private DefaultListModel<String> demoList;
 	private JList<String> listaServicos;
+	private JLabel lblInfoSaldo;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
 	 */
-	public PainelConta(ContaColetiva conta, TelaAddParticipante telaAddParticipante, DivCon appDivCon) {
+	public PainelConta(ContaColetiva conta, TelaAddParticipante telaAddParticipante, DivCon appDivCon, JLabel lblInfoSaldo) {
 		this.conta = conta;
 		this.appDivCon = appDivCon;
 		this.telaAddParticipante = telaAddParticipante;
+		this.lblInfoSaldo = lblInfoSaldo;
 		
 		setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -240,7 +242,9 @@ public class PainelConta extends JPanel {
 		telaPagamento.dispose();
 		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 		
-		// falta atualizar o saldo na tela principal
+		// Atualizamos o texto do saldo individual que é mostrado na DivConGUI
+		Participante participanteLogado = appDivCon.getParticipanteLogado();
+		lblInfoSaldo.setText("Saldo R$: " + participanteLogado.getSaldoIndividual());
 	}
 
 	private void addServico() {

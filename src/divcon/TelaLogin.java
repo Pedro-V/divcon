@@ -5,6 +5,7 @@ import javax.swing.*;
 public class TelaLogin extends TelaAddParticipante {
 	private JPanel painelContas;
 	private TelaAddParticipante telaAddParticipante;
+	private JLabel lblInfoSaldo;
 	/**
 	 * Cria a janela de tela de login (JDialog)
 	 * @param appDivCon : a parte funcional do aplicativo
@@ -12,10 +13,11 @@ public class TelaLogin extends TelaAddParticipante {
 	 * @param painelContas : o painel que mostra as contas do usuário logado
 	 * @param telaAddParticipante : tela para adicionar participante em uma conta
 	 */
-	public TelaLogin(DivCon appDivCon, JPanel painelContas, TelaAddParticipante telaAddParticipante) {
+	public TelaLogin(DivCon appDivCon, JPanel painelContas, TelaAddParticipante telaAddParticipante, JLabel lblInfoSaldo) {
 		super(appDivCon);
 		this.painelContas = painelContas;
 		this.telaAddParticipante = telaAddParticipante;
+		this.lblInfoSaldo = lblInfoSaldo;
 	}
 
 	public void adicionaElemento() {
@@ -27,7 +29,7 @@ public class TelaLogin extends TelaAddParticipante {
 			
 			//Cria um painel de conta para todas as contas que o participante faz parte
 			for(ContaColetiva conta : participanteLogado.getContas().values()) {
-				painelContas.add(new PainelConta(conta, telaAddParticipante, appDivCon));
+				painelContas.add(new PainelConta(conta, telaAddParticipante, appDivCon, lblInfoSaldo));
 			}
 			painelContas.repaint();
 			painelContas.revalidate();

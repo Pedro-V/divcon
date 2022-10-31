@@ -138,10 +138,10 @@ public class DivConGUI {
 		telaAddParticipante = new TelaAddParticipante(appDivCon);
 		telaAddParticipante.setVisible(false);
 
-		telaLogin = new TelaLogin(appDivCon, painelContas, telaAddParticipante);
+		telaLogin = new TelaLogin(appDivCon, painelContas, telaAddParticipante, lblInfoSaldo);
         telaLogin.setVisible(true);
         
-        telaCriarConta = new TelaCriarConta(appDivCon, painelContas, frame, telaAddParticipante);
+        telaCriarConta = new TelaCriarConta(appDivCon, painelContas, frame, telaAddParticipante, lblInfoSaldo);
         telaCriarConta.setVisible(false);
 
 		btnAddConta = new JButton("Adicionar conta");
@@ -223,7 +223,7 @@ public class DivConGUI {
 	private void attInfoSaldo(){
 		Participante participanteLogado = appDivCon.getParticipanteLogado();
 		if (participanteLogado != null) {
-			lblInfoSaldo.setText("Saldo R$: " + participanteLogado.getSaldoIndividual());	
+			lblInfoSaldo.setText("Saldo R$: " + participanteLogado.getSaldoIndividual());
 		}
   }
 	  

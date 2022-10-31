@@ -5,6 +5,7 @@ import javax.swing.*;
 public class TelaCriarConta extends Tela {
 	private JPanel painelContas;
 	private JFrame janelaPrincipal;
+	private JLabel lblInfoSaldo;
 	private TelaAddParticipante telaAddParticipante;
 
 	/**
@@ -14,11 +15,12 @@ public class TelaCriarConta extends Tela {
      * @param janelaPrincipal : janela principal do app
 	 * @param telaAddParticipante : a janela de adicionar um novo participante na conta
 	 */
-	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal, TelaAddParticipante telaAddParticipante) {
+	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal, TelaAddParticipante telaAddParticipante, JLabel lblInfoSaldo) {
 		super(appDivCon, "Digite o nome da conta:", "Digite a descrição:", "Adicionar", "Cancelar");
 		this.painelContas = painelContas;
 		this.janelaPrincipal = janelaPrincipal;
 		this.telaAddParticipante = telaAddParticipante;
+		this.lblInfoSaldo = lblInfoSaldo;
 	}
 	
     /**
@@ -30,7 +32,7 @@ public class TelaCriarConta extends Tela {
 		if (Checadora.stringOk(getFieldUm())){
 			ContaColetiva novaConta = new ContaColetiva(getFieldUm(), getFieldDois());
 
-			PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante, appDivCon);
+			PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante, appDivCon, lblInfoSaldo);
 			painelContas.add(pnlNovaConta);
 		
 			//A nova conta é salva dentro do hashmap do usuario logado
