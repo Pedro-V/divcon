@@ -221,8 +221,9 @@ public class DivConGUI {
 	 * Atualiza o label com o valor do saldo atual 
 	 */
 	private void attInfoSaldo(){
-		if (appDivCon.getParticipanteLogado() != null) {
-			lblInfoSaldo.setText("Saldo R$: " + appDivCon.getParticipanteLogado().getSaldoIndividual());	
+		Participante participanteLogado = appDivCon.getParticipanteLogado();
+		if (participanteLogado != null) {
+			lblInfoSaldo.setText("Saldo R$: " + participanteLogado.getSaldoIndividual());	
 		}
   }
 	  
@@ -230,6 +231,9 @@ public class DivConGUI {
 	 * Atualiza o label com o nome do usuário logado
 	 */
 	private void attUsuarioLogado(){
-		lblNomeUsuario.setText(appDivCon.getParticipanteLogado().getNome());
+		Participante participanteLogado = appDivCon.getParticipanteLogado();
+		if (participanteLogado != null) {
+			lblNomeUsuario.setText(participanteLogado.getNome());
+		}
 	}
 }
