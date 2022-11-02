@@ -123,7 +123,7 @@ public class ContaColetiva {
      * @return um {@code Float} representando o valor atual do saldo
      * total após ele ser calculado
      */
-    private Float calculaSaldoTotal() {
+    public Float calculaSaldoTotal() {
         saldoTotal = 0f;
         for (Participante participante : participantes.values()) {
             saldoTotal += participante.getSaldoIndividual();
@@ -145,6 +145,10 @@ public class ContaColetiva {
     
     public Servico getServico(String nome){
         return servicos.get(nome);
+    }
+
+    public HashMap<String, Participante> getParticipantes(){
+        return participantes;
     }
 
     public HashMap<String, Servico> getServicos(){

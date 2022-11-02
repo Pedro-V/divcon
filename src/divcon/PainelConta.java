@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 
 
 public class PainelConta extends JPanel {
@@ -12,12 +13,15 @@ public class PainelConta extends JPanel {
 	private ContaColetiva conta;
 	private JTextField txtFieldValor;
 	private TelaAddParticipante telaAddParticipante;
-	private JTextArea txtAreaParticipantes;
+	//private JTextArea txtAreaParticipantes;
 	private DivCon appDivCon;
 	private JDialog telaDetalhes;
 	private DefaultListModel<String> demoList;
 	private JList<String> listaServicos;
 	private JLabel lblInfoSaldo;
+	//private JTable table;
+	private DefaultTableModel tableModel;
+	private int posTabela = 1;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
@@ -116,11 +120,11 @@ public class PainelConta extends JPanel {
 		gbc_scrollPaneParticipantes.gridx = 1;
 		gbc_scrollPaneParticipantes.gridy = 1;
 		panelCenter.add(scrollPaneParticipantes, gbc_scrollPaneParticipantes);
-			
+		/*
 		txtAreaParticipantes = new JTextArea();
 		txtAreaParticipantes.setEditable(false);
 		scrollPaneParticipantes.setViewportView(txtAreaParticipantes);
-			
+		*/	
 		JScrollPane scrollPaneServicos = new JScrollPane();
 		GridBagConstraints gbc_scrollPaneServicos = new GridBagConstraints();
 		gbc_scrollPaneServicos.insets = new Insets(0, 0, 5, 5);
@@ -193,7 +197,7 @@ public class PainelConta extends JPanel {
 		lblConta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelNorth.add(lblConta);
 		
-		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
+		//txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 	
 		/**
 		 * Para cada serviço na lista de serviços da conta é adicionado
@@ -208,7 +212,23 @@ public class PainelConta extends JPanel {
 		btnPagarServico.addActionListener(e -> pagaServico(listaServicos.getSelectedValue()));
 		btnAddServico.addActionListener(e -> addServico());
 		btnAddParticipante.addActionListener(e -> adicionarParticipanteNaConta());
-
+		
+		//Participante partLogado = appDivCon.getParticipanteLogado();
+		//String saldoPart = partLogado.getSaldoIndividual().toString();
+		//Cria duas linhas, 1 com o nome e o saldo do participante logado, e a outra com o saldo total
+		//String[][] row = new String[][] {{partLogado.getNome(), saldoPart},
+		//								 {"Saldo total", saldoPart}};
+		//Cria a tabela com o nome e o saldo do participante que criou a conta
+		tableModel = new DefaultTableModel(new String[]{"Nome", "Saldo"}, 0);//row ,new String[]{"Nome", "Saldo"});
+		
+		JTable table = new JTable(tableModel);
+		table.setCellSelectionEnabled(false);       //As células não podem ser selecionadas
+		table.setDefaultEditor(Object.class, null); //Edição das células desativadas
+		table.getColumnModel().getColumn(0).setPreferredWidth(100); //Alterado o tamanho
+		table.getColumnModel().getColumn(1).setPreferredWidth(40);  //Alterado o tamanho
+		table.getTableHeader().setReorderingAllowed(false);         //Impedir reordenação(movimentação) das colunas
+		scrollPaneParticipantes.setViewportView(table);
+		attTable();
 		telaDetalhes.setVisible(true);
 	}
 
@@ -240,11 +260,12 @@ public class PainelConta extends JPanel {
 		}
 		
 		telaPagamento.dispose();
-		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
+		//txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 		
 		// Atualizamos o texto do saldo individual que é mostrado na DivConGUI
 		Participante participanteLogado = appDivCon.getParticipanteLogado();
 		lblInfoSaldo.setText("Saldo R$: " + participanteLogado.getSaldoIndividual());
+		attTable();
 	}
 
 	private void addServico() {
@@ -259,6 +280,20 @@ public class PainelConta extends JPanel {
 		telaAddParticipante.attComboBox();
 		telaAddParticipante.limparCampos();
 		telaAddParticipante.setVisible(true);
-		txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
+		attTable();
+	}
+	
+	/**
+	 * Atualiza a tabela, primeiro apaga a tabela inteira e depois refaz por meio de um laço
+	 * Atualiza a linha do saldo total
+	 */
+	private void attTable() {
+		tableModel.setRowCount(0);
+		for(Participante part : conta.getParticipantes().values()){
+			String[] row = {part.getNome(), part.getSaldoIndividual().toString()};
+			tableModel.addRow(row);
+		}
+		tableModel.addRow(new String[]{"Saldo total", conta.calculaSaldoTotal().toString()});
+		
 	}
 }
