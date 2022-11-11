@@ -72,10 +72,12 @@ public class Tela extends JDialog {
 
 	//Cria a janela
 	private void criaJanela(){
-		setModal(true);
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setModal(true);
+		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
-		setBounds(100, 100, 435, 420);
+		this.setBounds(0, 0, 650, 550);
+		this.setLocationRelativeTo(null); //Centraliza a janela no meio da tela
+
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

@@ -82,7 +82,8 @@ public class PainelConta extends JPanel {
 	 */
 	private void criarTelaDetalhes() {
 		telaDetalhes = new JDialog();
-		telaDetalhes.setBounds(100, 100, 460, 300);
+		telaDetalhes.setBounds(0, 0, 900, 500);
+		telaDetalhes.setLocationRelativeTo(null);
 		appDivCon.logaConta(conta.getNomeConta());
 			
 		JPanel panelCenter = new JPanel();

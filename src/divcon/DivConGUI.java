@@ -57,7 +57,8 @@ public class DivConGUI {
 	private void initialize() {
 		//Criação da janela principal com BorderLayout
 		frame = new JFrame("DivCon");
-		frame.setBounds(100, 100, 619, 468);
+		frame.setBounds(0, 0, 1280, 720);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout());
 		
