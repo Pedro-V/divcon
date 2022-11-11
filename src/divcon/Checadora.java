@@ -38,7 +38,7 @@ public class Checadora {
      * contrario false
      */
     public static boolean stringOk(String s) {
-        return stringNaoContemCharsIlegais(s) && !s.isBlank();
+        return stringNaoContemCharsIlegais(s) && !s.trim().equals("");
     }
 
     /**
@@ -79,7 +79,7 @@ public class Checadora {
 	 */
 	private static boolean stringNaoContemCharsIlegais(String s) {
 		CharacterIterator it = new StringCharacterIterator(s);
-		String charsIlegais = "0123456789!@#$%¨&*()-=+";
+		String charsIlegais = "0123456789!@#$%¨&*()-=+_";
 		while (it.current() != CharacterIterator.DONE)
         {
 			String atual = String.valueOf(it.current());
