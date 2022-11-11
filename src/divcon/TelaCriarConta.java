@@ -30,6 +30,10 @@ public class TelaCriarConta extends Tela {
 	 */
 	protected void adicionaElemento() {
 		if (Checadora.stringOk(getFieldUm())){
+			if (appDivCon.getParticipanteLogado().getConta(getFieldUm()) != null) {
+				lblInfo.setText("Uma conta com esse nome já existe no seu perfil.");
+				return;
+			}
 			ContaColetiva novaConta = new ContaColetiva(getFieldUm(), getFieldDois());
 
 			PainelConta pnlNovaConta = new PainelConta(novaConta, telaAddParticipante, appDivCon, lblInfoSaldo);
