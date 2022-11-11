@@ -21,7 +21,6 @@ public class PainelConta extends JPanel {
 	private JLabel lblInfoSaldo;
 	//private JTable table;
 	private DefaultTableModel tableModel;
-	private int posTabela = 1;
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
