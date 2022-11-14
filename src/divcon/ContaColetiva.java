@@ -31,27 +31,6 @@ public class ContaColetiva {
         this.descricao = descricao;
         servicos = new HashMap<>();
         participantes = new HashMap<>();
-        criaExemplosServicos();
-    }
-
-    /**
-     * Cria 5 novos serviços na ContaColetiva, exemplificando a usabilidade
-     * dela.
-     */
-    public void criaExemplosServicos() {
-        Servico agua, luz, supermercado, internet, combustivel;
-        agua = new Servico("Água e Esgoto", 100.2f);
-        luz = new Servico("Luz e Energia", 120f);
-        supermercado = new Servico("Supermercado Melba Roy Mouton", 1969.11f);
-        internet = new Servico("VivoFibra", 13.13f);
-        combustivel = new Servico("Gasolina - Posto Vargas Llosa", 59f);
-
-        servicos.put(agua.getNome(), agua);
-        servicos.put(luz.getNome(), luz);
-        servicos.put(supermercado.getNome(), supermercado);
-        servicos.put(internet.getNome(), internet);
-        servicos.put(combustivel.getNome(), combustivel);
-        return;
     }
 
     public void addParticipante(Participante participante){
