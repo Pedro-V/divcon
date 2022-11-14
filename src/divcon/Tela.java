@@ -125,6 +125,7 @@ public class Tela extends JDialog {
 				JButton btnUm = new JButton(nomeBotao1);
 				buttonPane.add(btnUm);
 				btnUm.addActionListener(e -> adicionaElemento());
+				contentPanel.getRootPane().setDefaultButton(btnUm);
 			}
 			{
 				JButton btnDois = new JButton(nomeBotao2);
@@ -132,6 +133,7 @@ public class Tela extends JDialog {
 				btnDois.addActionListener(e -> limparCampos());
 			}
 		}
+		
 	}
 	
 	/**
