@@ -2,6 +2,12 @@ package divcon;
 
 public class TelaSaldoIndividual extends Tela {
     private Participante participante;
+
+    /**
+	 * Cria a janela para adicionar saldo individual
+     * @param appDivCon : acesso as funções do aplicativo
+     * @param participante : o participante que será adicionado o saldo
+	 */
     public TelaSaldoIndividual(DivCon appDivCon, Participante participante) {
         super(appDivCon, "Quantia para adicionar ao saldo:", "Transferir", "Cancelar");
         this.participante = participante;

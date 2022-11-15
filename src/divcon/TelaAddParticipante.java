@@ -8,7 +8,6 @@ public class TelaAddParticipante extends Tela {
 	protected JComboBox<String> cadastradosBox;
 	protected ContaColetiva contaAtual;
 	protected Participante partAdicionado;
-	//Criar uma table aqui como atributo e um setTable e la no painel conta usar o settable
 	
 	/**
 	 * Cria a janela de tela de login (JDialog)
@@ -93,15 +92,12 @@ public class TelaAddParticipante extends Tela {
         this.contaAtual = contaAtual;
     }
 
+	//Atualiza a ComboBox dos participantes já cadastrados
     public void attComboBox(){
 		cadastradosBox.removeAllItems();
 		cadastradosBox.addItem("-");
         for(Participante participante : appDivCon.getParticipantes().values()){
             cadastradosBox.addItem(participante.getNome());
         }
-    }
-    
-    public Participante getPartAdicionado() {
-    	return partAdicionado;
     }
 }

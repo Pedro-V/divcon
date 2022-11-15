@@ -3,6 +3,11 @@ package divcon;
 public class TelaPagamento extends Tela {
     private String nomeServico;
 
+    /**
+	 * Cria a janela de pagamento
+     * @param appDivCon : acesso as funções do aplicativo
+     * @param nomeServio : nome do serviço que será feito o pagamento
+	 */
     public TelaPagamento(DivCon appDivCon, String nomeServico) {
         super(appDivCon, "Quantia a pagar:", "Pagar", "Cancelar");
         this.nomeServico = nomeServico;

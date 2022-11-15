@@ -14,6 +14,7 @@ public class TelaCriarConta extends Tela {
      * @param painelContas : painel da janela principal que mostra infos das contas
      * @param janelaPrincipal : janela principal do app
 	 * @param telaAddParticipante : a janela de adicionar um novo participante na conta
+	 * @param lblInfoSaldo : uma label com informações do saldo do participante
 	 */
 	public TelaCriarConta(DivCon appDivCon, JPanel painelContas, JFrame janelaPrincipal, TelaAddParticipante telaAddParticipante, JLabel lblInfoSaldo) {
 		super(appDivCon, "Digite o nome da conta:", "Digite a descrição:", "Adicionar", "Cancelar");

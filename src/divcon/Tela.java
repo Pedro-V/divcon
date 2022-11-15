@@ -16,8 +16,9 @@ public class Tela extends JDialog {
 	protected DivCon appDivCon;
     protected String nomeBotao1;
     protected String nomeBotao2;
+	
 	/**
-	 * Cria uma tela básica com 1 ou 2 campos de digitação
+	 * Cria uma tela básica com 1 campo de digitação
 	 * @param appDivCon : a parte funcional do aplicativo
 	 * @param nomeCampoUm : o titulo do primeiro campo da tela
 	 * @param botao1 : a string que aparecerá impressa no botão 1
@@ -32,7 +33,7 @@ public class Tela extends JDialog {
 	}
 
 	/**
-	 * Cria uma tela básica com 1 ou 2 campos de digitação
+	 * Cria uma tela básica com 2 campos de digitação
 	 * @param appDivCon : a parte funcional do aplicativo
 	 * @param nomeCampoUm : o titulo do primeiro campo da tela
 	 * @param nomeCampoDois : o titulo do segundo campo da tela
