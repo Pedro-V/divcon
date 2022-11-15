@@ -3,11 +3,14 @@ package divcon;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
 
-
+/**
+ * A classe {@code PainelConta} representa um painel com informações de uma 
+ * conta coletiva. Por meio dela é possível ter acesso aos membros da conta,
+ * realizar pagamentos, adicionar membros e serviços.
+ */
 public class PainelConta extends JPanel {
 	
 	private ContaColetiva conta;
@@ -19,9 +22,13 @@ public class PainelConta extends JPanel {
 	private JList<String> listaServicos;
 	private JLabel lblInfoSaldo;
 	private DefaultTableModel tableModel;
+
 	/**
 	 * Um painel para mostrar as informações da conta.
 	 * @param conta, a conta atual que vai ser criado o painel de detalhes
+	 * @param telaAddParticipante, a tela para ser possível adicionar novos participantes
+	 * @param appDivCon, a parte funcional do aplicativo
+	 * @param lblInfoSaldo, uma label que mostra o saldo individual do participante
 	 */
 	public PainelConta(ContaColetiva conta, TelaAddParticipante telaAddParticipante, DivCon appDivCon, JLabel lblInfoSaldo) {
 		this.conta = conta;
@@ -207,8 +214,8 @@ public class PainelConta extends JPanel {
 		tableModel = new DefaultTableModel(new String[]{"Nome", "Saldo"}, 0);
 		
 		JTable table = new JTable(tableModel);
-		table.setCellSelectionEnabled(false);       //As células não podem ser selecionadas
-		table.setDefaultEditor(Object.class, null); //Edição das células desativadas
+		table.setCellSelectionEnabled(false);       				//As células não podem ser selecionadas
+		table.setDefaultEditor(Object.class, null); 				//Edição das células desativadas
 		table.getColumnModel().getColumn(0).setPreferredWidth(100); //Alterado o tamanho
 		table.getColumnModel().getColumn(1).setPreferredWidth(40);  //Alterado o tamanho
 		table.getTableHeader().setReorderingAllowed(false);         //Impedir reordenação(movimentação) das colunas
@@ -231,6 +238,10 @@ public class PainelConta extends JPanel {
 		}
 	}
 
+	/**
+	 * Método para realizar o pagamento de um serviço
+	 * @param servicoSelecionado o serviço selecionado na JList,
+	 */
 	private void pagaServico(String servicoSelecionado) {
 		TelaPagamento telaPagamento = new TelaPagamento(appDivCon, servicoSelecionado);
 		telaPagamento.setVisible(true);
@@ -244,6 +255,7 @@ public class PainelConta extends JPanel {
 			listaServicos.clearSelection();
 		}
 		
+		//Destrói a tela de pagamento
 		telaPagamento.dispose();
 		
 		// Atualizamos o texto do saldo individual que é mostrado na DivConGUI
@@ -252,18 +264,24 @@ public class PainelConta extends JPanel {
 		attTable();
 	}
 
+	//Adicionar um novo serviço na conta
 	private void addServico() {
 		TelaAddServico telaAddServico = new TelaAddServico(appDivCon);
 		telaAddServico.setVisible(true);
 		String servico = telaAddServico.getNomeServicoCriado();
+		
+		//O novo serviço é adicionado na JList
 		demoList.addElement(servico);
 	}
 
+	//Adicionar um novo participante na conta
 	private void adicionarParticipanteNaConta(){
 		telaAddParticipante.setContaAtual(conta);
 		telaAddParticipante.attComboBox();
 		telaAddParticipante.limparCampos();
 		telaAddParticipante.setVisible(true);
+
+		//A tabela é atualizada
 		attTable();
 	}
 	
