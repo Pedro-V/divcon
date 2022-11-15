@@ -18,6 +18,12 @@ public class DivCon {
         participantes = new HashMap<>();
     }
 
+    /**
+    * Realiza o cadastro de um novo participante
+    * @param nome : o nome do participante a ser criado
+    * @param saldoInicial : o saldo desse participante
+    * @param logar : um booleano que diz se esse participante irá logar ou não
+    */
     public void cadastrarParticipante(String nome, Float saldoInicial, boolean logar) {
         Participante novoParticipante = new Participante(nome, saldoInicial);
         participantes.put(nome, novoParticipante);
@@ -34,6 +40,10 @@ public class DivCon {
         }
     }
 
+    /**
+     * Cadastra uma nova conta, adicionando o participante logado nela
+     * @param novaConta : a conta que será cadastrada
+     */
     public void cadastrarConta(ContaColetiva novaConta) {
         novaConta.addParticipante(participanteLogado);
         participanteLogado.addConta(novaConta);
@@ -47,10 +57,6 @@ public class DivCon {
         contaLogada = participanteLogado.getConta(nome);
     }
 
-    /* public String getNomeParticipanteLogado() {
-        return participanteLogado.getNome();
-    } */
-
     /**
      * Loga na aplicação como um participante
      * @param nome Nome do participante a logar
@@ -60,23 +66,13 @@ public class DivCon {
     }
 
     /**
-     * Adiciona valores ao saldo individual do participante logado no momento
-     * @param quantia: Uma string representando a quantia a ser depositada
-     */
-    public void addSaldo(String quantia) {
-        Float quantiaFloat = Float.valueOf(quantia);
-        participanteLogado.addSaldoIndividual(quantiaFloat);
-        return;
-    };
-
-    /**
      * Adiciona um serviço na {@code ContaColetiva contaLogada} atual
      */
     public void addServico(String nome, Float custo) {
         Servico novoServico = new Servico(nome, custo);
         contaLogada.addServico(novoServico);
         return;
-    };
+    }
 
 
     /**
@@ -91,7 +87,7 @@ public class DivCon {
         Servico servicoAPagar = contaLogada.getServico(nomeServico);
         Pagamento pagamento = new Pagamento(valorPago, contaLogada, participanteLogado, servicoAPagar);
         return pagamento.pagaServico();
-    };
+    }
     
     public Participante getParticipanteLogado() {
     	return participanteLogado;
@@ -101,6 +97,9 @@ public class DivCon {
     	return participantes.get(nome);
     }
 
+    /**
+     * @return um hashmap com todos os participantes
+    */
     public HashMap<String, Participante> getParticipantes(){
         return participantes;
     }

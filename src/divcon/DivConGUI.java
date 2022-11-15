@@ -5,12 +5,19 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+/**
+ * A classe {@code DivConGUI} é a classe principal do aplicativo
+ * ela cria uma instância da parte funcional do app {@code DivCon} e engloba
+ * as classes de interface gráfica, a DivConGUI é a janela principal (homepage) do app.
+ */
 public class DivConGUI {
 	private DivCon appDivCon;
 	private JFrame frame;
-	private JLabel lblImgLogo;
 	private JPanel panelNorth;
 	private JPanel panelUser;
+    private JPanel panelSouth;
+    private JPanel painelContas;
+	private JLabel lblImgLogo;
 	private JLabel lblImgUsuario;
 	private JLabel lblNomeUsuario;
 	private JLabel lblInfoSaldo;
@@ -20,9 +27,7 @@ public class DivConGUI {
     private TelaLogin telaLogin;
     private TelaCriarConta telaCriarConta;
 	private TelaAddParticipante telaAddParticipante;
-    private JPanel panelSouth;
     private JScrollPane scrollContas;
-    private JPanel painelContas;
 	private JButton btnAddConta;
 	private JButton btnAddSaldo;
 

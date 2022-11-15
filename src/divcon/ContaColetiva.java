@@ -74,6 +74,7 @@ public class ContaColetiva {
         return resultado;
     }
 
+    // Retorna uma string com o nome e a descrição da conta
     public String getInfoFormatada() {
         return nome + " - " + descricao;
     }
