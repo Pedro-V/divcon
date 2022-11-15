@@ -13,13 +13,11 @@ public class PainelConta extends JPanel {
 	private ContaColetiva conta;
 	private JTextField txtFieldValor;
 	private TelaAddParticipante telaAddParticipante;
-	//private JTextArea txtAreaParticipantes;
 	private DivCon appDivCon;
 	private JDialog telaDetalhes;
 	private DefaultListModel<String> demoList;
 	private JList<String> listaServicos;
 	private JLabel lblInfoSaldo;
-	//private JTable table;
 	private DefaultTableModel tableModel;
 	/**
 	 * Um painel para mostrar as informações da conta.
@@ -69,7 +67,6 @@ public class PainelConta extends JPanel {
 		
 		Border border = BorderFactory.createLineBorder(Color.GRAY, 1);
 		 
-        // set the border of this component
         lblNomeConta.setBorder(border);
 		Dimension d = new Dimension((int)getMaximumSize().getWidth(), 50);
         this.setMaximumSize(d);
@@ -120,11 +117,7 @@ public class PainelConta extends JPanel {
 		gbc_scrollPaneParticipantes.gridx = 1;
 		gbc_scrollPaneParticipantes.gridy = 1;
 		panelCenter.add(scrollPaneParticipantes, gbc_scrollPaneParticipantes);
-		/*
-		txtAreaParticipantes = new JTextArea();
-		txtAreaParticipantes.setEditable(false);
-		scrollPaneParticipantes.setViewportView(txtAreaParticipantes);
-		*/	
+		
 		JScrollPane scrollPaneServicos = new JScrollPane();
 		GridBagConstraints gbc_scrollPaneServicos = new GridBagConstraints();
 		gbc_scrollPaneServicos.insets = new Insets(0, 0, 5, 5);
@@ -196,8 +189,6 @@ public class PainelConta extends JPanel {
 		JLabel lblConta = new JLabel(conta.getInfoFormatada());
 		lblConta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelNorth.add(lblConta);
-		
-		//txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 	
 		/**
 		 * Para cada serviço na lista de serviços da conta é adicionado
@@ -213,13 +204,7 @@ public class PainelConta extends JPanel {
 		btnAddServico.addActionListener(e -> addServico());
 		btnAddParticipante.addActionListener(e -> adicionarParticipanteNaConta());
 		
-		//Participante partLogado = appDivCon.getParticipanteLogado();
-		//String saldoPart = partLogado.getSaldoIndividual().toString();
-		//Cria duas linhas, 1 com o nome e o saldo do participante logado, e a outra com o saldo total
-		//String[][] row = new String[][] {{partLogado.getNome(), saldoPart},
-		//								 {"Saldo total", saldoPart}};
-		//Cria a tabela com o nome e o saldo do participante que criou a conta
-		tableModel = new DefaultTableModel(new String[]{"Nome", "Saldo"}, 0);//row ,new String[]{"Nome", "Saldo"});
+		tableModel = new DefaultTableModel(new String[]{"Nome", "Saldo"}, 0);
 		
 		JTable table = new JTable(tableModel);
 		table.setCellSelectionEnabled(false);       //As células não podem ser selecionadas
@@ -260,7 +245,6 @@ public class PainelConta extends JPanel {
 		}
 		
 		telaPagamento.dispose();
-		//txtAreaParticipantes.setText(conta.listaParticipantesESaldo());
 		
 		// Atualizamos o texto do saldo individual que é mostrado na DivConGUI
 		Participante participanteLogado = appDivCon.getParticipanteLogado();

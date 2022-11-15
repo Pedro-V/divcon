@@ -7,8 +7,6 @@ import javax.swing.border.LineBorder;
 
 public class DivConGUI {
 	private DivCon appDivCon;
-
-	
 	private JFrame frame;
 	private JLabel lblImgLogo;
 	private JPanel panelNorth;
