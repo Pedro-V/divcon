@@ -105,6 +105,7 @@ public class Participante {
     	return contas;
     }
 
+    //Adiciona uma nova conta
     public void addConta(ContaColetiva conta){
         contas.put(conta.getNomeConta(), conta);
     }

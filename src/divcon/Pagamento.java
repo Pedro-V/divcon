@@ -1,11 +1,8 @@
 package divcon;
 
 /**
- * A classe {@code Pagamento} é uma classe pai para os diferentes tipos
- * de pagamento: {@code Pix}, {@code CartaoCredito}, {@code CartaoDebito}.
- * Ela encapsula informações e comportamentos do ato de pagar uma conta
- * e também de adicionar dinheiro no saldo individual de um {@code 
- * Participante}.
+ * A classe {@code Pagamento} encapsula informações e comportamentos 
+ * do ato de pagar um serviço
  */
 public class Pagamento {
     private Float valorPago;
@@ -13,6 +10,12 @@ public class Pagamento {
     private Servico servico;
     private ContaColetiva conta;
 
+    /**
+	 * @param valorPago : o valor que será pago
+	 * @param conta : a conta da qual o serviço faz parte
+	 * @param participante : o participante que fará o pagamento
+	 * @param servico : o serviço que será feito o pagamento
+	 */
     public Pagamento(Float valorPago, ContaColetiva conta, Participante participante, Servico servico) {
         this.valorPago = valorPago;
         this.participante = participante;
@@ -79,7 +82,4 @@ public class Pagamento {
         }
     }
 
-    public Float getValorPago() {
-        return valorPago;
-    }
 }
