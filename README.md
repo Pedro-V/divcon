@@ -6,6 +6,11 @@ A DivCon é uma aplicação que permite que os usuários criem contas coletivas 
 
 ### Diagrama de Classes
 
+<object data="./DiagramaDeClasses.pdf" type="application/pdf" width="700px" height="700px">
+<embed src="./DiagramaDeClasses.pdf">
+</embed>
+</object>
+
 ### Como funciona
 
 * A aplicação **DivCon** é responsável por administrar e verificar a entrada e ações dos usuários em relação às suas respectivas contas coletivas.
