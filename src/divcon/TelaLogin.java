@@ -9,9 +9,9 @@ public class TelaLogin extends TelaAddParticipante {
 	/**
 	 * Cria a janela de tela de login (JDialog)
 	 * @param appDivCon : a parte funcional do aplicativo
-	 * @param lblNomeUsuario : uma label da tela principal que mostra o nome do usuário logado
 	 * @param painelContas : o painel que mostra as contas do usuário logado
 	 * @param telaAddParticipante : tela para adicionar participante em uma conta
+	 * @param lblInfoSaldo : uma label da tela principal que mostra o saldo do usuário logado
 	 */
 	public TelaLogin(DivCon appDivCon, JPanel painelContas, TelaAddParticipante telaAddParticipante, JLabel lblInfoSaldo) {
 		super(appDivCon);
