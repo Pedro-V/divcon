@@ -5,7 +5,7 @@
 A DivCon é uma aplicação que permite que os usuários criem contas coletivas para compartilharem e dividirem os gastos da melhor forma possível, abraçando a transparência nos gastos e nas atribuições. 
 
 
-<a href="./DiagramaDeClasses.png">
+<a href="./DiagramaDeClasses.pdf">
 <h2>Diagrama de Classes</h2>
 </a>
 
