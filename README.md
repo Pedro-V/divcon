@@ -1,4 +1,4 @@
-# Projeto Final de POO - Dividindo as contas - DivCon
+# Dividindo as contas - DivCon
 
 ## Objetivo
 
